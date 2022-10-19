@@ -1,8 +1,9 @@
 const MyGoals = () => {
 	return (
 		<div style={{ display: 'flex' }}>
-			<h3>Моя мета прочитати</h3>
-
+			<div>
+				<h3>Моя мета прочитати</h3>
+			</div>
 			<div>
 				<div>
 					<p>0</p>
