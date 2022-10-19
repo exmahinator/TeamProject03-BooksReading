@@ -14,7 +14,7 @@ const MyGoals = () => {
 					<p>Кількість днів</p>
 				</div>
 			</div>
-		</div>
+        </div>
 	);
 };
 
