@@ -1,9 +1,15 @@
 import { Outlet } from 'react-router-dom';
+import { Container, Section } from 'ui/BasicStyles';
 
 export const Layout = () => {
   return (
     <>
-      <div>HEADER</div> <Outlet />
+      HEADER
+      <Section>
+        <Container>
+          <Outlet />
+        </Container>
+      </Section>
     </>
   );
 };
