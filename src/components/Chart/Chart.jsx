@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   Chart as ChartJS,
@@ -14,15 +13,15 @@ import { Line } from 'react-chartjs-2';
 
 // import faker from 'faker';
 
-// ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   PointElement,
-//   LineElement,
-//   Title,
-//   Tooltip,
-//   Legend
-// );
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const options = {
   responsive: true,
@@ -41,7 +40,6 @@ const options = {
 
 
 export const data = {
-  labels,
   datasets: [
     {
       label: 'Кількість сторінок',
