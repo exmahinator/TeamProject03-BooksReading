@@ -1,6 +1,6 @@
 const MyGoals = () => {
 	return (
-		<div style={{ display: 'flex' }}>
+		<div>
 			<div>
 				<h3>Моя мета прочитати</h3>
 			</div>

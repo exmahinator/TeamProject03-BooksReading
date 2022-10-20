@@ -1,3 +1,10 @@
+import { AddBook } from 'components/Library';
+import { LibraryContainer } from 'ui/LibraryPage';
+
 export const LibraryPage = () => {
-    return (<div>LibraryPage</div>)
- }
+  return (
+    <LibraryContainer>
+      <AddBook />
+    </LibraryContainer>
+  );
+};
