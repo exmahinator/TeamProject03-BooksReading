@@ -10,21 +10,23 @@ export const clearAuthHeader = () => {
 	axios.defaults.headers.common.Authorization = '';
 };
 
-export const initialState = {
-	accessToken: null,
-	refreshToken: null,
-	sid: null,
-	userData: {
-		name: null,
-		email: '',
-		goingToRead: [],
-		currentlyReading: [],
-		finishedReading: [],
-		id: null,
-	},
-	isLoggedIn: false,
-	isRefreshing: false,
-	error: null,
-};
+// export const initialState = {
+// 	accessToken: null,
+// 	refreshToken: null,
+// 	sid: null,
+// 	userData: {
+// 		name: null,
+// 		email: '',
+// 		goingToRead: [],
+// 		currentlyReading: [],
+// 		finishedReading: [],
+// 		id: null,
+// 	},
+// 	isLoggedIn: false,
+// 	isRefreshing: false,
+// 	isRegistred: false,
+// 	googleRegistration: null,
+// 	error: null,
+// };
 
 export default axios;

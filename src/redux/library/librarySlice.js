@@ -1,23 +1,17 @@
-// import { createSlice } from '@reduxjs/toolkit';
-// import { addBookToRead } from './libraryOperation';
-// import { initialState } from 'config';
+import { createSlice } from '@reduxjs/toolkit';
+import { addBookToRead, addBookPlanning, getBookPlanning, addFinishedPages } from './libraryOperation';
+import { logIn } from '../auth/authOperation';
 
-// export const initialState = {
-// 	accessToken: null,
-// 	refreshToken: null,
-// 	sid: null,
-// 	userData: {
-// 		name: null,
-// 		email: '',
-// 		goingToRead: [],
-// 		currentlyReading: [],
-// 		finishedReading: [],
-// 		id: null,
-// 	},
-// 	isLoggedIn: false,
-// 	isRefreshing: false,
-// 	error: null,
-// };
+const initialState = {
+	goingToRead: [],
+	currentlyReading: [],
+  finishedReading: [],
+  startDate: null,
+  endDate: null,
+  stats: [],
+  
+	error: null,
+};
 
 // {
 //   "title": "The Book of Five Rings",
@@ -29,10 +23,32 @@
 //   "__v": 0
 // }
 
-// const librarySlice = createSlice({
-// 	name: 'book',
-// 	initialState,
-// 	extraReducers: {
+const librarySlice = createSlice({
+	name: 'book',
+	initialState,
+  extraReducers: {
+    [logIn.fulfilled](state, action) {
+      state.goingToRead = action.payload.userData.goingToRead;
+      state.currentlyReading = action.payload.userData.currentlyReading;
+    },
+      [addBookToRead.fulfilled](state, action) {
+        state.goingToRead.push(action.payload.newBook)
+    },
+    [addBookPlanning.fulfilled](state, action) {
+      state.currentlyReading.push(action.payload.books)
+      state.startDate = action.payload.startDate
+      state.endDate = action.payload.endDate
+    },
+      [getBookPlanning.fulfilled] (state, action) {
+      state.currentlyReading.push(action.payload.planning.books)
+      state.startDate = action.payload.planning.startDate
+        state.endDate = action.payload.planning.endDate
+        state.stats = action.payload.planning.stats
+    },
+    [addFinishedPages.fulfilled](state, action) {
+        state.stats = action.payload.planning.stats
+      }
+      
 // 		[addBookToRead.fulfilled](state, action) {
 // 			return state.userData.goingToRead.push(action.payload);
 // 		},
@@ -63,7 +79,7 @@
 // [refreshUser.rejected](state) {
 // 	state.isRefreshing = false;
 // },
-// 	},
-// });
+	},
+});
 
-// export const libraryReducer = librarySlice.reducer;
+export const libraryReducer = librarySlice.reducer;
