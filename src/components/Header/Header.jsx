@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import { logOut, refreshUser } from 'redux/auth/authOperation';
-import { getUserEmail, getSid } from 'redux/auth/authSelector';
-import { getAccessToken } from 'redux/auth/authSelector';
+import { getUserEmail, getSid, getAccessToken } from 'redux/auth/authSelector';
+
 
 const Header = () => {
 	const dispatch = useDispatch();
