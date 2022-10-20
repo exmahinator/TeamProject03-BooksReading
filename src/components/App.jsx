@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Layout } from './Layout';
-import { AuthLogin } from '../pages/AuthLogi';
+import { AuthLogin } from '../pages/AuthLogin';
 import { LibraryPage } from '../pages/LibraryPage';
 import { TrainingPage } from '../pages/TrainingPage';
 import { StatisticsPage } from '../pages/StatisticsPage';

@@ -10,6 +10,7 @@ export const clearAuthHeader = () => {
 	axios.defaults.headers.common.Authorization = '';
 };
 
+
 export const initialState = {
 	accessToken: null,
 	refreshToken: null,
@@ -26,5 +27,6 @@ export const initialState = {
 	isRefreshing: false,
   error: null,
 };
+
 
 export default axios;

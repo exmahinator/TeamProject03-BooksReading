@@ -1,6 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser } from './authOperation';
-import { initialState } from 'config';
+// import { initialState } from "../../config";
+
+ const initialState = {
+	accessToken: null,
+	refreshToken: null,
+	sid: null,
+	userData: {
+		name: null,
+		email: '',
+		goingToRead: [],
+		currentlyReading: [],
+		finishedReading: [],
+		id: null,
+	},
+	isLoggedIn: false,
+	isRefreshing: false,
+	isRegistred: false,
+	googleRegistration: null,
+	error: null,
+};
 
 const authSlice = createSlice({
 	name: 'auth',
