@@ -32,9 +32,9 @@ export const App = () => {
 				<Route
 					path="/login"
 					element={
-						<PublicRoute redirect="/library" restricted>
+						// <PublicRoute redirect="/library" restricted>
 							<AuthLogin />
-						</PublicRoute>
+						// </PublicRoute>
 					}
 				/>
 				<Route
@@ -48,25 +48,25 @@ export const App = () => {
 				<Route
 					path="/library"
 					element={
-						<PrivateRoute redirect="/">
+						// <PrivateRoute redirect="/">
 							<LibraryPage />
-						</PrivateRoute>
+						// </PrivateRoute>
 					}
 				/>
 				<Route
 					path="/training"
 					element={
-						<PrivateRoute redirect="/">
+						// <PrivateRoute redirect="/">
 							<TrainingPage />
-						</PrivateRoute>
+						// </PrivateRoute>
 					}
 				/>
 				<Route
 					path="/statistics"
 					element={
-						<PrivateRoute redirect="/">
+						// <PrivateRoute redirect="/">
 							<StatisticsPage />
-						</PrivateRoute>
+						// </PrivateRoute>
 					}
 				/>
 

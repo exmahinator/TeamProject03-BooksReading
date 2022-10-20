@@ -1,6 +1,10 @@
+
+import LineChart from '../components/Chart/Chart';
+
 import { useDispatch } from 'react-redux';
 import { Section, Container } from 'ui/BasicStyles';
 import { addBookPlanning, getBookPlanning } from "../redux/library/libraryOperation";
+
 
 import MyGoals from '../components/MyGoals/MyGoals';
 import { useEffect } from 'react';
@@ -27,11 +31,13 @@ export const TrainingPage = () => {
 	}
 
 	return (
+
 		<Section>
 			<Container>
 				<MyGoals />
 				<button type='button' onClick={handleAddToPlanning}>Додати</button>
 				<NavLink to='/statistics'>Statistics</NavLink>
+        <LineChart />
 			</Container>
 		</Section>
 	);
