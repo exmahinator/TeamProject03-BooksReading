@@ -14,9 +14,9 @@ import { librarySlice } from './library/librarySlice';
 import { authReducer } from './auth/authSlice';
 
 const persistConfig = {
-  key: 'auth',
-  storage,
-  whitelist: ['accessToken', 'refreshToken', 'sid'],
+	key: 'auth',
+	storage,
+	whitelist: ['accessToken', 'refreshToken', 'sid', 'userData'],
 };
 
 export const store = configureStore({

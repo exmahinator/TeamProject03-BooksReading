@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { logIn, loginWithGoogle } from 'redux/auth/authOperation';
+import { logIn } from 'redux/auth/authOperation';
+import GoogleButton from 'components/GoogleButton/GoogleButton';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
@@ -33,15 +34,16 @@ const Login = () => {
 
 	return (
 		<>
-            <button type="button" onClick={() => { dispatch(loginWithGoogle())}}>google</button>
+			<GoogleButton />			
 			<form onSubmit={handleSubmit}>
 				<label>
 					Електронна адреса *
 					<input
 						value={email}
-						type="text"
+						type="email"
 						name="email"
 						placeholder="your@email.com"
+						required
 						onChange={handleChange}
 					/>
 				</label>
@@ -52,6 +54,7 @@ const Login = () => {
 						type="password"
 						name="password"
 						placeholder="Пароль"
+						required
 						onChange={handleChange}
 					/>
 				</label>

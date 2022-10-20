@@ -27,7 +27,7 @@ const authSlice = createSlice({
 		[refreshUser.pending](state) {
 			state.isRefreshing = true;
 		},
-		[refreshUser.fulfilled](state, action) {
+    [refreshUser.fulfilled](state, action) {
 			state.accessToken = action.payload.newAccessToken;
 			state.refreshToken = action.payload.newRefreshToken;
 			state.sid = action.payload.newSid;

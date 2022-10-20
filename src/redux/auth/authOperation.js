@@ -30,6 +30,7 @@ export const register = createAsyncThunk(
 			setAuthHeader(loggedUser.data.refreshToken);
 			return logIn.data;
 		} catch (error) {
+
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	}
@@ -72,12 +73,12 @@ export const refreshUser = createAsyncThunk(
 export const loginWithGoogle = createAsyncThunk(
 	'auth/loginwithgoogle',
 	async (_, thunkAPI) => {
-		// axios.defaults.headers.common['Access-Control-Allow-Origin'] = `*`;
 		try {
-			const res = await axios.get('/auth/google');
-			console.log(res);
+			const {data} = await axios.get('/auth/google');
+			console.log(data);
 		} catch (error) {
-			return thunkAPI.rejectWithValue(error.message);
+			console.log(error.message);
+			// return thunkAPI.rejectWithValue(error.message);
 		}
 	}
 );

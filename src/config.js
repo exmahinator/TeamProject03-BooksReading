@@ -24,7 +24,7 @@ export const initialState = {
 	},
 	isLoggedIn: false,
 	isRefreshing: false,
-	error: null,
+  error: null,
 };
 
 export default axios;
