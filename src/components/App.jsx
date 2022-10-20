@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { Layout } from './Layout';
-import { AuthLogin } from '../pages/AuthLogi';
+import { AuthLogin } from '../pages/AuthLogin';
 import { LibraryPage } from '../pages/LibraryPage';
 import { TrainingPage } from '../pages/TrainingPage';
 import { StatisticsPage } from '../pages/StatisticsPage';

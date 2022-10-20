@@ -34,21 +34,6 @@ const LibrarySubContainer = styled.div`
       width: 134px;
     }
   }
-  /* :last-child {
-    margin-bottom: 40px;
-  }
-  @media screen and (min-width: 768px) {
-    margin: 0;
-    margin-right: 32px;
-  }
-  @media screen and (min-width: 1280px) {
-    margin: 0;
-    margin-right: 16px;
-    :last-child {
-      margin-bottom: 0px;
-      margin-right: 48px;
-    }
-  } */
 `;
 
 export default LibrarySubContainer;
