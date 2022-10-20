@@ -63,6 +63,7 @@ export const refreshUser = createAsyncThunk(
 		try {
 			setAuthHeader(persistedToken);
 			const { data } = await axios.post('/auth/refresh', sid);
+			setAuthHeader(data.newAccessToken)
 			console.log(data);
 			return data;
 		} catch (error) {
