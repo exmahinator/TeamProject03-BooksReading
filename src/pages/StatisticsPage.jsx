@@ -1,3 +1,4 @@
+import TimerBlock from 'components/TimerBlock/TimerBlock';
 import StatisticsTablet from 'components/Statistics/StatisticsTablet';
 import StatisticsInput from 'components/Statistics/StatisticsInput';
 import { useDispatch } from 'react-redux';
@@ -20,6 +21,7 @@ export const StatisticsPage = () => {
 			<Container>
 				<StatisticsContainerCommon>
 					<div>Statistic</div>
+          <TimerBlock/>
 					<StatisticsInput />
 					<StatisticsButton type="button" onClick={handleAddResults}>
 						Додати результат
