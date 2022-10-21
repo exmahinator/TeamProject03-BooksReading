@@ -20,8 +20,8 @@ export const App = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(refreshUser({sid}));
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		dispatch(refreshUser({ sid }));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
