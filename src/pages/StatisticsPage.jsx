@@ -1,3 +1,6 @@
+
+
 export const StatisticsPage = () => {
-    return (<div>StatisticsPage</div>)
+    return (<div>
+        StatisticsPage</div>)
 }
