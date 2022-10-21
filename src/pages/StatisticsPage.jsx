@@ -1,8 +1,9 @@
-
+import StatisticsTablet from 'components/Statistics/StatisticsTablet';
+import StatisticsInput from 'components/Statistics/StatisticsInput';
 import { useDispatch } from 'react-redux';
 import { Section, Container } from 'ui/BasicStyles';
 import { addFinishedPages } from '../redux/library/libraryOperation';
-
+import { StatisticsButton, StatisticsContainerCommon } from 'ui/StatisticsPage';
 export const StatisticsPage = () => {
 	const dispatch = useDispatch();
 
@@ -17,10 +18,14 @@ export const StatisticsPage = () => {
 	return (
 		<Section>
 			<Container>
-				<div>Statistic</div>
-				<button type="button" onClick={handleAddResults}>
-					Додати результат
-				</button>
+				<StatisticsContainerCommon>
+					<div>Statistic</div>
+					<StatisticsInput />
+					<StatisticsButton type="button" onClick={handleAddResults}>
+						Додати результат
+					</StatisticsButton>
+					<StatisticsTablet />
+				</StatisticsContainerCommon>
 			</Container>
 		</Section>
 	);
