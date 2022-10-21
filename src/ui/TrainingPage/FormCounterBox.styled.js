@@ -1,20 +1,21 @@
 import styled from 'styled-components';
 
-const LibraryInputContainer = styled.div`
-	width: 100%;
+const FormCounterBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 40px;
+	text-align: center;
+	margin: 44px 10px;
+
 	@media screen and (min-width: 768px) {
-		flex-direction: row;
+		margin: 0;
 	}
 	@media screen and (min-width: 1280px) {
-		flex-direction: row;
-		margin-bottom: 0;
-		margin-right: 48px;
+		margin-bottom: 48px;
+		margin-top: 48px;
+		padding: 0;
 	}
 `;
 
-export default LibraryInputContainer;
+export default FormCounterBox;

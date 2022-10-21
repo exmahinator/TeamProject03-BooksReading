@@ -16,6 +16,7 @@ import {
 } from 'ui/AuthPage';
 
 import { register } from 'redux/auth/authOperation';
+import GoogleButton from './../GoogleButton/GoogleButton';
 
 const Registration = () => {
 	const [name, setName] = useState('');
@@ -26,7 +27,6 @@ const Registration = () => {
 	const dispatch = useDispatch();
 
 	const handelChange = ({ target: { name, value } }) => {
-		// todo значения что пропишут пользователи
 		switch (name) {
 			case 'name':
 				setName(value);
@@ -49,6 +49,13 @@ const Registration = () => {
 
 	const handelSubmit = e => {
 		e.preventDefault();
+		if (password !== checkPassword) {
+			alert('Перевір пароль, йолопе...');
+			return;
+		} else if (checkPassword === '') {
+			alert('Перевір пароль, йолопе...');
+			return;
+		}
 		dispatch(register({ name, email, password }));
 		reset();
 	};
@@ -64,7 +71,7 @@ const Registration = () => {
 		<>
 			<LoginContainerBg>
 				<LoginContainer>
-					<button type="button">Google</button>
+					<GoogleButton />
 					<LoginForm onSubmit={handelSubmit}>
 						<LoginSubContainer>
 							<LoginLabel htmlFor="name">Ім'я*</LoginLabel>

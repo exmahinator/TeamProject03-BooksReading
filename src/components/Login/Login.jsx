@@ -14,6 +14,7 @@ import {
 	LoginLink,
 } from 'ui/AuthPage';
 
+import GoogleButton from 'components/GoogleButton/GoogleButton';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
@@ -46,14 +47,7 @@ const Login = () => {
 		<>
 			<LoginContainerBg>
 				<LoginContainer>
-					<button
-						type="button"
-						onClick={() => {
-							dispatch(loginWithGoogle());
-						}}
-					>
-						Google
-					</button>
+					<GoogleButton />
 					<LoginForm onSubmit={handleSubmit}>
 						<LoginSubContainer>
 							<LoginLabel htmlFor="email">Електронна адреса *</LoginLabel>
