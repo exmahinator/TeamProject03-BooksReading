@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Notiflix from 'notiflix';
 // import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
@@ -50,10 +51,10 @@ const Registration = () => {
 	const handelSubmit = e => {
 		e.preventDefault();
 		if (password !== checkPassword) {
-			alert('Перевір пароль, йолопе...');
+			Notiflix.Notify.failure('Перевір пароль, йолопе...');
 			return;
 		} else if (checkPassword === '') {
-			alert('Перевір пароль, йолопе...');
+			Notiflix.Notify.failure('Перевір пароль, йолопе...');
 			return;
 		}
 		dispatch(register({ name, email, password }));

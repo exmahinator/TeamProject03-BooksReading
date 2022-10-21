@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setAuthHeader, clearAuthHeader } from 'config';
+// import { json } from 'react-router-dom';
 
 export const logIn = createAsyncThunk(
 	'auth/login',
@@ -63,20 +64,21 @@ export const refreshUser = createAsyncThunk(
 			setAuthHeader(persistedToken);
 			const { data } = await axios.post('/auth/refresh', sid);
 			setAuthHeader(data.newAccessToken);
-			console.log(data);
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	}
 );
-
+// const divGoogle = document.querySelector('#google');
 export const loginWithGoogle = createAsyncThunk(
 	'auth/loginwithgoogle',
-	async (_, thunkAPI) => {
+	async (setMarkup, thunkAPI) => {
 		try {
-			const { data } = await axios.get('/auth/google');
-			console.log(data);
+			fetch('https://bookread-backend.goit.global/auth/google')
+				.then(res =>fetch(res.url)).then(console.log)
+				// .then(res => (divGoogle.innerHTML = res.data))
+				// .then(console.log);
 		} catch (error) {
 			console.log(error.message);
 			// return thunkAPI.rejectWithValue(error.message);
