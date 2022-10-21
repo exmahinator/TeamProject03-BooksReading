@@ -2,10 +2,10 @@ import { useDispatch } from "react-redux";
 
 import { loginWithGoogle } from 'redux/auth/authOperation';
 
-const GoogleButton = () => {
+const GoogleButton = ({setMarkup}) => {
     const dispatch = useDispatch();
     return (
-        <button type="button" onClick={()=>{dispatch(loginWithGoogle())}}>Google</button>
+        <button type="button" onClick={()=>{dispatch(loginWithGoogle(setMarkup))}}>Google</button>
     )
 };
 

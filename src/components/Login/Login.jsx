@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { logIn, loginWithGoogle } from 'redux/auth/authOperation';
+import {
+	logIn,
+	// loginWithGoogle
+} from 'redux/auth/authOperation';
 import {
 	LoginContainer,
 	LoginForm,
@@ -13,12 +16,13 @@ import {
 	// LoginButtonGoogle,
 	LoginLink,
 } from 'ui/AuthPage';
-
-import GoogleButton from 'components/GoogleButton/GoogleButton';
+// import GoogleAuth from 'components/GoogleAuth/GoogleAuth';
+// import GoogleButton from 'components/GoogleButton/GoogleButton';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	// const [isGoodle, setIsGoogle] = useState(null);
 
 	const dispatch = useDispatch();
 
@@ -47,7 +51,8 @@ const Login = () => {
 		<>
 			<LoginContainerBg>
 				<LoginContainer>
-					<GoogleButton />
+					{/* {isGoodle && <GoogleAuth markup={isGoodle} />} */}
+					{/* <GoogleButton setMarkup={setIsGoogle} /> */}
 					<LoginForm onSubmit={handleSubmit}>
 						<LoginSubContainer>
 							<LoginLabel htmlFor="email">Електронна адреса *</LoginLabel>
