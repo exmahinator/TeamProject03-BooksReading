@@ -46,7 +46,7 @@ const librarySlice = createSlice({
 			state.goingToRead.push(action.payload.newBook);
 		},
 		[addBookPlanning.fulfilled](state, action) {
-			state.currentlyReading.push(action.payload.books);
+			state.currentlyReading.push(action.payload.books[0]);
 			state.startDate = action.payload.startDate;
 			state.endDate = action.payload.endDate;
 		},
