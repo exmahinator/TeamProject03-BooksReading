@@ -1,0 +1,19 @@
+.delButton{
+    background: none;
+    border: none;
+    color: #A6ABB9;
+}
+.delButton:hover,
+.delButton:focus {
+    cursor: pointer;
+}
+
+.svgDel {
+    fill: #A6ABB9;
+    transition: fill 0.3s;
+}
+
+.delButton:hover .svgDel {
+    fill: #FF6B08;
+}
+

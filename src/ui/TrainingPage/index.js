@@ -5,3 +5,8 @@ export { default as FormCounterBox} from './FormCounterBox.styled';
 export { default as FormCounterNumber } from './FormCounterNumber.styled';
 export { default as FormText } from './FormText.styled';
 export { default as FormNumber } from './FormNumber.styled';
+export { default as ListMob } from './ListMob.styled';
+export { default as ListDesk } from './ListDesk.styled';
+export { default as Title } from './Title.styled';
+export { default as ItemMob } from './ItemMob.styled';
+export { default as Button } from './Button.styled';

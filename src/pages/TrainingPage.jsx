@@ -1,4 +1,4 @@
-import MyTraining from "components/MyTraining/MyTraining";
+import MyTraining from 'components/MyTraining/MyTraining';
 import LineChart from '../components/Chart/Chart';
 
 import { useDispatch } from 'react-redux';
@@ -9,8 +9,8 @@ import {
 } from '../redux/library/libraryOperation';
 import MyGoals from '../components/MyGoals/MyGoals';
 import { useEffect } from 'react';
+import TrainingList from '../components/TrainingList/TrainingList';
 import { NavLink } from 'react-router-dom';
-
 
 export const TrainingPage = () => {
 	const dispatch = useDispatch();
@@ -21,9 +21,9 @@ export const TrainingPage = () => {
 		books: ['635241203551fd60da51031a'],
 	};
 
-	useEffect(() => {
-		dispatch(getBookPlanning());
-	}, [dispatch]);
+	// useEffect(() => {
+	// 	dispatch(getBookPlanning());
+	// }, [dispatch]);
 
 	const handleAddToPlanning = () => {
 		dispatch(addBookPlanning(data));
@@ -33,12 +33,12 @@ export const TrainingPage = () => {
 		<Section>
 			<Container>
 				<MyGoals />
-
 				<button type="button" onClick={handleAddToPlanning}>
 					Додати
 				</button>
+				<TrainingList />
 				<NavLink to="/statistics">Statistics</NavLink>
-         <MyTraining/>
+				<MyTraining />
 				<LineChart />
 			</Container>
 		</Section>
