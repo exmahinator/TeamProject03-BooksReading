@@ -22,7 +22,7 @@ const persistConfig = {
 export const store = configureStore({
 	reducer: {
 		auth: persistReducer(persistConfig, authReducer),
-		library: librarySlice.reducer,
+		// library: librarySlice.reducer,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
