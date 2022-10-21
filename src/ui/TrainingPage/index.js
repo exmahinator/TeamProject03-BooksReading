@@ -8,5 +8,5 @@ export { default as FormNumber } from './FormNumber.styled';
 export { default as ListMob } from './ListMob.styled';
 export { default as ListDesk } from './ListDesk.styled';
 export { default as Title } from './Title.styled';
-
- 
+export { default as ItemMob } from './ItemMob.styled';
+export { default as Button } from './Button.styled';

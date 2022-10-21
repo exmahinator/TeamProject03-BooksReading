@@ -12,6 +12,12 @@ const ListDesk = styled.ul`
     color: #242A37;
     font-weight: 500;
     padding: 0;
+
+    display: none; 
+
+    @media screen and (min-width: 768px) {
+		display: block;
+	}
 `
 
 export default ListDesk;

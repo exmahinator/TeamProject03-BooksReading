@@ -12,6 +12,8 @@ const ListMob = styled.ul`
     color: #242A37;
     font-weight: 500;
     padding: 0;
+
+	}
 `;
 
 export default ListMob;
