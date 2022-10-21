@@ -1,12 +1,4 @@
-<<<<<<< HEAD
 import MyTraining from "components/MyTraining/MyTraining";
-
-export const TrainingPage = () => { 
-    return (<div>TrainingPage
-         <MyTraining/>
-    </div>)
-}
-=======
 import LineChart from '../components/Chart/Chart';
 
 import { useDispatch } from 'react-redux';
@@ -15,7 +7,6 @@ import {
 	addBookPlanning,
 	getBookPlanning,
 } from '../redux/library/libraryOperation';
-
 import MyGoals from '../components/MyGoals/MyGoals';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -45,6 +36,7 @@ export const TrainingPage = () => {
 					Додати
 				</button>
 				<NavLink to="/statistics">Statistics</NavLink>
+         <MyTraining/>
 				<LineChart />
 			</Container>
 		</Section>
