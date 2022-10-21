@@ -28,11 +28,7 @@ export const App = () => {
 	useEffect(() => {
 		dispatch(refreshUser({ sid }));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-
-		// setTimeout(() => {
-		// 	dispatch(userBooks());
-		// });
-	}, []);
+	}, [dispatch]);
 
 	useEffect(() => {
 		if (!accessToken) {
@@ -42,7 +38,7 @@ export const App = () => {
 			dispatch(userBooks());
 			dispatch(getBookPlanning())
 		});
-	}, [accessToken]);
+	}, [accessToken, dispatch]);
 
 	return (
           !isRefreshing && (<Routes>

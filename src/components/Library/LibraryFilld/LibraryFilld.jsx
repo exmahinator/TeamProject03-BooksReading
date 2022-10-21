@@ -9,7 +9,6 @@ import {
 	Value,
 	LibraryButton,
 	BookTitle,
-	AddButton,
 } from 'ui/LibraryFilld';
 import { ReactComponent as Flat } from './icons/Flat.svg';
 // import { ReactComponent as Rating } from './icons/rating.svg'
