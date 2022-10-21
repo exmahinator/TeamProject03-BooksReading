@@ -1,6 +1,7 @@
-import { Outlet } from 'react-router-dom';
+// import { Outlet } from 'react-router-dom';
 import { Container, Section } from 'ui/BasicStyles';
 import Header from './Header/Header';
+import TrainingList from './TrainingList/TrainingList';
 
 export const Layout = () => {
   return (
@@ -8,7 +9,8 @@ export const Layout = () => {
       <Header />
       <Section>
         <Container>
-          <Outlet />
+          {/* <Outlet /> */}
+          <TrainingList />
         </Container>
       </Section>
     </>
