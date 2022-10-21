@@ -1,103 +1,130 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import {
+	LoginContainer,
+	LoginForm,
+	LoginInput,
+	LoginContainerBg,
+	LoginLabel,
+	LoginSubContainer,
+	LoginButton,
+	RegistrationContainerLink,
+	// LoginButtonGoogle,
+	LoginLink,
+	RegistrationTextLink,
+} from 'ui/AuthPage';
 
 import { register } from 'redux/auth/authOperation';
 
 const Registration = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [checkPassword, setCheckPassword] = useState('');
-    
-    const dispatch = useDispatch();
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [checkPassword, setCheckPassword] = useState('');
 
-    const handelChange = ({ target: { name, value } }) => {
-        // todo значения что пропишут пользователи
-        switch (name) {
-            case 'name':
-                setName(value);
-                break;
-            case 'email':
-                setEmail(value);
-                break;
-            case 'password':
-                setPassword(value);
-                break;
+	const dispatch = useDispatch();
 
-            case 'checkPassword':
-                setCheckPassword(value);
-                break;
+	const handelChange = ({ target: { name, value } }) => {
+		// todo значения что пропишут пользователи
+		switch (name) {
+			case 'name':
+				setName(value);
+				break;
+			case 'email':
+				setEmail(value);
+				break;
+			case 'password':
+				setPassword(value);
+				break;
 
-            default:
-                break;
-        }
-    };
+			case 'checkPassword':
+				setCheckPassword(value);
+				break;
 
-    const handelSubmit = e => {
-        e.preventDefault();
-        dispatch(register({ name, email, password }));
-        reset();
-    };
-    
-    const reset = () => {
-        setName('');
-        setEmail('');
-        setPassword('');
-        setCheckPassword('');
-    };
+			default:
+				break;
+		}
+	};
+
+	const handelSubmit = e => {
+		e.preventDefault();
+		dispatch(register({ name, email, password }));
+		reset();
+	};
+
+	const reset = () => {
+		setName('');
+		setEmail('');
+		setPassword('');
+		setCheckPassword('');
+	};
 
 	return (
 		<>
-			<button type="button">Google</button>
-			<form onSubmit={handelSubmit}>
-				<label>
-					Ім'я*
-					<input
-						onChange={handelChange}
-						value={name}
-						type="name"
-						name="name"
-						placeholder="..."
-					/>
-				</label>
-				<label>
-					Електронна адреса*
-					<input
-						onChange={handelChange}
-						value={email}
-						type="email"
-						name="email"
-						placeholder="your@email.com"
-					/>
-				</label>
-				<label>
-					Пароль*
-					<input
-						onChange={handelChange}
-						value={password}
-						type="password"
-						name="password"
-						placeholder="..."
-					/>
-				</label>
-				<label>
-					Підтвердити пароль*
-					<input
-						onChange={handelChange}
-						value={checkPassword}
-						type="password"
-						name="checkPassword"
-						placeholder="..."
-					/>
-				</label>
-				<button type="submit"> Зареєструватися</button>
-			</form>
+			<LoginContainerBg>
+				<LoginContainer>
+					<button type="button">Google</button>
+					<LoginForm onSubmit={handelSubmit}>
+						<LoginSubContainer>
+							<LoginLabel htmlFor="name">Ім'я*</LoginLabel>
+							<LoginInput
+								id="name"
+								onChange={handelChange}
+								value={name}
+								type="name"
+								name="name"
+								placeholder="..."
+							/>
+						</LoginSubContainer>
 
-			<div>
-				<p> Ви вже з нами?</p>
-				<Link to="/login"> login</Link>
-			</div>
+						<LoginSubContainer>
+							<LoginLabel htmlFor="email">Електронна адреса*</LoginLabel>
+							<LoginInput
+								id="email"
+								onChange={handelChange}
+								value={email}
+								type="email"
+								name="email"
+								placeholder="your@email.com"
+							/>
+						</LoginSubContainer>
+
+						<LoginSubContainer>
+							<LoginLabel htmlFor="password">Пароль*</LoginLabel>
+							<LoginInput
+								id="password"
+								onChange={handelChange}
+								value={password}
+								type="password"
+								name="password"
+								placeholder="..."
+							/>
+						</LoginSubContainer>
+
+						<LoginSubContainer>
+							<LoginLabel htmlFor="checkPassword">
+								Підтвердити пароль*
+							</LoginLabel>
+							<LoginInput
+								id="checkPassword"
+								onChange={handelChange}
+								value={checkPassword}
+								type="password"
+								name="checkPassword"
+								placeholder="..."
+							/>
+						</LoginSubContainer>
+
+						<LoginButton type="submit"> Зареєструватися</LoginButton>
+					</LoginForm>
+
+					<RegistrationContainerLink>
+						<RegistrationTextLink> Ви вже з нами?</RegistrationTextLink>
+						<LoginLink to="/login">Увійти</LoginLink>
+					</RegistrationContainerLink>
+				</LoginContainer>
+			</LoginContainerBg>
 		</>
 	);
 };
