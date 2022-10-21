@@ -17,7 +17,6 @@ import { getSid } from 'redux/auth/authSelector';
 
 export const App = () => {
 	const sid = useSelector(getSid);
-	console.log(sid);
 	const dispatch = useDispatch();
 
 	useEffect(() => {

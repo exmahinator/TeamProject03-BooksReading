@@ -1,15 +1,11 @@
 import MyTraining from "components/MyTraining/MyTraining";
-
-
 import LineChart from '../components/Chart/Chart';
-
 import { useDispatch } from 'react-redux';
 import { Section, Container } from 'ui/BasicStyles';
 import {
 	addBookPlanning,
 	getBookPlanning,
 } from '../redux/library/libraryOperation';
-
 import MyGoals from '../components/MyGoals/MyGoals';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -18,9 +14,9 @@ export const TrainingPage = () => {
 	const dispatch = useDispatch();
 
 	const data = {
-		startDate: '2022-10-20',
+		startDate: '2022-10-21',
 		endDate: '2022-10-25',
-		books: ['635158813551fd60da50fefb'],
+		books: ['635241203551fd60da51031a'],
 	};
 
 	useEffect(() => {
@@ -39,6 +35,7 @@ export const TrainingPage = () => {
 					Додати
 				</button>
 				<NavLink to="/statistics">Statistics</NavLink>
+         <MyTraining/>
 				<LineChart />
 				<MyTraining/>
 			</Container>
