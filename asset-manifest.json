@@ -1,13 +1,22 @@
 {
   "files": {
-    "main.css": "/BOOKS-READING/static/css/main.fa659145.css",
-    "main.js": "/BOOKS-READING/static/js/main.2d17c023.js",
+    "main.css": "/BOOKS-READING/static/css/main.21f17dc2.css",
+    "main.js": "/BOOKS-READING/static/js/main.d1d24ba9.js",
+    "static/media/imgDesktop.jpg": "/BOOKS-READING/static/media/imgDesktop.effa0dcc8122d8ad1695.jpg",
+    "static/media/imgTablet.jpg": "/BOOKS-READING/static/media/imgTablet.4c4cec88bed8ecc6bebf.jpg",
+    "static/media/imgPhone.jpg": "/BOOKS-READING/static/media/imgPhone.77038ae03af4f53fad7a.jpg",
+    "static/media/Flat.svg": "/BOOKS-READING/static/media/Flat.f8b078362c41adf663e6586e8f0dec97.svg",
+    "static/media/book.svg": "/BOOKS-READING/static/media/book.ed544401f0a12e7921fb02fd86f99d19.svg",
     "index.html": "/BOOKS-READING/index.html",
-    "main.fa659145.css.map": "/BOOKS-READING/static/css/main.fa659145.css.map",
-    "main.2d17c023.js.map": "/BOOKS-READING/static/js/main.2d17c023.js.map"
+    "static/media/Arrow.svg": "/BOOKS-READING/static/media/Arrow.3158c564816e324e859d08b2c56f5594.svg",
+    "static/media/delete.svg": "/BOOKS-READING/static/media/delete.5c75aeaa325fafd53a2d53563d15c63c.svg",
+    "static/media/home.svg": "/BOOKS-READING/static/media/home.b3cc0a6a4d8a1f2461a5a0058dafff68.svg",
+    "static/media/line.svg": "/BOOKS-READING/static/media/line.0b447d5c5db6f1cb96771cd843fa3733.svg",
+    "main.21f17dc2.css.map": "/BOOKS-READING/static/css/main.21f17dc2.css.map",
+    "main.d1d24ba9.js.map": "/BOOKS-READING/static/js/main.d1d24ba9.js.map"
   },
   "entrypoints": [
-    "static/css/main.fa659145.css",
-    "static/js/main.2d17c023.js"
+    "static/css/main.21f17dc2.css",
+    "static/js/main.d1d24ba9.js"
   ]
 }
