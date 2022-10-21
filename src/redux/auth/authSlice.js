@@ -1,22 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser } from './authOperation';
-// import { initialState } from "../../config";
 
- const initialState = {
+const initialState = {
 	accessToken: null,
 	refreshToken: null,
 	sid: null,
 	userData: {
-		name: null,
+		name: '',
 		email: '',
-		goingToRead: [],
-		currentlyReading: [],
-		finishedReading: [],
+		// goingToRead: [],
+		// currentlyReading: [],
+		// finishedReading: [],
 		id: null,
 	},
 	isLoggedIn: false,
 	isRefreshing: false,
-	isRegistred: false,
+	isRegistered: false,
 	googleRegistration: null,
 	error: null,
 };
@@ -26,27 +25,37 @@ const authSlice = createSlice({
 	initialState,
 	extraReducers: {
 		[register.fulfilled](state, action) {
-			state.userData = action.payload.userData;
-			state.isLoggedIn = true;
+				// state.userData = action.payload.userData;
+				state.sid = action.payload.sid;
+				state.accessToken = action.payload.accessToken;
+				state.refreshToken = action.payload.refreshToken;
+				state.isLoggedIn = true;
 		},
 		[logIn.fulfilled](state, action) {
-			state.userData = action.payload.userData;
+			// state.userData = action.payload.userData;
+			state.userData.name = action.payload.userData.name;
+			state.userData.email = action.payload.userData.email;
+			state.userData.id = action.payload.userData.id;
 			state.sid = action.payload.sid;
 			state.accessToken = action.payload.accessToken;
 			state.refreshToken = action.payload.refreshToken;
 			state.isLoggedIn = true;
 		},
 		[logOut.fulfilled](state) {
+			state.userData.name = '';
+			state.userData.email = '';
+			state.userData.id = '';
 			state.sid = null;
 			state.accessToken = null;
 			state.refreshToken = null;
 			state.isLoggedIn = false;
 			state.userData.email = '';
+			state.userData.name = '';
 		},
 		[refreshUser.pending](state) {
 			state.isRefreshing = true;
 		},
-    [refreshUser.fulfilled](state, action) {
+		[refreshUser.fulfilled](state, action) {
 			state.accessToken = action.payload.newAccessToken;
 			state.refreshToken = action.payload.newRefreshToken;
 			state.sid = action.payload.newSid;
@@ -56,6 +65,7 @@ const authSlice = createSlice({
 		[refreshUser.rejected](state) {
 			state.isRefreshing = false;
 		},
+		
 	},
 });
 

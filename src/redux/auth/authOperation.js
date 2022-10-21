@@ -1,8 +1,9 @@
 import axios from 'config';
+import Notiflix from 'notiflix';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setAuthHeader, clearAuthHeader } from 'config';
-import { useDispatch } from 'react-redux';
+// import { json } from 'react-router-dom';
 
 export const logIn = createAsyncThunk(
 	'auth/login',
@@ -10,9 +11,12 @@ export const logIn = createAsyncThunk(
 		try {
 			const { data } = await axios.post('/auth/login', credentials);
 			setAuthHeader(data.accessToken);
-			console.log(data);
+      
+			console.log('logIn data', data);
+
 			return data;
 		} catch (error) {
+			Notiflix.Notify.failure(error.response.data.message);
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	}
@@ -23,14 +27,15 @@ export const register = createAsyncThunk(
 	async (credentials, thunkAPI) => {
 		try {
 			const password = credentials.password;
-			const { data } = await axios.post('/auth/register', credentials);
-			const email = data.email;
-			const dispatch = useDispatch();
-			const loggedUser = dispatch(logIn({ email, password }));
-
-			setAuthHeader(loggedUser.data.refreshToken);
-			return logIn.data;
+			const email = credentials.email;
+			await axios.post('/auth/register', credentials);
+			const { data } = await axios.post('/auth/login', { email, password });
+			setAuthHeader(data.accessToken);
+			return data
 		} catch (error) {
+
+			Notiflix.Notify.failure(error.response.data.message);
+
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	}
@@ -63,20 +68,29 @@ export const refreshUser = createAsyncThunk(
 			setAuthHeader(persistedToken);
 			const { data } = await axios.post('/auth/refresh', sid);
 			setAuthHeader(data.newAccessToken);
+
 			// console.log(data);
+
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	}
 );
-
+// const divGoogle = document.querySelector('#google');
 export const loginWithGoogle = createAsyncThunk(
 	'auth/loginwithgoogle',
-	async (_, thunkAPI) => {
+	async (setMarkup, thunkAPI) => {
 		try {
+
 			const { data } = await axios.get('/auth/google');
 			console.log(data);
+
+			fetch('https://bookread-backend.goit.global/auth/google')
+				.then(res =>fetch(res.url)).then(console.log)
+				// .then(res => (divGoogle.innerHTML = res.data))
+				// .then(console.log);
+
 		} catch (error) {
 			console.log(error.message);
 			// return thunkAPI.rejectWithValue(error.message);

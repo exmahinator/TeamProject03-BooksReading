@@ -1,41 +1,89 @@
+import {
+	RegistrationDescriptionTitle,
+	RegistrationDescriptionSubTitle,
+	RegistrationDescriptionText,
+	RegistrationDescriptionList,
+	RegistrationDescriptionItem,
+	RegistrationDescriptionContainer,
+	RegistrationDescriptionButton,
+	RegistrationDescriptionContainerButton,
+	RegistrationDescriptionDivList,
+} from 'ui/AuthPage';
+import { ReactComponent as Arrow } from '../../ui/AuthPage/Image/Arrow.svg';
+
 const RegistrationDescription = () => {
-  return (
-    <>
-      <h1>Books Reading</h1>
-      <h2>Допоможе вам</h2>
-      <ul>
-        <li>
-          <span>Icon</span>
-          <p>Швидше сформулювати свою ціль і розпочати читати</p>
-        </li>
-        <li>
-          <span>Icon</span>
-          <p>Пропорційно розподілити навантаження на кожний день</p>
-        </li>
-        <li>
-          <span>Icon</span>
-          <p>Відстежувати особистий успіх</p>
-        </li>
-      </ul>
-      <h2>Також ви зможете </h2>
-      <ul>
-        <li>
-          <span>Icon</span>
-          <p>Формувати особисту думку незалежну від інших</p>
-        </li>
-        <li>
-          <span>Icon</span>
-          <p>Підвищити свої професійні якості опираючись на нові знання</p>
-        </li>
-        <li>
-          <span>Icon</span>
-          <p>Стати цікавим співрозмовником</p>
-        </li>
-      </ul>
-      <button>Увійти</button>
-      <button>Реєстрація</button>
-    </>
-  );
+	return (
+		<RegistrationDescriptionContainer>
+			<RegistrationDescriptionTitle>Books Reading</RegistrationDescriptionTitle>
+			<RegistrationDescriptionDivList>
+				{' '}
+				<RegistrationDescriptionSubTitle>
+					Допоможе вам
+				</RegistrationDescriptionSubTitle>
+				<RegistrationDescriptionList>
+					<RegistrationDescriptionItem>
+						<span>
+							<Arrow />
+						</span>
+						<RegistrationDescriptionText>
+							Швидше сформулювати свою ціль і розпочати читати
+						</RegistrationDescriptionText>
+					</RegistrationDescriptionItem>
+					<RegistrationDescriptionItem>
+						<span>
+							<Arrow />
+						</span>
+						<RegistrationDescriptionText>
+							Пропорційно розподілити навантаження на кожний день
+						</RegistrationDescriptionText>
+					</RegistrationDescriptionItem>
+					<RegistrationDescriptionItem>
+						<span>
+							<Arrow />
+						</span>
+						<RegistrationDescriptionText>
+							Відстежувати особистий успіх
+						</RegistrationDescriptionText>
+					</RegistrationDescriptionItem>
+				</RegistrationDescriptionList>
+				<RegistrationDescriptionSubTitle>
+					Також ви зможете
+				</RegistrationDescriptionSubTitle>
+				<RegistrationDescriptionList>
+					<RegistrationDescriptionItem>
+						<span>
+							<Arrow />
+						</span>
+						<RegistrationDescriptionText>
+							Формувати особисту думку незалежну від інших
+						</RegistrationDescriptionText>
+					</RegistrationDescriptionItem>
+					<RegistrationDescriptionItem>
+						<span>
+							<Arrow />
+						</span>
+						<RegistrationDescriptionText>
+							Підвищити свої професійні якості опираючись на нові знання
+						</RegistrationDescriptionText>
+					</RegistrationDescriptionItem>
+					<RegistrationDescriptionItem>
+						<span>
+							<Arrow />
+						</span>
+						<RegistrationDescriptionText>
+							Стати цікавим співрозмовником
+						</RegistrationDescriptionText>
+					</RegistrationDescriptionItem>
+				</RegistrationDescriptionList>
+			</RegistrationDescriptionDivList>
+			<RegistrationDescriptionContainerButton>
+				<RegistrationDescriptionButton>Увійти</RegistrationDescriptionButton>
+				<RegistrationDescriptionButton>
+					Реєстрація
+				</RegistrationDescriptionButton>
+			</RegistrationDescriptionContainerButton>
+		</RegistrationDescriptionContainer>
+	);
 };
 
 export default RegistrationDescription;

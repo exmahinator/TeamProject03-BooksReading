@@ -14,16 +14,34 @@ import PrivateRoute from './Route/PrivatePoute';
 import PublicRoute from './Route/PublicRoute';
 import { refreshUser } from 'redux/auth/authOperation';
 import { getSid } from 'redux/auth/authSelector';
+import { getAccessToken } from '../redux/auth/authSelector';
+import { userBooks, getBookPlanning } from '../redux/library/libraryOperation';
 
 export const App = () => {
 	const sid = useSelector(getSid);
-	// console.log(sid);
+
+	const accessToken = useSelector(getAccessToken);
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(refreshUser({ sid }));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
+
+		// setTimeout(() => {
+		// 	dispatch(userBooks());
+		// });
 	}, []);
+
+	useEffect(() => {
+		if (!accessToken) {
+			return;
+		}
+		setTimeout(() => {
+			dispatch(userBooks());
+			dispatch(getBookPlanning())
+		});
+	}, [accessToken]);
 
 	return (
 		<Routes>

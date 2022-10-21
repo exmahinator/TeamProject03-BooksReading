@@ -12,6 +12,11 @@ import {
 	InfoMobileLink,
 	LibraryMobileButton,
 } from 'ui/LibraryPage';
+import { LibraryContainer } from 'ui/LibraryPage';
+import { NavLink } from 'react-router-dom';
+import LibraryFilld from '../components/Library/LibraryFilld/LibraryFilld';
+import LibraryModal from '../components/Library/LibraryModal/LibraryModal';
+
 
 export const LibraryPage = () => {
 	// react media query - визначає на якому девайсі запускається додаток, повертає тру або фолс
@@ -64,6 +69,10 @@ export const LibraryPage = () => {
 							</svg>
 						</LibraryMobileButton>
 					)}
+
+					<LibraryFilld />
+					<LibraryModal />
+					<NavLink to="/training">training</NavLink>
 				</LibraryContainer>
 			</Container>
 		</Section>

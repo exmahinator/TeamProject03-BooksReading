@@ -1,6 +1,20 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Notiflix from 'notiflix';
+// import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import {
+	LoginContainer,
+	LoginForm,
+	LoginInput,
+	LoginContainerBg,
+	LoginLabel,
+	LoginSubContainer,
+	LoginButton,
+	RegistrationContainerLink,
+	// LoginButtonGoogle,
+	LoginLink,
+	RegistrationTextLink,
+} from 'ui/AuthPage';
 
 import { register } from 'redux/auth/authOperation';
 import GoogleButton from './../GoogleButton/GoogleButton';
@@ -37,10 +51,10 @@ const Registration = () => {
 	const handelSubmit = e => {
 		e.preventDefault();
 		if (password !== checkPassword) {
-			alert('Перевір пароль, йолопе...');
+			Notiflix.Notify.failure('Перевір пароль, йолопе...');
 			return;
 		} else if (checkPassword === '') {
-			alert('Перевір пароль, йолопе...');
+			Notiflix.Notify.failure('Перевір пароль, йолопе...');
 			return;
 		}
 		dispatch(register({ name, email, password }));
@@ -56,61 +70,69 @@ const Registration = () => {
 
 	return (
 		<>
-			<GoogleButton/>
-			<form onSubmit={handelSubmit}>
-				<label>
-					Ім'я*
-					<input
-						onChange={handelChange}
-						value={name}
-						type="name"
-						name="name"
-						placeholder="..."
-						pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-						title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-						required
-					/>
-				</label>
-				<label>
-					Електронна адреса*
-					<input
-						onChange={handelChange}
-						value={email}
-						type="email"
-						name="email"
-						placeholder="your@email.com"
-						required
-					/>
-				</label>
-				<label>
-					Пароль*
-					<input
-						onChange={handelChange}
-						value={password}
-						type="password"
-						name="password"
-						placeholder="..."
-						required
-					/>
-				</label>
-				<label>
-					Підтвердити пароль*
-					<input
-						onChange={handelChange}
-						value={checkPassword}
-						type="password"
-						name="checkPassword"
-						placeholder="..."
-						required
-					/>
-				</label>
-				<button type="submit"> Зареєструватися</button>
-			</form>
+			<LoginContainerBg>
+				<LoginContainer>
+					<GoogleButton />
+					<LoginForm onSubmit={handelSubmit}>
+						<LoginSubContainer>
+							<LoginLabel htmlFor="name">Ім'я*</LoginLabel>
+							<LoginInput
+								id="name"
+								onChange={handelChange}
+								value={name}
+								type="name"
+								name="name"
+								placeholder="..."
+							/>
+						</LoginSubContainer>
 
-			<div>
-				<p> Ви вже з нами?</p>
-				<Link to="/login"> login</Link>
-			</div>
+						<LoginSubContainer>
+							<LoginLabel htmlFor="email">Електронна адреса*</LoginLabel>
+							<LoginInput
+								id="email"
+								onChange={handelChange}
+								value={email}
+								type="email"
+								name="email"
+								placeholder="your@email.com"
+							/>
+						</LoginSubContainer>
+
+						<LoginSubContainer>
+							<LoginLabel htmlFor="password">Пароль*</LoginLabel>
+							<LoginInput
+								id="password"
+								onChange={handelChange}
+								value={password}
+								type="password"
+								name="password"
+								placeholder="..."
+							/>
+						</LoginSubContainer>
+
+						<LoginSubContainer>
+							<LoginLabel htmlFor="checkPassword">
+								Підтвердити пароль*
+							</LoginLabel>
+							<LoginInput
+								id="checkPassword"
+								onChange={handelChange}
+								value={checkPassword}
+								type="password"
+								name="checkPassword"
+								placeholder="..."
+							/>
+						</LoginSubContainer>
+
+						<LoginButton type="submit"> Зареєструватися</LoginButton>
+					</LoginForm>
+
+					<RegistrationContainerLink>
+						<RegistrationTextLink> Ви вже з нами?</RegistrationTextLink>
+						<LoginLink to="/login">Увійти</LoginLink>
+					</RegistrationContainerLink>
+				</LoginContainer>
+			</LoginContainerBg>
 		</>
 	);
 };
