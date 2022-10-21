@@ -1,4 +1,4 @@
-import MyTraining from "components/MyTraining/MyTraining";
+import MyTraining from 'components/MyTraining/MyTraining';
 import LineChart from '../components/Chart/Chart';
 import { useDispatch } from 'react-redux';
 import { Section, Container } from 'ui/BasicStyles';
@@ -35,9 +35,8 @@ export const TrainingPage = () => {
 					Додати
 				</button>
 				<NavLink to="/statistics">Statistics</NavLink>
-         <MyTraining/>
+				<MyTraining />
 				<LineChart />
-				<MyTraining/>
 			</Container>
 		</Section>
 	);

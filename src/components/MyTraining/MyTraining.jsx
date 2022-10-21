@@ -57,30 +57,30 @@ const names = [
 const handleSubmit = (event) => {
   event.preventDefault();
   dispatch(result({start, finish, personName}));
-  setStart(null);
-  setFinish(null);
-  setPersonName([]);
-  DatePicker.reset();
-  Select.reset();
+  // setStart(null);
+  // setFinish(null);
+  // setPersonName([]);
+  // DatePicker.reset();
+  // Select.reset();
 
 console.log("click")
 }
 
   return (
     <Wrapper>
-      <Title>My training</Title>
+      <Title>Моє тренування</Title>
       <BoxForm>
      
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
-        label="Start"
+        label="Початок"
         value={start}
         disablePast={true}
         onChange={(newValue) => {
             setStart(newValue);
         }}
         renderInput={(params) => (
-          <TextField {...params} helperText={params?.inputProps?.placeholder} />
+          <TextField {...params} />
         )}
       />
     </LocalizationProvider>
@@ -88,14 +88,14 @@ console.log("click")
     <LocalizationProvider dateAdapter={AdapterDayjs}>
    
       <DatePicker
-      label="Finish"
+      label="Завершення"
       value={finish}
       disablePast={true}
       onChange={(newValue) => {
         setFinish(newValue);
       }}
       renderInput={(params) => (
-        <TextField {...params} helperText={params?.inputProps?.placeholder} />
+        <TextField {...params}/>
       )}
     />
     
@@ -110,7 +110,7 @@ console.log("click")
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>Choose books from the library</em>;
+              return <em>Обрати книги з бібліотеки</em>;
             }
 
             return selected.join(', ');
@@ -131,7 +131,7 @@ console.log("click")
           ))}
         </Select>
 
-      <Button type="button" onClick={handleSubmit}>Add</Button>
+      <Button type="button" onClick={handleSubmit}>Додати</Button>
       </FormControl>
     </BoxForm>
     </Wrapper>
