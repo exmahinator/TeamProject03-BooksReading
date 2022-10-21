@@ -10,8 +10,8 @@ import {
 	Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { getStats } from '../../redux/library/librarySelector';
-import { useSelector } from 'react-redux';
+// import { getStats } from '../../redux/library/librarySelector';
+// import { useSelector } from 'react-redux';
 
 // import faker from 'faker';
 

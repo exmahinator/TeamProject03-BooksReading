@@ -15,7 +15,7 @@ export default function MyTraining() {
   const [personName, setPersonName] = useState([]);
   const [start, setStart] = useState(null);
   const [finish, setFinish] = useState(null);
-  const [result, setResult] = useState({});
+  const [result] = useState({});
   console.log('result:', result);
 
   const dispatch = useDispatch();
