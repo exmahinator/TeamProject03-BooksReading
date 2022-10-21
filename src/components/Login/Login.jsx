@@ -1,13 +1,28 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { logIn } from 'redux/auth/authOperation';
-import GoogleButton from 'components/GoogleButton/GoogleButton';
+import {
+	logIn,
+	// loginWithGoogle
+} from 'redux/auth/authOperation';
+import {
+	LoginContainer,
+	LoginForm,
+	LoginInput,
+	LoginContainerBg,
+	LoginLabel,
+	LoginSubContainer,
+	LoginButton,
+	// LoginButtonGoogle,
+	LoginLink,
+} from 'ui/AuthPage';
+// import GoogleAuth from 'components/GoogleAuth/GoogleAuth';
+// import GoogleButton from 'components/GoogleButton/GoogleButton';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	// const [isGoodle, setIsGoogle] = useState(null);
 
 	const dispatch = useDispatch();
 
@@ -22,7 +37,7 @@ const Login = () => {
 	};
 
 	const handleSubmit = e => {
-        e.preventDefault();
+		e.preventDefault();
 		dispatch(logIn({ email, password }));
 		reset();
 	};
@@ -34,33 +49,41 @@ const Login = () => {
 
 	return (
 		<>
-			<GoogleButton />			
-			<form onSubmit={handleSubmit}>
-				<label>
-					Електронна адреса *
-					<input
-						value={email}
-						type="email"
-						name="email"
-						placeholder="your@email.com"
-						required
-						onChange={handleChange}
-					/>
-				</label>
-				<label>
-					Пароль *
-					<input
-						value={password}
-						type="password"
-						name="password"
-						placeholder="Пароль"
-						required
-						onChange={handleChange}
-					/>
-				</label>
-				<button type="submit">Увійти</button>
-				<Link to="/register">Реєстрація</Link>
-			</form>
+			<LoginContainerBg>
+				<LoginContainer>
+					{/* {isGoodle && <GoogleAuth markup={isGoodle} />} */}
+					{/* <GoogleButton setMarkup={setIsGoogle} /> */}
+					<LoginForm onSubmit={handleSubmit}>
+						<LoginSubContainer>
+							<LoginLabel htmlFor="email">Електронна адреса *</LoginLabel>
+
+							<LoginInput
+								id="email"
+								value={email}
+								type="text"
+								name="email"
+								placeholder="your@email.com"
+								onChange={handleChange}
+							/>
+						</LoginSubContainer>
+						<LoginSubContainer>
+							<LoginLabel htmlFor="password">Пароль *</LoginLabel>
+
+							<LoginInput
+								id="password"
+								value={password}
+								type="password"
+								name="password"
+								placeholder="Пароль"
+								onChange={handleChange}
+							/>
+						</LoginSubContainer>
+
+						<LoginButton type="submit">Увійти</LoginButton>
+						<LoginLink to="/register">Реєстрація</LoginLink>
+					</LoginForm>
+				</LoginContainer>
+			</LoginContainerBg>
 		</>
 	);
 };
