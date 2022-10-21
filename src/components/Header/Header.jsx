@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { logOut, refreshUser } from 'redux/auth/authOperation';
-import { getUserEmail, getSid } from 'redux/auth/authSelector';
-import { getAccessToken } from 'redux/auth/authSelector';
+import { logOut } from 'redux/auth/authOperation';
+import { getUserEmail, getAccessToken } from 'redux/auth/authSelector';
+
 
 const Header = () => {
 	const dispatch = useDispatch();
 	const userEmail = useSelector(getUserEmail);
-	const sid = useSelector(getSid);
 	const accessToken = useSelector(getAccessToken);
 
 	return (
@@ -27,14 +26,6 @@ const Header = () => {
 					}}
 				>
 					Logout
-				</button>
-				<button
-					type="button"
-					onClick={() => {
-						dispatch(refreshUser({ sid }));
-					}}
-				>
-					Refresh
 				</button>
 			</div>
 		</header>

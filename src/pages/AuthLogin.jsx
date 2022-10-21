@@ -1,9 +1,14 @@
-import Login from "components/Login/Login";
-import LoginCitate from "components/Login/LoginCitate";
+import Login from 'components/Login/Login';
+import LoginCitate from 'components/Login/LoginCitate';
+import { AuthContainer } from 'ui/AuthPage';
 
 export const AuthLogin = () => {
-    return (<>
-        <Login />
-        <LoginCitate />
-    </>)
+	return (
+		<>
+			<AuthContainer>
+				<Login />
+				<LoginCitate />
+			</AuthContainer>
+		</>
+	);
 };
