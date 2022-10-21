@@ -15,9 +15,9 @@ export const TrainingPage = () => {
 	const dispatch = useDispatch();
 
 	const data = {
-		startDate: '2022-10-20',
+		startDate: '2022-10-21',
 		endDate: '2022-10-25',
-		books: ['635158813551fd60da50fefb'],
+		books: ['635241203551fd60da51031a'],
 	};
 
 	useEffect(() => {
