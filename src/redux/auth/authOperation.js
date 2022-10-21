@@ -11,9 +11,6 @@ export const logIn = createAsyncThunk(
 		try {
 			const { data } = await axios.post('/auth/login', credentials);
 			setAuthHeader(data.accessToken);
-      
-			console.log('logIn data', data);
-
 			return data;
 		} catch (error) {
 			Notiflix.Notify.failure(error.response.data.message);

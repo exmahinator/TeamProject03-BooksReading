@@ -7,3 +7,4 @@ export { default as LinkBook } from './LinkBook.styled';
 export { default as LinkHome } from './LinkHome.styled';
 export { default as UserName } from './UserName.styled';
 export { default as LineStyle } from './LineStyle.styled';
+export { default as HeaderContainerLogin } from './HeaderContainerLogin.styled';
