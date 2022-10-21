@@ -56,7 +56,7 @@ const Registration = () => {
 
 	return (
 		<>
-			<GoogleButton/>
+			<GoogleButton />
 			<form onSubmit={handelSubmit}>
 				<label>
 					Ім'я*
