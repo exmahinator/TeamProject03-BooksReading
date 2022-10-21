@@ -9,6 +9,7 @@ import {
 } from '../redux/library/libraryOperation';
 import MyGoals from '../components/MyGoals/MyGoals';
 import { useEffect } from 'react';
+import TrainingList from '../components/TrainingList/TrainingList';
 import { NavLink } from 'react-router-dom';
 
 export const TrainingPage = () => {
@@ -35,6 +36,7 @@ export const TrainingPage = () => {
 				<button type="button" onClick={handleAddToPlanning}>
 					Додати
 				</button>
+				<TrainingList />
 				<NavLink to="/statistics">Statistics</NavLink>
 				<MyTraining />
 				<LineChart />
