@@ -10,8 +10,7 @@ import {
 import MyGoals from '../components/MyGoals/MyGoals';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import LibraryFilld from './Library/LibraryFilld/LibraryFilld';
-import LibraryModal from './Library/LibraryModal/LibraryModal';
+
 
 export const TrainingPage = () => {
 	const dispatch = useDispatch();
@@ -34,8 +33,7 @@ export const TrainingPage = () => {
 		<Section>
 			<Container>
 				<MyGoals />
-<LibraryFilld />
-			<LibraryModal />
+
 				<button type="button" onClick={handleAddToPlanning}>
 					Додати
 				</button>
