@@ -11,7 +11,9 @@ export const logIn = createAsyncThunk(
 		try {
 			const { data } = await axios.post('/auth/login', credentials);
 			setAuthHeader(data.accessToken);
+      
 			console.log('logIn data', data);
+
 			return data;
 		} catch (error) {
 			Notiflix.Notify.failure(error.response.data.message);
@@ -31,7 +33,9 @@ export const register = createAsyncThunk(
 			setAuthHeader(data.accessToken);
 			return data
 		} catch (error) {
+
 			Notiflix.Notify.failure(error.response.data.message);
+
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	}
@@ -64,6 +68,9 @@ export const refreshUser = createAsyncThunk(
 			setAuthHeader(persistedToken);
 			const { data } = await axios.post('/auth/refresh', sid);
 			setAuthHeader(data.newAccessToken);
+
+			// console.log(data);
+
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);
@@ -75,10 +82,15 @@ export const loginWithGoogle = createAsyncThunk(
 	'auth/loginwithgoogle',
 	async (setMarkup, thunkAPI) => {
 		try {
+
+			const { data } = await axios.get('/auth/google');
+			console.log(data);
+
 			fetch('https://bookread-backend.goit.global/auth/google')
 				.then(res =>fetch(res.url)).then(console.log)
 				// .then(res => (divGoogle.innerHTML = res.data))
 				// .then(console.log);
+
 		} catch (error) {
 			console.log(error.message);
 			// return thunkAPI.rejectWithValue(error.message);

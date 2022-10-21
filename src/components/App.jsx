@@ -19,7 +19,9 @@ import { userBooks, getBookPlanning } from '../redux/library/libraryOperation';
 
 export const App = () => {
 	const sid = useSelector(getSid);
+
 	const accessToken = useSelector(getAccessToken);
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
