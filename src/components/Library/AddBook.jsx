@@ -8,6 +8,7 @@ import {
 	LibraryInputContainer,
 	LibraryNameContainer,
 	LibraryButton,
+	LibraryLabel,
 } from 'ui/LibraryPage';
 
 function AddBook() {
@@ -32,7 +33,7 @@ function AddBook() {
 		<>
 			<LibraryForm onSubmit={handleAddBook}>
 				<LibraryNameContainer>
-					<label htmlFor="name">Назва книги</label>
+					<LibraryLabel htmlFor="name">Назва книги</LibraryLabel>
 					<LibraryInput
 						id="name"
 						type="text"
@@ -45,7 +46,7 @@ function AddBook() {
 				</LibraryNameContainer>
 				<LibraryInputContainer>
 					<LibrarySubContainer>
-						<label htmlFor="author">Автор книги</label>
+						<LibraryLabel htmlFor="author">Автор книги</LibraryLabel>
 						<LibraryInput
 							id="author"
 							type="text"
@@ -57,7 +58,7 @@ function AddBook() {
 						/>
 					</LibrarySubContainer>
 					<LibrarySubContainer>
-						<label htmlFor="year">Рік випуску</label>
+						<LibraryLabel htmlFor="year">Рік випуску</LibraryLabel>
 						<LibraryInput
 							id="year"
 							type="number"
@@ -69,7 +70,7 @@ function AddBook() {
 						/>
 					</LibrarySubContainer>
 					<LibrarySubContainer>
-						<label htmlFor="pages">Кількість сторінок</label>
+						<LibraryLabel htmlFor="pages">Кількість сторінок</LibraryLabel>
 						<LibraryInput
 							id="pages"
 							type="number"
