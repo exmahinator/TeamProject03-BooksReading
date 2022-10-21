@@ -1,3 +1,7 @@
+export const StatisticsPage = () => {
+    return (<div>
+        StatisticsPage</div>)
+}
 import { useDispatch } from 'react-redux';
 import { Section, Container } from 'ui/BasicStyles';
 import { addFinishedPages } from '../redux/library/libraryOperation';
