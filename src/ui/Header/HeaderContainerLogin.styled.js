@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const HeaderContainer = styled.header`
+const HeaderContainerLogin = styled.header`
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	margin: 0 auto;
 	padding: 0 20px;
@@ -12,11 +12,10 @@ const HeaderContainer = styled.header`
 
 	@media screen and (min-width: 768px) {
 		padding: 0 32px;
-		justify-content: space-between;
 	}
 
 	@media screen and (min-width: 1280px) {
 		padding: 0 16px;
 	}
 `;
-export default HeaderContainer;
+export default HeaderContainerLogin;
