@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 import MyTraining from "components/MyTraining/MyTraining";
 
-export const TrainingPage = () => { 
-    return (<div>TrainingPage
-         <MyTraining/>
-    </div>)
-}
-=======
+
 import LineChart from '../components/Chart/Chart';
 
 import { useDispatch } from 'react-redux';
@@ -46,8 +40,8 @@ export const TrainingPage = () => {
 				</button>
 				<NavLink to="/statistics">Statistics</NavLink>
 				<LineChart />
+				<MyTraining/>
 			</Container>
 		</Section>
 	);
 };
->>>>>>> dev
