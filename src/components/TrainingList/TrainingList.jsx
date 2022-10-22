@@ -5,6 +5,7 @@ import { ReactComponent as Del } from '../../images/icons/delete.svg';
 import css from './TrainingList.module.css';
 import { useDispatch } from 'react-redux';
 import { addBookPlanning } from '../../redux/library/libraryOperation';
+import { Navigate } from 'react-router-dom';
 
 const DeleteIcon = styled.div`
 	position: absolute;
@@ -174,9 +175,10 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 						</button>
 					</li>
 				))}
+				{books.length > 0 &&
 				<Button type="button" onClick={handleAddBookPlanning}>
 					Почати тренування
-				</Button>
+					</Button>}
 			</ListDesk>
 		</>
 	);

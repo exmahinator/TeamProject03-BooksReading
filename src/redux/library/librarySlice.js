@@ -7,6 +7,7 @@ import {
 	addFinishedPages,
 } from './libraryOperation';
 import { logIn, logOut } from '../auth/authOperation';
+import { Navigate } from 'react-router-dom';
 
 const initialState = {
 	goingToRead: [],
