@@ -7,7 +7,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {getIsLoggedIn} from '../../redux/selectors';
+import {addBookPlanning} from '../../redux/library/libraryOperation';
 import {Wrapper, Title, BoxForm, Button} from './MyTraining.styled';
 
 export default function MyTraining() {
@@ -15,9 +17,8 @@ export default function MyTraining() {
   const [personName, setPersonName] = useState([]);
   const [start, setStart] = useState(null);
   const [finish, setFinish] = useState(null);
-  const [result, setResult] = useState({});
-  console.log('setResult:', setResult);
 
+  const books = useSelector(getIsLoggedIn);
   const dispatch = useDispatch();
 
 const ITEM_HEIGHT = 48;
@@ -54,17 +55,20 @@ const names = [
     );
 }
 
+// const startInput = {qqq: ${start['$y']}-${start['$M']+1}-${start['$D']}};
+// const finishInput = {qqq: ${finish['$y']}-${finish['$M']+1}-${finish['$D']}};
+
+
 const handleSubmit = (event) => {
   event.preventDefault();
-  dispatch(result({start, finish, personName}));
-  // setStart(null);
-  // setFinish(null);
-  // setPersonName([]);
-  // DatePicker.reset();
-  // Select.reset();
+  dispatch(addBookPlanning({start, finish, personName}));
+  setStart(null);
+  setFinish(null);
+  setPersonName([]);
 
-console.log("click")
+  console.log(handleSubmit)
 }
+// console.log(start)
 
   return (
     <Wrapper>
@@ -101,7 +105,7 @@ console.log("click")
     
   </LocalizationProvider>
 
-       <FormControl sx={{ width: 280 }} onSubmit={handleSubmit}>
+       <FormControl sx={{ width: 280 }}>
       <Select
           multiple
           displayEmpty
