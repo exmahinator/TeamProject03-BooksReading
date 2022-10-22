@@ -1,6 +1,5 @@
 import MyTraining from 'components/MyTraining/MyTraining';
 import LineChart from '../components/Chart/Chart';
-
 import { useDispatch } from 'react-redux';
 import { Section, Container } from 'ui/BasicStyles';
 import { addBookPlanning } from '../redux/library/libraryOperation';
@@ -33,7 +32,6 @@ export const TrainingPage = () => {
 				<button type="button" onClick={handleAddToPlanning}>
 					Додати
 				</button>
-
 				<NavLink to="/statistics">Statistics</NavLink>
 				<MyTraining />
 				<TrainingList />
