@@ -9,6 +9,10 @@ const RegistrationDescriptionSubTitle = styled.h2`
 
 	color: #242a37;
 	margin: 0;
+	margin-bottom: 14px;
+	@media screen and (min-width: 768px) {
+		text-align: initial;
+	}
 `;
 
 export default RegistrationDescriptionSubTitle;
