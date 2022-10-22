@@ -6,15 +6,13 @@ const FormCounterBox = styled.div`
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	margin: 44px 10px;
+	width: calc((100% - 24px) / 3);
 
 	@media screen and (min-width: 768px) {
 		margin: 0;
 	}
 	@media screen and (min-width: 1280px) {
-		margin-bottom: 48px;
-		margin-top: 48px;
-		padding: 0;
+		
 	}
 `;
 

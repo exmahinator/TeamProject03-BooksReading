@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const TimerText = styled.p`
-	font-family: 'Montserrat';
+	/* font-family: 'Montserrat'; */
 	font-style: normal;
 	font-weight: 500;
 	font-size: 10px;
@@ -9,6 +9,7 @@ const TimerText = styled.p`
 	margin: 0;
 
 	color: #898f9f;
+
 
 	@media screen and (min-width: 768px) {
 	}
