@@ -8,7 +8,10 @@ const RegistrationDescriptionTitle = styled.h1`
 
 	color: #242a37;
 	margin: 0;
+	text-align: center;
+	margin-bottom: 32px;
 	@media screen and (min-width: 768px) {
+		margin-bottom: 48px;
 	}
 `;
 

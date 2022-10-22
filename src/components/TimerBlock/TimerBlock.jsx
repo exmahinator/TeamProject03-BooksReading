@@ -1,3 +1,4 @@
+import MyGoals from 'components/MyGoals/MyGoals';
 import React from 'react';
 import {
 	TimerMain,
@@ -15,15 +16,30 @@ import {
 
 const TimerBlock = () => {
 	return (
-		<TimerMain>
-			<TimerHeader>До закінчення року залишилось</TimerHeader>
-			<TimerStyle>
-				<TimerContainer>
-					<Timer />
-				</TimerContainer>
-			</TimerStyle>
-		</TimerMain>
-		
+		<>
+			<TimerMain>
+				{/* блок "До кінця року залишилось" -----> */}
+				<div>
+					<TimerHeader>До закінчення року залишилось</TimerHeader>
+					<TimerStyle>
+						<TimerContainer>
+							<Timer />
+						</TimerContainer>
+					</TimerStyle>
+				</div>
+
+				{/* блок "До досягнення мети залишилось" -----> */}
+					<div>
+					<TimerHeader>До досягнення мети залишилось</TimerHeader>
+					<TimerStyle>
+						<TimerContainer>
+							<Timer />
+						</TimerContainer>
+					</TimerStyle>
+				</div>
+			</TimerMain>
+			<MyGoals />
+		</>
 	);
 };
 
