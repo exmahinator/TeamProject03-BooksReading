@@ -29,7 +29,7 @@ const Header = () => {
 		query: '(max-width: 768px)',
 	});
 
-	const firstLetter = userName.slice(0, 1).toUpperCase();
+	const firstLetter = userName?.slice(0, 1).toUpperCase();
 
 	return isLoggedIn ? (
 		<HeaderContainerLogin>
@@ -37,7 +37,7 @@ const Header = () => {
 			{isLoggedIn && (
 				<>
 					<IncideContainer>
-						{!isMobile && <FirstLetter>{firstLetter}</FirstLetter>}
+						{!isMobile && <FirstLetter>{firstLetter}M</FirstLetter>}
 						{!isMobile && <UserName>{userName}</UserName>}
 					</IncideContainer>
 					<IncideContainer>

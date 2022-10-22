@@ -9,6 +9,7 @@ const LibraryMobileButton = styled.button`
 	display: flex;
 	background: #ff6b08;
 	padding: 18px;
+	border: none;
 	border-radius: 50%;
 	@media screen and (min-width: 768px) {
 		display: none;

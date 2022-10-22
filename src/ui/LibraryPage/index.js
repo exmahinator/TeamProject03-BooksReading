@@ -19,3 +19,4 @@ export { default as InfoList } from './InfoList.styled';
 export { default as InfoMobileText } from './InfoMobileText.styled';
 export { default as InfoMobileLink } from './InfoMobileLink.styled';
 export { default as LibraryMobileButton } from './LibraryMobileButton.styled';
+export { default as LibraryTabletContainer } from './LibraryTabletContainer.styled';
