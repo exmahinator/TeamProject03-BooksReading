@@ -36,6 +36,7 @@ export const App = () => {
 		}
 		setTimeout(() => {
 			dispatch(userBooks());
+			// тут запит на бек, тому що в запиті userBooks не приходить currentlyReading
 			dispatch(getBookPlanning())
 		});
 	}, [accessToken, dispatch]);

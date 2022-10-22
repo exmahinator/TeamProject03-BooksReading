@@ -9,9 +9,10 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import {getIsLoggedIn} from '../../redux/selectors';
-import { addBookPlanning } from '../../redux/library/libraryOperation';
+// import { addBookPlanning } from '../../redux/library/libraryOperation';
 import { getGoingToRead } from "../../redux/library/librarySelector";
 import { Wrapper, Title, BoxForm, Button } from './MyTraining.styled';
+import  TrainingList  from "../TrainingList/TrainingList";
 
 // "startDate": "2022-10-20",
 	//   "endDate": "2022-10-25",
@@ -22,12 +23,12 @@ import { Wrapper, Title, BoxForm, Button } from './MyTraining.styled';
 
 export default function MyTraining() {
 	const dispatch = useDispatch();
-	const [personName, setPersonName] = useState([]);
+	const [booksId, setBooksId] = useState([]);
 	const [start, setStart] = useState(null);
   const [finish, setFinish] = useState(null);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [books, setBooks] = useState(null);
+  const [books, setBooks] = useState([]);
 
 	// const books = useSelector(getIsLoggedIn);
 
@@ -41,58 +42,39 @@ export default function MyTraining() {
 			},
 		},
 	};
-
-	// const names = [
-	// 	'Oliver Hansen',
-	// 	'Van Henry',
-	// 	'April Tucker',
-	// 	'Ralph Hubbard',
-	// 	'Omar Alexander',
-	// 	'Carlos Abbott',
-	// 	'Miriam Wagner',
-	// 	'Bradley Wilkerson',
-	// 	'Virginia Andrews',
-	// 	'Kelly Snyder',
-  // ];
   
   const goingToRead = useSelector(getGoingToRead);
 
 	// Дата старту - готова до використання---
-	const receiveDataFromStart = newValue => {
+  const receiveDataFromStart = newValue => {
+    setStart(newValue);
     const startDate = `${newValue.$y}-${newValue.$M + 1}-${newValue.$D + 1}`;
     setStartDate(startDate);
-		// console.log('startDate', startDate);
   };
   
   const receiveDataFromEnd = newValue => {
+    setFinish(newValue);
     const endDate = `${newValue.$y}-${newValue.$M + 1}-${newValue.$D + 1}`;
     setEndDate(endDate);
   }
-	// ----------------------------------------
-  // console.log('startDate', startDate);
-  // console.log('endDate', endDate);
-  // ----------------------------------------
 
   const handleChange = event => {
-    console.log(event)
 		const {
       target: { value },
 		} = event;
-    setPersonName(typeof value === 'string' ? value.split(',') : value);
+    setBooksId(value);
 
   };
-    //  console.log("personName", personName)
+     console.log("booksId", booksId)
 
 	const handleSubmit = event => {
-		event.preventDefault();
-		dispatch(addBookPlanning({ startDate, endDate, personName }));
-		setStart(null);
-		setFinish(null);
-		setPersonName([]);
+    event.preventDefault();
 
-		console.log(handleSubmit);
+    const addingToTraining = goingToRead.filter((book)=> book._id === booksId)
+    
+    setBooks([...books, ...addingToTraining])
 	};
-
+  console.log('books', books);
 
 	return (
 		<Wrapper>
@@ -120,26 +102,19 @@ export default function MyTraining() {
 
 				<FormControl sx={{ width: 280 }}>
 					<Select
-						multiple
+						// multiple
 						displayEmpty
-						value={personName}
+						value={booksId}
 						onChange={handleChange}
 						input={<OutlinedInput />}
-						renderValue={selected => {
-							if (selected.length === 0) {
-								return <em>Обрати книги з бібліотеки</em>;
-							}
-
-							return selected.join(', ');
-						}}
 						MenuProps={MenuProps}
 						inputProps={{ 'aria-label': 'Without label' }}
 					>
 						<MenuItem disabled value="">
-							<em>Placeholder</em>
+							<em>Обрати книги з бібліотеки</em>
 						</MenuItem>
 						{goingToRead?.map(({_id, title, author}) => (
-							<MenuItem key={_id} value={title} name={_id}>
+							<MenuItem key={_id} value={_id}>
 								{title} ({author})
 							</MenuItem>
 						))}
@@ -149,7 +124,8 @@ export default function MyTraining() {
 						Додати
 					</Button>
 				</FormControl>
-			</BoxForm>
+      </BoxForm>
+      <TrainingList books={books} startDate={startDate} endDate={endDate}/>
 		</Wrapper>
 	);
 }

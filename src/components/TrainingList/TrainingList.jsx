@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { ReactComponent as Flat } from '../../images/icons/Flat.svg';
 import { ReactComponent as Del } from '../../images/icons/delete.svg';
 import css from './TrainingList.module.css';
-import { useSelector } from 'react-redux';
-import { getCurrentlyReading } from "../../redux/library/librarySelector";
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentlyReading } from '../../redux/library/librarySelector';
+import { addBookPlanning } from '../../redux/library/libraryOperation';
 
 const DeleteIcon = styled.div`
 	position: absolute;
@@ -19,63 +20,71 @@ const Wrapper = styled.div`
 	}
 `;
 
-function TrainingList() {
-	const currentlyReading = useSelector(getCurrentlyReading);
+function TrainingList({ books, startDate, endDate }) {
+	const dispatch = useDispatch();
+
+	const handleAddBookPlanning = () => {
+		const booksId = books.map(book => book._id);
+
+		dispatch(addBookPlanning({ startDate, endDate, books: booksId }));
+	};
+    // const currentlyReading = useSelector(getCurrentlyReading);
 	return (
 		<>
 			{/* Мобильная версия без стилей */}
 			<Wrapper>
-                <ListMob>
-                    {currentlyReading.map(({ _id, title, author, publishYear, pagesTotal }) => (
-                        <ItemMob key={_id}>
-						<div style={{ display: 'flex' }}>
-							<button>
-								<Flat />
-							</button>
-							<div style={{ padding: '0 25px 0 0' }}>
-								{title}
+				<ListMob>
+					{books?.map(({ _id, title, author, publishYear, pagesTotal }) => (
+						<ItemMob key={_id}>
+							<div style={{ display: 'flex' }}>
+								<button>
+									<Flat />
+								</button>
+								<div style={{ padding: '0 25px 0 0' }}>{title}</div>
 							</div>
-						</div>
 
-						<div style={{ display: 'flex', margin: '0 0 0 40px' }}>
-							<div
-								style={{
-									margin: '0 15px 14px 0',
-									color: '#898F9F',
-									width: '25%',
-								}}
-							>
-								Автор:
+							<div style={{ display: 'flex', margin: '0 0 0 40px' }}>
+								<div
+									style={{
+										margin: '0 15px 14px 0',
+										color: '#898F9F',
+										width: '25%',
+									}}
+								>
+									Автор:
+								</div>
+								<div>{author}</div>
 							</div>
-                                <div>{ author}</div>
-						</div>
-						<div style={{ display: 'flex', margin: '0 0 0 40px' }}>
-							<div
-								style={{
-									margin: '0 15px 14px 0',
-									color: '#898F9F',
-									width: '25%',
-								}}
-							>
-								Рік:
+							<div style={{ display: 'flex', margin: '0 0 0 40px' }}>
+								<div
+									style={{
+										margin: '0 15px 14px 0',
+										color: '#898F9F',
+										width: '25%',
+									}}
+								>
+									Рік:
+								</div>
+								<div>{publishYear}</div>
 							</div>
-                                <div>{publishYear }</div>
-						</div>
-						<div style={{ display: 'flex', margin: '0 0 0 40px' }}>
-							<div
-								style={{ marginRight: '15px', color: '#898F9F', width: '25%' }}
-							>
-								Стор.:
+							<div style={{ display: 'flex', margin: '0 0 0 40px' }}>
+								<div
+									style={{
+										marginRight: '15px',
+										color: '#898F9F',
+										width: '25%',
+									}}
+								>
+									Стор.:
+								</div>
+								<div>{pagesTotal}</div>
 							</div>
-                                <div>{ pagesTotal}</div>
-						</div>
 
-						<DeleteIcon>
-							<Del />
-						</DeleteIcon>
-					</ItemMob>
-                    ) )}
-					
+							<DeleteIcon>
+								<Del />
+							</DeleteIcon>
+						</ItemMob>
+					))}
 
 					{/* <ItemMob>
                 <div style={{display: 'flex'}}> 
@@ -132,8 +141,9 @@ function TrainingList() {
 					<div>Стор.</div>
 				</Title>
 				{/* <ListDesk> */}
-				{currentlyReading.map(({_id, title, author, publishYear, pagesTotal}) => (
-					<li key={_id}
+				{books?.map(({ _id, title, author, publishYear, pagesTotal }) => (
+					<li
+						key={_id}
 						style={{
 							display: 'flex',
 							justifyContent: 'space-between',
@@ -145,11 +155,11 @@ function TrainingList() {
 							<div style={{ marginRight: '15px' }}>
 								<Flat />
 							</div>
-                            <p>{ title}</p>
+							<p>{title}</p>
 						</div>
-                        <div className="author">{ author}</div>
-                        <div className="year">{ publishYear}</div>
-                        <div className="page">{ pagesTotal}</div>
+						<div className="author">{author}</div>
+						<div className="year">{publishYear}</div>
+						<div className="page">{pagesTotal}</div>
 						<button className={css.delButton}>
 							<Del className={css.svgDel} />
 						</button>
@@ -177,7 +187,9 @@ function TrainingList() {
                     <button className={css.delButton}><Del className={css.svgDel}/></button>
                 </li> */}
 				{/* </ListDesk> */}
-				<Button>Почати тренування</Button>
+				<Button type="button" onClick={handleAddBookPlanning}>
+					Почати тренування
+				</Button>
 			</ListDesk>
 		</>
 	);
