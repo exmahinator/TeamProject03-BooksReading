@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { goingToReadArr } from 'redux/library/librarySelector';
+import { getGoingToRead } from 'redux/library/librarySelector';
 
 import {
 	InfoContainer,
@@ -18,7 +18,7 @@ import {
 } from 'ui/LibraryPage';
 
 function LibraryInfo() {
-	const goingToRead = useSelector(goingToReadArr);
+	const goingToRead = useSelector(getGoingToRead);
 	const [visibility, setVisibility] = useState(true);
 	const closeModal = () => {
 		setVisibility(false);

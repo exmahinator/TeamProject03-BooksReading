@@ -15,7 +15,7 @@ const InfoMainContainer = styled.div`
 		position: static;
 		transform: translate(0, 0);
 		max-width: 608px;
-		max-height: 272px;
+		max-height: 275px;
 	}
 `;
 
