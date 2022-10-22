@@ -55,8 +55,17 @@ const names = [
     );
 }
 
-// const startInput = {qqq: ${start['$y']}-${start['$M']+1}-${start['$D']}};
-// const finishInput = {qqq: ${finish['$y']}-${finish['$M']+1}-${finish['$D']}};
+const startTime = {startDate: `${start['$y']} - ${start['$M']+1} - ${start['$D']}`};
+const finishTime = {endDate: `${finish['$y']} - ${finish['$M']+1} - ${finish['$D']}`};
+// const goingToBooks = books.id;
+
+console.log('startTime:', startTime)
+console.log('finishTime:', finishTime)
+// "startDate": "2022-10-20",
+//   "endDate": "2022-10-25",
+//   "books": [
+//     "635150dd3551fd60da50fed6", "507f1f77bcf86cd799439013"
+//   ]
 
 
 const handleSubmit = (event) => {
