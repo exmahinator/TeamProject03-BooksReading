@@ -7,8 +7,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import {useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {getIsLoggedIn} from '../../redux/selectors';
+import { useDispatch} from 'react-redux';
+// import {getIsLoggedIn} from '../../redux/selectors';
 import {addBookPlanning} from '../../redux/library/libraryOperation';
 import {Wrapper, Title, BoxForm, Button} from './MyTraining.styled';
 
@@ -18,7 +18,7 @@ export default function MyTraining() {
   const [start, setStart] = useState(null);
   const [finish, setFinish] = useState(null);
 
-  const books = useSelector(getIsLoggedIn);
+  // const books = useSelector(getIsLoggedIn);
   const dispatch = useDispatch();
 
 const ITEM_HEIGHT = 48;
