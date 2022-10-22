@@ -92,7 +92,6 @@ function TrainingList () {
         </ListMob>
         </Wrapper>
 
-
         <ListDesk>
             <Title className='title__wrapper' >
                 <div>Назва книги</div>

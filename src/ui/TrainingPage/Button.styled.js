@@ -20,10 +20,12 @@ const Button = styled.button`
 
     border: none;
 
-    transition: border-radius 0.4s;
+    transition: border-radius 0.4s, box-shadow 0.4s;
+
     :hover {
         cursor: pointer;
         border-radius:3px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     @media screen and (min-width: 768px) {
