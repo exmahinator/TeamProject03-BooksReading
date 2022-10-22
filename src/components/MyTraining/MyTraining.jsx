@@ -21,6 +21,8 @@ export default function MyTraining() {
   // const books = useSelector(getIsLoggedIn);
   const dispatch = useDispatch();
 
+const [startDate, setStartDate ]= useState(null);
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -55,12 +57,13 @@ const names = [
     );
 }
 
-const startTime = {startDate: `${start['$y']} - ${start['$M']+1} - ${start['$D']}`};
-const finishTime = {endDate: `${finish['$y']} - ${finish['$M']+1} - ${finish['$D']}`};
+
+// const startTime = {startDate: `${start['$y']} - ${start['$M']+1} - ${start['$D']}`};
+// const finishTime = {endDate: `${finish['$y']} - ${finish['$M']+1} - ${finish['$D']}`};
 // const goingToBooks = books.id;
 
-console.log('startTime:', startTime)
-console.log('finishTime:', finishTime)
+// console.log('startTime:', startTime)
+// console.log('finishTime:', finishTime)
 // "startDate": "2022-10-20",
 //   "endDate": "2022-10-25",
 //   "books": [
@@ -68,6 +71,17 @@ console.log('finishTime:', finishTime)
 //   ]
 
 
+const getStartData = (newValue) => {
+ setStart(newValue)
+ console.log(newValue)
+ setStartDate(Object.values(newValue))
+ console.log(startDate)
+} 
+
+const getFinishData = (newValue) => {
+  setFinish(newValue)
+   console.log(newValue)
+ } 
 const handleSubmit = (event) => {
   event.preventDefault();
   dispatch(addBookPlanning({start, finish, personName}));
@@ -78,6 +92,17 @@ const handleSubmit = (event) => {
   console.log(handleSubmit)
 }
 // console.log(start)
+
+// const someStart = Object.values(newValue);
+// console.log(someStart);
+// const resultData = {
+//   data1: someStart[4],
+//   data2: someStart[5] + 1,
+//   data3: someStart[6],
+// };
+// console.log(resultData);
+// }}
+
 
   return (
     <Wrapper>
@@ -90,7 +115,9 @@ const handleSubmit = (event) => {
         value={start}
         disablePast={true}
         onChange={(newValue) => {
-            setStart(newValue);
+          setStartDate(Object.values(newValue))
+          // getStartData(newValue);
+          // console.log()
         }}
         renderInput={(params) => (
           <TextField {...params} />
@@ -98,6 +125,8 @@ const handleSubmit = (event) => {
       />
     </LocalizationProvider>
    
+
+
     <LocalizationProvider dateAdapter={AdapterDayjs}>
    
       <DatePicker
@@ -105,7 +134,7 @@ const handleSubmit = (event) => {
       value={finish}
       disablePast={true}
       onChange={(newValue) => {
-        setFinish(newValue);
+        getFinishData(newValue);
       }}
       renderInput={(params) => (
         <TextField {...params}/>
