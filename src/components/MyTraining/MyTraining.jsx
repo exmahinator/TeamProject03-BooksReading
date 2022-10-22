@@ -13,6 +13,7 @@ import { addBookPlanning } from '../../redux/library/libraryOperation';
 import { Wrapper, Title, BoxForm, Button } from './MyTraining.styled';
 
 export default function MyTraining() {
+
 	const [personName, setPersonName] = useState([]);
 	const [start, setStart] = useState(null);
 	const [finish, setFinish] = useState(null);
