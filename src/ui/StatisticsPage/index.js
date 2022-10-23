@@ -8,3 +8,4 @@ export { default as StatLabel } from './StatLabel.styled';
 export { default as StatCommonContainer } from './StatCommonContainer.styled';
 export { default as StatTable } from './StatTable.styled';
 export { default as StatPagesContainer } from './StatPagesContainer.styled';
+export { default as StatSubContainerTable } from './StatSubContainerTable.styled';

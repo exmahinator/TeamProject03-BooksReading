@@ -3,7 +3,6 @@ import Statistics from 'components/Statistics/Statistics';
 import LineChart from 'components/Chart/Chart';
 import { Section, Container } from 'ui/BasicStyles';
 import {
-	StatisticsContainerCommon,
 	StatPagesContainer,
 } from 'ui/StatisticsPage';
 import { useSelector } from 'react-redux';
@@ -12,6 +11,7 @@ import {
 	getFinishedReading,
 } from '../redux/library/librarySelector';
 import TrainingList from 'components/TrainingList';
+
 
 export const StatisticsPage = () => {
 	const currentlyReading = useSelector(getCurrentlyReading);
@@ -28,11 +28,8 @@ export const StatisticsPage = () => {
 					// booksDelete={hanleDelete}
 				/>
 				<LineChart />
-
 				<StatisticsContainerCommon>
-					<StatPagesContainer>
 						<Statistics />
-					</StatPagesContainer>
 				</StatisticsContainerCommon>
 			</Container>
 		</Section>
