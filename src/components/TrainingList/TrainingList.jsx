@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { ReactComponent as Flat } from '../../images/icons/Flat.svg';
 import { ReactComponent as Del } from '../../images/icons/delete.svg';
 import css from './TrainingList.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentlyReading } from '../../redux/library/librarySelector';
+import { useDispatch } from 'react-redux';
 import { addBookPlanning } from '../../redux/library/libraryOperation';
+import { Navigate } from 'react-router-dom';
 
 const DeleteIcon = styled.div`
 	position: absolute;
@@ -20,15 +20,21 @@ const Wrapper = styled.div`
 	}
 `;
 
-function TrainingList({ books, startDate, endDate }) {
+function TrainingList({ books, startDate, endDate, booksDelete }) {
 	const dispatch = useDispatch();
 
-	const handleAddBookPlanning = () => {
-		const booksId = books.map(book => book._id);
+	const booksId = books.map(book => book._id);
 
-		dispatch(addBookPlanning({ startDate, endDate, books: booksId }));
+	const data = {
+		startDate: startDate,
+		endDate: endDate,
+		books: booksId,
 	};
-    // const currentlyReading = useSelector(getCurrentlyReading);
+
+	const handleAddBookPlanning = () => {
+		dispatch(addBookPlanning(data));
+	};
+
 	return (
 		<>
 			{/* Мобильная версия без стилей */}
@@ -160,36 +166,19 @@ function TrainingList({ books, startDate, endDate }) {
 						<div className="author">{author}</div>
 						<div className="year">{publishYear}</div>
 						<div className="page">{pagesTotal}</div>
-						<button className={css.delButton}>
+						<button
+							className={css.delButton}
+							type="button"
+							onClick={() => booksDelete(_id)}
+						>
 							<Del className={css.svgDel} />
 						</button>
 					</li>
 				))}
-
-				{/* <li style={{display:'flex', justifyContent:'space-between', alignItems:'center', borderBottom: '1px solid #E0E5EB'}}>
-                    <div className='title icon' style={{display: 'flex',}}>
-                        <div style={{marginRight: '15px'}}><Flat /></div>
-                        <p>Deadline. Роман об управлении ...</p>
-                    </div>
-                    <div className='author'>Джефф Сазерленд</div>
-                    <div className='year'>2014</div>
-                    <div className='page'>25</div>
-                    <button className={css.delButton}><Del className={css.svgDel}/></button>
-                </li>
-                <li style={{display:'flex', justifyContent:'space-between', alignItems:'center', borderBottom: '1px solid #E0E5EB'}}>
-                    <div className='title icon' style={{display: 'flex',}}>
-                        <div style={{marginRight: '15px'}}><Flat /></div>
-                        <p>5 Пороков команды. Притчи ...</p>
-                    </div>
-                    <div className='author'>Джефф Сазерленд</div>
-                    <div className='year'>2014</div>
-                    <div className='page'>25</div>
-                    <button className={css.delButton}><Del className={css.svgDel}/></button>
-                </li> */}
-				{/* </ListDesk> */}
+				{books.length > 0 &&
 				<Button type="button" onClick={handleAddBookPlanning}>
 					Почати тренування
-				</Button>
+					</Button>}
 			</ListDesk>
 		</>
 	);
