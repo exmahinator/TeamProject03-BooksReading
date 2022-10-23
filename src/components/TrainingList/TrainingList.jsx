@@ -9,16 +9,21 @@ import {
 	FlatWrapper,
 	ItemDesk
 } from 'ui/TrainingPage';
-// import styled from 'styled-components';
 import { ReactComponent as Flat } from '../../images/icons/Flat.svg';
 import { ReactComponent as Del } from '../../images/icons/delete.svg';
 import css from './TrainingList.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBookPlanning } from '../../redux/library/libraryOperation';
 // import { Navigate } from 'react-router-dom';
+import { getCurrentlyReading } from '../../redux/library/librarySelector';
 
 function TrainingList({ books, startDate, endDate, booksDelete }) {
 	const dispatch = useDispatch();
+
+	const currentlyReading = useSelector(getCurrentlyReading);
+	console.log('books statistics', books);
+
+	const IconFirst = () => (currentlyReading.length === 0 ? <Flat /> : 'LT');
 
 	const booksId = books.map(book => book._id);
 
@@ -106,26 +111,30 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 					<ItemDesk key={_id}>
 						<div className="title icon" style={{ display: 'flex' }}>
 							<div style={{ marginRight: '15px' }}>
-								<Flat />
+								{/* <Flat /> */}
+								<IconFirst />
 							</div>
 							<p>{title}</p>
 						</div>
 						<div className="author">{author}</div>
 						<div className="year">{publishYear}</div>
 						<div className="page">{pagesTotal}</div>
-						<button
-							className={css.delButton}
-							type="button"
-							onClick={() => booksDelete(_id)}
-						>
-							<Del className={css.svgDel} />
-						</button>
+						{currentlyReading.length === 0 && (
+							<button
+								className={css.delButton}
+								type="button"
+								onClick={() => booksDelete(_id)}
+							>
+								<Del className={css.svgDel} />
+							</button>
+						)}
 					</ItemDesk>
 				))}
-				{books.length > 0 &&
-				<Button type="button" onClick={handleAddBookPlanning}>
-					Почати тренування
-					</Button>}
+				{books.length > 0 && (
+					<Button type="button" onClick={handleAddBookPlanning}>
+						Почати тренування
+					</Button>
+				)}
 			</ListDesk>
 		</>
 	);

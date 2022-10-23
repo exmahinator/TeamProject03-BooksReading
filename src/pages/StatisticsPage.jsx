@@ -1,32 +1,36 @@
 import TimerBlock from 'components/TimerBlock/TimerBlock';
-import StatisticsTablet from 'components/Statistics/StatisticsTablet';
-import StatisticsInput from 'components/Statistics/StatisticsInput';
-import { useDispatch } from 'react-redux';
+import Statistics from 'components/Statistics/Statistics';
+import LineChart from 'components/Chart/Chart';
 import { Section, Container } from 'ui/BasicStyles';
-import { addFinishedPages } from '../redux/library/libraryOperation';
-import { StatisticsButton, StatisticsContainerCommon } from 'ui/StatisticsPage';
+import {
+	StatisticsContainerCommon,
+	StatPagesContainer,
+} from 'ui/StatisticsPage';
+import { useSelector } from 'react-redux';
+import { getCurrentlyReading, getFinishedReading } from "../redux/library/librarySelector";
+import TrainingList from 'components/TrainingList';
+
 export const StatisticsPage = () => {
-	const dispatch = useDispatch();
+	const currentlyReading = useSelector(getCurrentlyReading);
+	const finishedReading = useSelector(getFinishedReading);
 
-	const pages = {
-		pages: 1,
-	};
-
-	const handleAddResults = () => {
-		dispatch(addFinishedPages(pages));
-	};
+	
 
 	return (
 		<Section>
 			<Container>
 				<StatisticsContainerCommon>
-					<div>Statistic</div>
-          <TimerBlock/>
-					<StatisticsInput />
-					<StatisticsButton type="button" onClick={handleAddResults}>
-						Додати результат
-					</StatisticsButton>
-					<StatisticsTablet />
+					<TimerBlock />
+					<TrainingList
+				books={[...currentlyReading, ...finishedReading]}
+				// startDate={startDate}
+				// endDate={endDate}
+				// booksDelete={hanleDelete}
+			/>
+					<LineChart/>
+					<StatPagesContainer>
+						<Statistics />
+					</StatPagesContainer>
 				</StatisticsContainerCommon>
 			</Container>
 		</Section>
