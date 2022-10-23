@@ -5,14 +5,21 @@ const StatPagesContainer = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	background: #ffffff;
+	box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+	align-items: start;
 	@media screen and (min-width: 768px) {
 		width: 704px;
 		height: 309px;
-		left: 32px;
-		top: 1253px;
 
 		background: #ffffff;
 		box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+		align-items: start;
+	}
+	@media screen and (min-width: 1280px) {
+		height: 340px;
+		width: 288px;
+		align-items: center;
 	}
 `;
 

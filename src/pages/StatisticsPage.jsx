@@ -1,10 +1,7 @@
 import TimerBlock from 'components/TimerBlock/TimerBlock';
 import Statistics from 'components/Statistics/Statistics';
 import { Section, Container } from 'ui/BasicStyles';
-import {
-	StatisticsContainerCommon,
-	StatPagesContainer,
-} from 'ui/StatisticsPage';
+import { StatisticsContainerCommon } from 'ui/StatisticsPage';
 
 export const StatisticsPage = () => {
 	return (
@@ -13,9 +10,7 @@ export const StatisticsPage = () => {
 				<StatisticsContainerCommon>
 					<div>Statistic</div>
 					<TimerBlock />
-					<StatPagesContainer>
-						<Statistics />
-					</StatPagesContainer>
+					<Statistics />
 				</StatisticsContainerCommon>
 			</Container>
 		</Section>
