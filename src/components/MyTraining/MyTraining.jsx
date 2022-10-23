@@ -1,18 +1,29 @@
-import OutlinedInput from '@mui/material/OutlinedInput';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+// import OutlinedInput from '@mui/material/OutlinedInput';
+// import MenuItem from '@mui/material/MenuItem';
+// import FormControl from '@mui/material/FormControl';
+
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useState } from 'react';
-import {useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
 // import {getIsLoggedIn} from '../../redux/selectors';
 // import { addBookPlanning } from '../../redux/library/libraryOperation';
 import { getGoingToRead } from '../../redux/library/librarySelector';
-import { Wrapper, Title, BoxForm, Button } from './MyTraining.styled';
+import {
+	WrapperDatePicker,
+	Wrapper,
+	Title,
+	BoxForm,
+	SelectForm,
+	// WrapperCallendar,
+	// BoxCallendar,
+	WrapperSelect,
+	// SelectBox,
+	Button,
+} from './MyTraining.styled';
 import TrainingList from '../TrainingList/TrainingList';
 
 // "startDate": "2022-10-20",
@@ -22,7 +33,6 @@ import TrainingList from '../TrainingList/TrainingList';
 //   ]
 
 export default function MyTraining() {
-	
 	const [booksId, setBooksId] = useState([]);
 	const [start, setStart] = useState(null);
 	const [finish, setFinish] = useState(null);
@@ -32,16 +42,16 @@ export default function MyTraining() {
 
 	// const books = useSelector(getIsLoggedIn);
 
-	const ITEM_HEIGHT = 48;
-	const ITEM_PADDING_TOP = 8;
-	const MenuProps = {
-		PaperProps: {
-			style: {
-				maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-				width: 250,
-			},
-		},
-	};
+	// const ITEM_HEIGHT = 48;
+	// const ITEM_PADDING_TOP = 8;
+	// const MenuProps = {
+	// 	PaperProps: {
+	// 		style: {
+	// 			maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+	// 			width: 250,
+	// 		},
+	// 	},
+	// };
 
 	const goingToRead = useSelector(getGoingToRead);
 
@@ -87,8 +97,10 @@ export default function MyTraining() {
 		<Wrapper>
 			<Title>Моє тренування</Title>
 			<BoxForm>
+				{/* <WrapperCallendar>
+					<BoxCallendar> */}
 				<LocalizationProvider dateAdapter={AdapterDayjs}>
-					<DatePicker
+					<WrapperDatePicker
 						label="Початок"
 						value={start}
 						disablePast={true}
@@ -96,9 +108,11 @@ export default function MyTraining() {
 						renderInput={params => <TextField {...params} />}
 					/>
 				</LocalizationProvider>
+				{/* </BoxCallendar> */}
 
+				{/* <BoxCallendar> */}
 				<LocalizationProvider dateAdapter={AdapterDayjs}>
-					<DatePicker
+					<WrapperDatePicker
 						label="Завершення"
 						value={finish}
 						disablePast={true}
@@ -106,31 +120,42 @@ export default function MyTraining() {
 						renderInput={params => <TextField {...params} />}
 					/>
 				</LocalizationProvider>
+				{/* </BoxCallendar>
+				</WrapperCallendar> */}
 
-				<FormControl sx={{ width: 280 }}>
-					<Select
-						// multiple
-						displayEmpty
-						value={booksId}
-						onChange={handleChange}
-						input={<OutlinedInput />}
-						MenuProps={MenuProps}
-						inputProps={{ 'aria-label': 'Without label' }}
-					>
-						<MenuItem disabled value="">
-							<em>Обрати книги з бібліотеки</em>
-						</MenuItem>
-						{goingToRead?.map(({ _id, title, author }) => (
-							<MenuItem key={_id} value={_id}>
-								{title} ({author})
+				<WrapperSelect>
+				{/* <FormControl> */}
+				{/* <SelectBox>
+					<SelectForm
+							// multiple
+							// style={{ height: 42, borderRadius: 0, }}
+							displayEmpty
+							value={booksId}
+							onChange={handleChange}
+							input={<OutlinedInput />}
+							MenuProps={MenuProps}
+							inputProps={{ 'aria-label': 'Without label' }}
+						>
+							<MenuItem disabled value="">
+								<em>Обрати книги з бібліотеки</em>
 							</MenuItem>
-						))}
-					</Select>
+							{goingToRead?.map(({ _id, title, author }) => (
+								<MenuItem key={_id} value={_id}>
+									{title} ({author})
+								</MenuItem>
+							))}
+						</SelectForm>
+					</SelectBox> */}
+				<SelectForm name="select">
+					<option value={booksId} onChange={handleChange}>Обрати книги з бібліотеки</option>
+				</SelectForm>
 
-					<Button type="button" onClick={handleSubmit}>
-						Додати
-					</Button>
-				</FormControl>
+				<Button type="button" onClick={handleSubmit}>
+					Додати
+				</Button>
+
+				{/* </FormControl> */}
+				</WrapperSelect> 
 			</BoxForm>
 			<TrainingList
 				books={books}

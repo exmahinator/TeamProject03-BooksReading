@@ -21,7 +21,7 @@ export const StatisticsPage = () => {
 			<Container>
 				<StatisticsContainerCommon>
 					<div>Statistic</div>
-          <TimerBlock/>
+					<TimerBlock />
 					<StatisticsInput />
 					<StatisticsButton type="button" onClick={handleAddResults}>
 						Додати результат
