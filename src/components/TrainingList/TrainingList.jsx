@@ -1,4 +1,4 @@
-import { 
+import {
 	ListMob,
 	ListDesk,
 	Title,
@@ -7,7 +7,7 @@ import {
 	DeleteIcon,
 	Wrapper,
 	FlatWrapper,
-	ItemDesk
+	ItemDesk,
 } from 'ui/TrainingPage';
 import { ReactComponent as Flat } from '../../images/icons/Flat.svg';
 import { ReactComponent as Del } from '../../images/icons/delete.svg';
@@ -16,14 +16,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addBookPlanning } from '../../redux/library/libraryOperation';
 // import { Navigate } from 'react-router-dom';
 import { getCurrentlyReading } from '../../redux/library/librarySelector';
+import { useLocation } from 'react-router-dom';
+import { ReactComponent as CheckboxCheked } from "../../images/icons/checkboxChecked.svg";
+import { ReactComponent as CheckboxDisabled } from "../../images/icons/checkboxDisabled.svg";
 
 function TrainingList({ books, startDate, endDate, booksDelete }) {
 	const dispatch = useDispatch();
+	const location = useLocation();
+	// console.log(location.pathname);
+	// location.pathname === '/training'
 
-	const currentlyReading = useSelector(getCurrentlyReading);
 	console.log('books statistics', books);
-
-	const IconFirst = () => (currentlyReading.length === 0 ? <Flat /> : 'LT');
 
 	const booksId = books.map(book => book._id);
 
@@ -37,6 +40,11 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 		dispatch(addBookPlanning(data));
 	};
 
+	const CheckBox = ({ pagesFinished, pagesTotal }) => {
+	return	pagesFinished !== pagesTotal ? <CheckboxDisabled/> : <CheckboxCheked />
+		
+	}
+
 	return (
 		<>
 			<Wrapper>
@@ -45,7 +53,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 						<ItemMob key={_id}>
 							<div style={{ display: 'flex' }}>
 								<FlatWrapper>
-									<Flat/>
+									<Flat />
 								</FlatWrapper>
 								<div style={{ padding: '0 25px 0 0' }}>{title}</div>
 							</div>
@@ -88,7 +96,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 							</div>
 
 							<DeleteIcon>
-								<Del className={css.delButton}/>
+								<Del className={css.delButton} />
 							</DeleteIcon>
 						</ItemMob>
 					))}
@@ -97,8 +105,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 				</ListMob>
 			</Wrapper>
 
-
-{/* desk */}
+			{/* desk */}
 			<ListDesk>
 				<Title className="title__wrapper">
 					<div>Назва книги</div>
@@ -107,19 +114,18 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 					<div>Стор.</div>
 				</Title>
 				{/* <ListDesk> */}
-				{books?.map(({ _id, title, author, publishYear, pagesTotal }) => (
+				{books?.map(({ _id, title, author, publishYear, pagesTotal, pagesFinished }) => (
 					<ItemDesk key={_id}>
 						<div className="title icon" style={{ display: 'flex' }}>
 							<div style={{ marginRight: '15px' }}>
-								{/* <Flat /> */}
-								<IconFirst />
+								{location.pathname === '/training' ? <Flat /> : <CheckBox pagesFinished={pagesFinished} pagesTotal={pagesTotal}  />}
 							</div>
 							<p>{title}</p>
 						</div>
 						<div className="author">{author}</div>
 						<div className="year">{publishYear}</div>
 						<div className="page">{pagesTotal}</div>
-						{currentlyReading.length === 0 && (
+						{location.pathname === '/training' && (
 							<button
 								className={css.delButton}
 								type="button"
@@ -130,7 +136,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 						)}
 					</ItemDesk>
 				))}
-				{books.length > 0 && (
+				{books.length > 0 && location.pathname === '/training' && (
 					<Button type="button" onClick={handleAddBookPlanning}>
 						Почати тренування
 					</Button>
