@@ -8,6 +8,7 @@ import {
 } from 'ui/StatisticsPage';
 // import { useDispatch } from 'react-redux';
 // import { addFinishedPages } from '../redux/library/libraryOperation';
+
 import StatisticsTablet from './StatisticsTablet';
 const Statistics = () => {
 	// const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const Statistics = () => {
 	// 	pages: 1,
 	// };
 
-	// const handleAddResults = () => {
+	// const handleAddResults = pages => {
 	// 	dispatch(addFinishedPages(pages));
 	// };
 	return (
@@ -33,7 +34,7 @@ const Statistics = () => {
 			</StatCommonContainer>
 			<StatisticsButton
 				type="button"
-				// onClick={handleAddResults}
+				// onClick={handleAddResults(pages)}
 			>
 				Додати результат
 			</StatisticsButton>
