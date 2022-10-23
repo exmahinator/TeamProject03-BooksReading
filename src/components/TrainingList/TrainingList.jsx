@@ -97,7 +97,6 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 				</ListMob>
 			</Wrapper>
 
-
 {/* desk */}
 			<ListDesk>
 				<Title className="title__wrapper">
