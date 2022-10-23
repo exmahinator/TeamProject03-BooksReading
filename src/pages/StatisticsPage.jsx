@@ -3,7 +3,7 @@ import Statistics from 'components/Statistics/Statistics';
 import LineChart from 'components/Chart/Chart';
 import { Section, Container } from 'ui/BasicStyles';
 import {
-	StatPagesContainer,
+	StatisticsContainerCommon,
 } from 'ui/StatisticsPage';
 import { useSelector } from 'react-redux';
 import {
