@@ -7,6 +7,7 @@ import { ReactComponent as Home } from '../../ui/Header/image/home.svg';
 import { ReactComponent as Line } from '../../ui/Header/image/line.svg';
 import { logOut } from 'redux/auth/authOperation';
 import { getUserName, getAccessToken } from 'redux/auth/authSelector';
+import { getCurrentlyReading } from "../../redux/library/librarySelector";
 import {
 	LogoutButton,
 	HeaderContainer,
@@ -25,6 +26,7 @@ const Header = () => {
 	const userName = useSelector(getUserName);
 	const accessToken = useSelector(getAccessToken);
 	const isLoggedIn = useSelector(getIsLoggedIn);
+	const currentlyReading = useSelector(getCurrentlyReading)
 	const isMobile = useMediaQuery({
 		query: '(max-width: 768px)',
 	});
@@ -42,6 +44,8 @@ const Header = () => {
 					</IncideContainer>
 					<IncideContainer>
 						<LinkBook to="/training">
+{/* Залишити! Це логіка для переходу на сторінку статистики, якщо тренування розпочали! */}
+		{/* {currentlyReading?"/statistics":"/training"} */}
 							<Book />
 						</LinkBook>
 						<LinkHome to="/library">
