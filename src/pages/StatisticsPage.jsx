@@ -7,27 +7,29 @@ import {
 	StatPagesContainer,
 } from 'ui/StatisticsPage';
 import { useSelector } from 'react-redux';
-import { getCurrentlyReading, getFinishedReading } from "../redux/library/librarySelector";
+import {
+	getCurrentlyReading,
+	getFinishedReading,
+} from '../redux/library/librarySelector';
 import TrainingList from 'components/TrainingList';
 
 export const StatisticsPage = () => {
 	const currentlyReading = useSelector(getCurrentlyReading);
 	const finishedReading = useSelector(getFinishedReading);
 
-	
-
 	return (
 		<Section>
 			<Container>
+				<TimerBlock />
+				<TrainingList
+					books={[...currentlyReading, ...finishedReading]}
+					// startDate={startDate}
+					// endDate={endDate}
+					// booksDelete={hanleDelete}
+				/>
+				<LineChart />
+
 				<StatisticsContainerCommon>
-					<TimerBlock />
-					<TrainingList
-				books={[...currentlyReading, ...finishedReading]}
-				// startDate={startDate}
-				// endDate={endDate}
-				// booksDelete={hanleDelete}
-			/>
-					<LineChart/>
 					<StatPagesContainer>
 						<Statistics />
 					</StatPagesContainer>

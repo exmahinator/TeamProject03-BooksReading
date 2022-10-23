@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const TimerMain = styled.div`
 	/* max-width: 450px; */
 	text-align: center;
+	justify-content: center;
 	/* margin: 0 auto; */
 
 	@media screen and (min-width: 768px) {
