@@ -11,8 +11,7 @@ import {
 	TimerTime,
 	TimerText,
 } from 'ui/TimerBlock';
-// import { ReactDOM } from 'react';
-// import * as ReactDOM from 'https://cdn.skypack.dev/react-dom@17.0.1';
+import css from './TimerBlock.module.css';
 import { useSelector } from 'react-redux';
 import { getEndDate } from 'redux/library/librarySelector';
 
@@ -25,7 +24,7 @@ const TimerBlock = () => {
 				{/* блок "До кінця року залишилось" -----> */}
 				<div>
 					<TimerHeader>До закінчення року залишилось</TimerHeader>
-					<TimerStyle>
+					<TimerStyle className={css.mRight}>
 						<TimerContainer>
 							<Timer endDate={'December, 31, 2022'} />
 						</TimerContainer>
@@ -47,7 +46,7 @@ const TimerBlock = () => {
 	);
 };
 
-const Timer = ({endDate}) => {
+const Timer = ({ endDate }) => {
 	const [days, setDays] = React.useState(0);
 	const [hours, setHours] = React.useState(0);
 	const [minutes, setMinutes] = React.useState(0);
@@ -72,7 +71,7 @@ const Timer = ({endDate}) => {
 	}, []);
 
 	return (
-		<TimerCounter role="timer">
+		<TimerCounter className={css.lastChild} role="timer">
 			<TimerCol>
 				<TimerBox>
 					<TimerTime id="day">{days < 10 ? '0' + days : days}</TimerTime>

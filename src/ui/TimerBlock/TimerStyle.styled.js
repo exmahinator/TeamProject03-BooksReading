@@ -7,7 +7,9 @@ const TimerStyle = styled.div`
 	margin: 0 0 24px 0;
 
 	@media screen and (min-width: 768px) {
+		
 	}
+
 	@media screen and (min-width: 1280px) {
 		width: 290px;
 	}
