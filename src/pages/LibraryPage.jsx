@@ -1,7 +1,11 @@
 import { AddBook, LibraryInfo } from 'components/Library';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getGoingToRead } from 'redux/library/librarySelector';
+import {
+	getGoingToRead,
+	getFinishedReading,
+	getCurrentlyReading,
+} from 'redux/library/librarySelector';
 import { Section, Container } from 'ui/BasicStyles';
 import {
 	LibraryContainer,
@@ -10,10 +14,11 @@ import {
 	LibraryTabletContainer,
 } from 'ui/LibraryPage';
 import LibraryFilld from '../components/Library/LibraryFilld/LibraryFilld';
-// import LibraryModal from '../components/Library/LibraryModal/LibraryModal';
 
 export const LibraryPage = () => {
 	const goingToRead = useSelector(getGoingToRead).length;
+	const finishedReading = useSelector(getFinishedReading).length;
+	const currentlyReading = useSelector(getCurrentlyReading).length;
 	const [toggle, setToggle] = useState(true);
 	const togglePage = () => {
 		setToggle(!toggle);
@@ -65,12 +70,16 @@ export const LibraryPage = () => {
 							</LibraryMobileButton>
 						</>
 					)}
-					{/* <LibraryModal /> */}
 				</LibraryContainer>
 				<LibraryTabletContainer>
 					<AddBook />
-					{goingToRead === 0 ? <LibraryInfo /> : <LibraryFilld />}
-					{/* <LibraryModal /> */}
+					{goingToRead === 0 &&
+					currentlyReading === 0 &&
+					finishedReading === 0 ? (
+						<LibraryInfo />
+					) : (
+						<LibraryFilld />
+					)}
 				</LibraryTabletContainer>
 			</Container>
 		</Section>

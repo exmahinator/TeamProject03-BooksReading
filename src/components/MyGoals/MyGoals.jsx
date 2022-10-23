@@ -1,44 +1,38 @@
 import React from 'react';
 // import { useState } from "react";
 import {
-	FormTraining,
-	FormName,
-	FormCounter,
-	FormCounterBox,
-	FormCounterNumber,
-	FormText,
-	FormNumber,
+	ProgressItem,
+	ProgressNumber,
+	ProgressText,
+	ProgressList,
+	ProgressTitle,
+	ProgressSubContainer,
+	ProgressContainer,
 } from 'ui/TrainingPage';
 
 const MyGoals = () => {
 	return (
-		<>
-			<FormTraining>
-				<FormName>
-					<p style={{ margin: '0' }}>Моя мета прочитати</p>
-				</FormName>
-				<FormCounter>
-					<FormCounterBox>
-						<FormCounterNumber>
-							<FormNumber>0</FormNumber>
-						</FormCounterNumber>
-						<FormText>Кількість книжок</FormText>
-					</FormCounterBox>
-					<FormCounterBox>
-						<FormCounterNumber>
-							<FormNumber>0</FormNumber>
-						</FormCounterNumber>
-						<FormText>Кількість днів</FormText>
-					</FormCounterBox>
-					<FormCounterBox>
-						<FormCounterNumber>
-							<FormNumber>0</FormNumber>
-						</FormCounterNumber>
-						<FormText>Залишилось книжок</FormText>
-					</FormCounterBox>
-				</FormCounter>
-			</FormTraining>
-		</>
+		<ProgressContainer>
+			<ProgressSubContainer>
+				<ProgressTitle>Моя мета прочитати</ProgressTitle>
+			</ProgressSubContainer>
+			<ProgressSubContainer>
+				<ProgressList>
+					<ProgressItem>
+						<ProgressNumber>3</ProgressNumber>
+						<ProgressText>Кількість книжок</ProgressText>
+					</ProgressItem>
+					<ProgressItem>
+						<ProgressNumber>22</ProgressNumber>
+						<ProgressText>Кількість днів</ProgressText>
+					</ProgressItem>
+					{/* <ProgressItem>
+						<ProgressNumber>1</ProgressNumber>
+						<ProgressText>Залишилось книжок</ProgressText>
+					</ProgressItem> */}
+				</ProgressList>
+			</ProgressSubContainer>
+		</ProgressContainer>
 	);
 };
 
