@@ -9,10 +9,8 @@ const TimerContainer = styled.div`
 	@media screen and (min-width: 768px) {
 	}
 	@media screen and (min-width: 1280px) {
-	 display: inline-flex;
-	 
+		display: inline-flex;
 	}
-
 `;
 
 export default TimerContainer;
