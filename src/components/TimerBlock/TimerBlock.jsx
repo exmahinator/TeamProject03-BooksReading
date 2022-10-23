@@ -13,8 +13,12 @@ import {
 } from 'ui/TimerBlock';
 // import { ReactDOM } from 'react';
 // import * as ReactDOM from 'https://cdn.skypack.dev/react-dom@17.0.1';
+import { useSelector } from 'react-redux';
+import { getEndDate } from 'redux/library/librarySelector';
 
 const TimerBlock = () => {
+	const endDate = useSelector(getEndDate);
+	// console.log(endDate);
 	return (
 		<>
 			<TimerMain>
@@ -23,17 +27,17 @@ const TimerBlock = () => {
 					<TimerHeader>До закінчення року залишилось</TimerHeader>
 					<TimerStyle>
 						<TimerContainer>
-							<Timer />
+							<Timer endDate={'December, 31, 2022'} />
 						</TimerContainer>
 					</TimerStyle>
 				</div>
 
 				{/* блок "До досягнення мети залишилось" -----> */}
-					<div>
+				<div>
 					<TimerHeader>До досягнення мети залишилось</TimerHeader>
 					<TimerStyle>
 						<TimerContainer>
-							<Timer />
+							<Timer endDate={endDate} />
 						</TimerContainer>
 					</TimerStyle>
 				</div>
@@ -43,13 +47,14 @@ const TimerBlock = () => {
 	);
 };
 
-const Timer = () => {
+const Timer = ({endDate}) => {
 	const [days, setDays] = React.useState(0);
 	const [hours, setHours] = React.useState(0);
 	const [minutes, setMinutes] = React.useState(0);
 	const [seconds, setSeconds] = React.useState(0);
 
-	const deadline = 'December, 31, 2022';
+	// const deadline = 'December, 31, 2022';
+	const deadline = endDate;
 
 	const getTime = () => {
 		const time = Date.parse(deadline) - Date.now();

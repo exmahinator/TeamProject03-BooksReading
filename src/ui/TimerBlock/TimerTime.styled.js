@@ -25,17 +25,25 @@ const TimerTime = styled.div`
 		font-size: 14px;
 	}
 
-	::after {
+	/* ::after {
 		content: ':';
 		position: absolute;
 		right: -4px;
-	}
+	} */
 
-	:last-child {
+	:not(:last-child) {
+    :after {
+		content: ':';
+		position: absolute;
+		right: -4px;
+    }
+}
+
+	/* :last-child {
 		content: '';
 		/* position: absolute;
 		right: -15px; */
-	}
+
 
 	@media screen and (min-width: 768px) {
 	}
