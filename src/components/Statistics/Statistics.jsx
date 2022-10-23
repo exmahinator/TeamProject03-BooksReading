@@ -7,20 +7,24 @@ import {
 	StatPagesContainer,
 	StatSubContainerTable,
 } from 'ui/StatisticsPage';
-// import { useDispatch } from 'react-redux';
-// import { addFinishedPages } from '../redux/library/libraryOperation';
+import { useDispatch } from 'react-redux';
+import { addFinishedPages } from '../../redux/library/libraryOperation';
 
 import StatisticsTablet from './StatisticsTablet';
+import { useState } from 'react';
 const Statistics = () => {
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
+	const [pages, setPages] = useState('');
 
-	// const pages = {
-	// 	pages: 1,
-	// };
+	const handleChangePage = evt => {
+		setPages(Number(evt.target.value));
+	};
 
-	// const handleAddResults = pages => {
-	// 	dispatch(addFinishedPages(pages));
-	// };
+	const handleAddResults = pages => {
+		dispatch(addFinishedPages(pages));
+		setPages('');
+	};
+
 	return (
 		<StatPagesContainer>
 			<StatSubContainerTable>

@@ -6,8 +6,12 @@ export { default as ProgressTitle } from './ProgressTitle.styled';
 export { default as ProgressSubContainer } from './ProgressSubContainer.styled';
 export { default as ProgressContainer } from './ProgressContainer.styled';
 
+export { default as Wrapper } from './Wrapper.styled';
+export { default as FlatWrapper } from './FlatWrapper.styled';
 export { default as ListMob } from './ListMob.styled';
 export { default as ListDesk } from './ListDesk.styled';
 export { default as Title } from './Title.styled';
 export { default as ItemMob } from './ItemMob.styled';
 export { default as Button } from './Button.styled';
+export { default as DeleteIcon } from './DeleteIcon.styled';
+export { default as ItemDesk } from './ItemDesk.styled';

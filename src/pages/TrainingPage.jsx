@@ -27,7 +27,6 @@ export const TrainingPage = () => {
 				<MyGoals />
 				<NavLink to="/statistics">Statistics</NavLink>
 				<MyTraining />
-				{/* <TrainingList /> */}
 				<LineChart />
 			</Container>
 		</Section>
