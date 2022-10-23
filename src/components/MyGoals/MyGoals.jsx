@@ -15,7 +15,7 @@ const MyGoals = () => {
 		<>
 			<FormTraining>
 				<FormName>
-					<p>Моя мета прочитати</p>
+					<p style={{ margin: '0' }}>Моя мета прочитати</p>
 				</FormName>
 				<FormCounter>
 					<FormCounterBox>
@@ -29,6 +29,12 @@ const MyGoals = () => {
 							<FormNumber>0</FormNumber>
 						</FormCounterNumber>
 						<FormText>Кількість днів</FormText>
+					</FormCounterBox>
+					<FormCounterBox>
+						<FormCounterNumber>
+							<FormNumber>0</FormNumber>
+						</FormCounterNumber>
+						<FormText>Залишилось книжок</FormText>
 					</FormCounterBox>
 				</FormCounter>
 			</FormTraining>

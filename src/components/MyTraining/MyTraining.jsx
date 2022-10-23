@@ -6,135 +6,138 @@ import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import {useState} from 'react';
-import { useDispatch } from 'react-redux';
-import {Wrapper, Title, BoxForm, Button} from './MyTraining.styled';
+import { useState } from 'react';
+import {useSelector } from 'react-redux';
+import Notiflix from 'notiflix';
+// import {getIsLoggedIn} from '../../redux/selectors';
+// import { addBookPlanning } from '../../redux/library/libraryOperation';
+import { getGoingToRead } from '../../redux/library/librarySelector';
+import { Wrapper, Title, BoxForm, Button } from './MyTraining.styled';
+import TrainingList from '../TrainingList/TrainingList';
+
+// "startDate": "2022-10-20",
+//   "endDate": "2022-10-25",
+//   "books": [
+//     "635150dd3551fd60da50fed6", "507f1f77bcf86cd799439013"
+//   ]
 
 export default function MyTraining() {
+	
+	const [booksId, setBooksId] = useState([]);
+	const [start, setStart] = useState(null);
+	const [finish, setFinish] = useState(null);
+	const [startDate, setStartDate] = useState(null);
+	const [endDate, setEndDate] = useState(null);
+	const [books, setBooks] = useState([]);
 
-  const [personName, setPersonName] = useState([]);
-  const [start, setStart] = useState(null);
-  const [finish, setFinish] = useState(null);
-  const [result, setResult] = useState({});
-  console.log('result:', result);
+	// const books = useSelector(getIsLoggedIn);
 
-  const dispatch = useDispatch();
+	const ITEM_HEIGHT = 48;
+	const ITEM_PADDING_TOP = 8;
+	const MenuProps = {
+		PaperProps: {
+			style: {
+				maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+				width: 250,
+			},
+		},
+	};
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
+	const goingToRead = useSelector(getGoingToRead);
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
+	// Дата старту - готова до використання---
+	const receiveDataFromStart = newValue => {
+		setStart(newValue);
+		const startDate = `${newValue.$y}-${newValue.$M + 1}-${newValue.$D}`;
+		setStartDate(startDate);
+	};
 
-  const handleChange = (event) => {
-    // console.log(event)
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      typeof value === 'string' ? value.split(',') : value,
-    );
+	const receiveDataFromEnd = newValue => {
+		setFinish(newValue);
+		const endDate = `${newValue.$y}-${newValue.$M + 1}-${newValue.$D}`;
+		setEndDate(endDate);
+	};
+
+	const handleChange = event => {
+		const {
+			target: { value },
+		} = event;
+		setBooksId(value);
+	};
+
+	const handleSubmit = event => {
+		event.preventDefault();
+
+		const addingToTraining = goingToRead.filter(book => book._id === booksId);
+
+		if (books.some(({ _id }) => _id === addingToTraining[0]._id)) {
+			Notiflix.Notify.failure('Ця книга вже є в твоєму списку, обирай іншу...');
+			return;
+		}
+		setBooks([...books, ...addingToTraining]);
+
+		console.log(books);
+	};
+
+	const hanleDelete = id => {
+		return setBooks(books.filter(book => book._id !== id));
+	};
+
+	return (
+		<Wrapper>
+			<Title>Моє тренування</Title>
+			<BoxForm>
+				<LocalizationProvider dateAdapter={AdapterDayjs}>
+					<DatePicker
+						label="Початок"
+						value={start}
+						disablePast={true}
+						onChange={receiveDataFromStart}
+						renderInput={params => <TextField {...params} />}
+					/>
+				</LocalizationProvider>
+
+				<LocalizationProvider dateAdapter={AdapterDayjs}>
+					<DatePicker
+						label="Завершення"
+						value={finish}
+						disablePast={true}
+						onChange={receiveDataFromEnd}
+						renderInput={params => <TextField {...params} />}
+					/>
+				</LocalizationProvider>
+
+				<FormControl sx={{ width: 280 }}>
+					<Select
+						// multiple
+						displayEmpty
+						value={booksId}
+						onChange={handleChange}
+						input={<OutlinedInput />}
+						MenuProps={MenuProps}
+						inputProps={{ 'aria-label': 'Without label' }}
+					>
+						<MenuItem disabled value="">
+							<em>Обрати книги з бібліотеки</em>
+						</MenuItem>
+						{goingToRead?.map(({ _id, title, author }) => (
+							<MenuItem key={_id} value={_id}>
+								{title} ({author})
+							</MenuItem>
+						))}
+					</Select>
+
+					<Button type="button" onClick={handleSubmit}>
+						Додати
+					</Button>
+				</FormControl>
+			</BoxForm>
+			<TrainingList
+				books={books}
+				startDate={startDate}
+				endDate={endDate}
+				booksDelete={hanleDelete}
+			/>
+		</Wrapper>
+	);
 }
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-  dispatch(result({start, finish, personName}));
-  setStart(null);
-  setFinish(null);
-  setPersonName([]);
-  DatePicker.reset();
-  Select.reset();
-
-console.log("click")
-}
-
-  return (
-    <Wrapper>
-      <Title>My training</Title>
-      <BoxForm>
-     
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker
-        label="Start"
-        value={start}
-        disablePast={true}
-        onChange={(newValue) => {
-            setStart(newValue);
-        }}
-        renderInput={(params) => (
-          <TextField {...params} helperText={params?.inputProps?.placeholder} />
-        )}
-      />
-    </LocalizationProvider>
-   
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-   
-      <DatePicker
-      label="Finish"
-      value={finish}
-      disablePast={true}
-      onChange={(newValue) => {
-        setFinish(newValue);
-      }}
-      renderInput={(params) => (
-        <TextField {...params} helperText={params?.inputProps?.placeholder} />
-      )}
-    />
-    
-  </LocalizationProvider>
-
-       <FormControl sx={{ width: 280 }} onSubmit={handleSubmit}>
-      <Select
-          multiple
-          displayEmpty
-          value={personName}
-          onChange={handleChange}
-          input={<OutlinedInput />}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <em>Choose books from the library</em>;
-            }
-
-            return selected.join(', ');
-          }}
-          MenuProps={MenuProps}
-          inputProps={{ 'aria-label': 'Without label' }}
-        >
-          <MenuItem disabled value="">
-            <em>Placeholder</em>
-          </MenuItem>
-          {names.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-
-      <Button type="button" onClick={handleSubmit}>Add</Button>
-      </FormControl>
-    </BoxForm>
-    </Wrapper>
-  );
-}
-

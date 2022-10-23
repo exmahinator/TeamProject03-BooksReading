@@ -9,7 +9,6 @@ import {
 	Value,
 	LibraryButton,
 	BookTitle,
-	AddButton,
 } from 'ui/LibraryFilld';
 import { ReactComponent as Flat } from './icons/Flat.svg';
 // import { ReactComponent as Rating } from './icons/rating.svg'
@@ -89,6 +88,7 @@ function LibraryFilld() {
 			</div>
 			<div>
 				<LibraryTitle>Маю намір прочитати</LibraryTitle>
+
 				{goingToRead.map(({ title, author, publishYear, pagesTotal,_id }) => (
 					<LibraryWripperList key={_id} style={{ margin: '0 0 16px 0' }}>
 						<BookName>

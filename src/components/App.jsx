@@ -13,23 +13,22 @@ import { AuthRegistration } from '../pages/AuthRegistration';
 import PrivateRoute from './Route/PrivatePoute';
 import PublicRoute from './Route/PublicRoute';
 import { refreshUser } from 'redux/auth/authOperation';
-import { getSid } from 'redux/auth/authSelector';
+import { getSid, getIsRefreshing } from 'redux/auth/authSelector';
 import { getAccessToken } from '../redux/auth/authSelector';
 import { userBooks, getBookPlanning } from '../redux/library/libraryOperation';
 
 export const App = () => {
 	const sid = useSelector(getSid);
+	const isRefreshing = useSelector(getIsRefreshing);
+
 	const accessToken = useSelector(getAccessToken);
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(refreshUser({ sid }));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-
-		// setTimeout(() => {
-		// 	dispatch(userBooks());
-		// });
-	}, []);
+	}, [dispatch]);
 
 	useEffect(() => {
 		if (!accessToken) {
@@ -37,12 +36,13 @@ export const App = () => {
 		}
 		setTimeout(() => {
 			dispatch(userBooks());
+			// тут запит на бек, тому що в запиті userBooks не приходить currentlyReading
 			dispatch(getBookPlanning())
 		});
-	}, [accessToken]);
+	}, [accessToken, dispatch]);
 
 	return (
-		<Routes>
+          !isRefreshing && (<Routes>
 			<Route path="/" element={<Layout />}>
 				<Route index element={<Navigate to="/login" />} />
 				<Route
@@ -88,6 +88,6 @@ export const App = () => {
 
 				<Route path="*" element={<AuthLogin />} />
 			</Route>
-		</Routes>
+		</Routes>)
 	);
 };

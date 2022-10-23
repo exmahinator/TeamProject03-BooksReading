@@ -7,6 +7,7 @@ import {
 	addFinishedPages,
 } from './libraryOperation';
 import { logIn, logOut } from '../auth/authOperation';
+import { Navigate } from 'react-router-dom';
 
 const initialState = {
 	goingToRead: [],
@@ -46,12 +47,12 @@ const librarySlice = createSlice({
 			state.goingToRead.push(action.payload.newBook);
 		},
 		[addBookPlanning.fulfilled](state, action) {
-			state.currentlyReading.push(action.payload.books);
+			state.currentlyReading.push(action.payload.books[0]);
 			state.startDate = action.payload.startDate;
 			state.endDate = action.payload.endDate;
 		},
 		[getBookPlanning.fulfilled](state, action) {
-			state.currentlyReading = action.payload.planning.books;
+			state.currentlyReading = [...state.currentlyReading, ...action.payload.planning.books];
 			state.startDate = action.payload.planning.startDate;
 			state.endDate = action.payload.planning.endDate;
 			state.stats = action.payload.planning.stats;

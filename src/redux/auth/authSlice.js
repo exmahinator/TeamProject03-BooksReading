@@ -6,7 +6,7 @@ const initialState = {
 	refreshToken: null,
 	sid: null,
 	userData: {
-		name: null,
+		name: '',
 		email: '',
 		// goingToRead: [],
 		// currentlyReading: [],
@@ -50,6 +50,7 @@ const authSlice = createSlice({
 			state.refreshToken = null;
 			state.isLoggedIn = false;
 			state.userData.email = '';
+			state.userData.name = '';
 		},
 		[refreshUser.pending](state) {
 			state.isRefreshing = true;
@@ -64,6 +65,7 @@ const authSlice = createSlice({
 		[refreshUser.rejected](state) {
 			state.isRefreshing = false;
 		},
+		
 	},
 });
 
