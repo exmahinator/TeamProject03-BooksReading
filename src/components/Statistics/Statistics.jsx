@@ -6,20 +6,24 @@ import {
 	StatisticsButton,
 	StatPagesContainer,
 } from 'ui/StatisticsPage';
-// import { useDispatch } from 'react-redux';
-// import { addFinishedPages } from '../redux/library/libraryOperation';
+import { useDispatch } from 'react-redux';
+import { addFinishedPages } from '../../redux/library/libraryOperation';
 
 import StatisticsTablet from './StatisticsTablet';
+import { useState } from 'react';
 const Statistics = () => {
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
+	const [pages, setPages] = useState('');
 
-	// const pages = {
-	// 	pages: 1,
-	// };
+	const handleChangePage = evt => {
+		setPages(Number(evt.target.value));
+	};
 
-	// const handleAddResults = pages => {
-	// 	dispatch(addFinishedPages(pages));
-	// };
+	const handleAddResults = pages => {
+		dispatch(addFinishedPages(pages));
+		setPages('');
+	};
+
 	return (
 		<StatPagesContainer>
 			<StatCommonContainer>
@@ -29,13 +33,10 @@ const Statistics = () => {
 				</StatSubContainer>
 				<StatSubContainer>
 					<StatLabel htmlFor="pages">Кількість сторінок </StatLabel>
-					<StatInput id="pages" type="text" />
+					<StatInput id="pages" type="text" value={pages} onChange={handleChangePage} />
 				</StatSubContainer>
 			</StatCommonContainer>
-			<StatisticsButton
-				type="button"
-				// onClick={handleAddResults(pages)}
-			>
+			<StatisticsButton type="button" onClick={()=>handleAddResults({pages})}>
 				Додати результат
 			</StatisticsButton>
 			<StatisticsTablet />
