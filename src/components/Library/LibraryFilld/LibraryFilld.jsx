@@ -88,7 +88,8 @@ function LibraryFilld() {
 			</div>
 			<div>
 				<LibraryTitle>Маю намір прочитати</LibraryTitle>
-				{goingToRead.map(({ title, author, publishYear, pagesTotal, _id }) => (
+
+				{goingToRead.map(({ title, author, publishYear, pagesTotal,_id }) => (
 					<LibraryWripperList key={_id} style={{ margin: '0 0 16px 0' }}>
 						<BookName>
 							<div>
