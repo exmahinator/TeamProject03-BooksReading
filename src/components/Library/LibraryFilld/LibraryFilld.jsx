@@ -28,8 +28,8 @@ function LibraryFilld() {
 		<>
 			<div className="Wrapper">
 				<LibraryTitle>Прочитано</LibraryTitle>
-				{finishedReading.map(({ title, author, publishYear, pagesTotal }) => (
-					<LibraryWripperList>
+				{finishedReading.map(({ title, author, publishYear, pagesTotal, _id }) => (
+					<LibraryWripperList key={_id}>
 						<BookName>
 							<div>
 								<Flat style={{ margin: '0 12px 0 0' }} />
@@ -61,8 +61,8 @@ function LibraryFilld() {
 			</div>
 			<div>
 				<LibraryTitle>Читаю</LibraryTitle>
-				{currentlyReading.map(({ title, author, publishYear, pagesTotal }) => (
-					<LibraryWripperList style={{ margin: '0 0 16px 0' }}>
+				{currentlyReading.map(({ title, author, publishYear, pagesTotal, _id }) => (
+					<LibraryWripperList key={_id} style={{ margin: '0 0 16px 0' }}>
 						<BookName>
 							<div>
 								<Flat style={{ margin: '0 12px 0 0' }} />
@@ -89,8 +89,8 @@ function LibraryFilld() {
 			</div>
 			<div>
 				<LibraryTitle>Маю намір прочитати</LibraryTitle>
-				{goingToRead.map(({ title, author, publishYear, pagesTotal }) => (
-					<LibraryWripperList style={{ margin: '0 0 16px 0' }}>
+				{goingToRead.map(({ title, author, publishYear, pagesTotal,_id }) => (
+					<LibraryWripperList key={_id} style={{ margin: '0 0 16px 0' }}>
 						<BookName>
 							<div>
 								<Flat style={{ margin: '0 12px 0 0' }} />
