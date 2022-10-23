@@ -1,5 +1,5 @@
 @import-normalize; /* bring in normalize.css styles */
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@700&display=swap');
 
 /* <style>
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300;400;500;600&display=swap');
@@ -136,8 +136,8 @@ table {
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Abril Fatface',
-		'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-		'Droid Sans', 'Helvetica Neue', sans-serif;
+		'Open Sans' 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background-color: #f6f7fb;
