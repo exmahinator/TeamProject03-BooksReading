@@ -1,25 +1,21 @@
-import { ListMob, ListDesk, Title, ItemMob, Button } from 'ui/TrainingPage';
-import styled from 'styled-components';
+import { 
+	ListMob,
+	ListDesk,
+	Title,
+	ItemMob,
+	Button,
+	DeleteIcon,
+	Wrapper,
+	FlatWrapper,
+	ItemDesk
+} from 'ui/TrainingPage';
 import { ReactComponent as Flat } from '../../images/icons/Flat.svg';
 import { ReactComponent as Del } from '../../images/icons/delete.svg';
 import css from './TrainingList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBookPlanning } from '../../redux/library/libraryOperation';
-import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 import { getCurrentlyReading } from '../../redux/library/librarySelector';
-
-const DeleteIcon = styled.div`
-	position: absolute;
-	top: 20px;
-	right: 0;
-`;
-const Wrapper = styled.div`
-	display: block;
-
-	@media screen and (min-width: 768px) {
-		display: none;
-	}
-`;
 
 function TrainingList({ books, startDate, endDate, booksDelete }) {
 	const dispatch = useDispatch();
@@ -43,19 +39,18 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 
 	return (
 		<>
-			{/* Мобильная версия без стилей */}
 			<Wrapper>
 				<ListMob>
 					{books?.map(({ _id, title, author, publishYear, pagesTotal }) => (
 						<ItemMob key={_id}>
 							<div style={{ display: 'flex' }}>
-								<button>
-									<Flat />
-								</button>
+								<FlatWrapper>
+									<Flat/>
+								</FlatWrapper>
 								<div style={{ padding: '0 25px 0 0' }}>{title}</div>
 							</div>
 
-							<div style={{ display: 'flex', margin: '0 0 0 40px' }}>
+							<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
 								<div
 									style={{
 										margin: '0 15px 14px 0',
@@ -67,7 +62,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 								</div>
 								<div>{author}</div>
 							</div>
-							<div style={{ display: 'flex', margin: '0 0 0 40px' }}>
+							<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
 								<div
 									style={{
 										margin: '0 15px 14px 0',
@@ -79,7 +74,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 								</div>
 								<div>{publishYear}</div>
 							</div>
-							<div style={{ display: 'flex', margin: '0 0 0 40px' }}>
+							<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
 								<div
 									style={{
 										marginRight: '15px',
@@ -93,58 +88,17 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 							</div>
 
 							<DeleteIcon>
-								<Del />
+								<Del className={css.delButton}/>
 							</DeleteIcon>
 						</ItemMob>
 					))}
 
-					{/* <ItemMob>
-                <div style={{display: 'flex'}}> 
-                    <div style={{margin: '0 15px 12px 0'}}><Flat /></div>
-                    <div style={{padding: '0 25px 0 0'}}>Deadline. Роман об управлении проектами.</div>
-                </div>
-
-                <div style={{display: 'flex', margin: '0 0 0 34px',}}> 
-                    <div  style={{margin: '0 15px 14px 0', color: '#898F9F', width: '25%'}}>Автор:</div>
-                    <div>Том ДеМарко</div>
-                </div>
-                <div style={{display: 'flex', margin: '0 0 0 34px',}}> 
-                    <div style={{margin: '0 15px 14px 0', color: '#898F9F', width: '25%'}}>Рік:</div>
-                    <div>2015</div>
-                </div>
-                <div style={{display: 'flex', margin: '0 0 0 34px',}}> 
-                    <div style={{margin: '0 15px 14px 0', color: '#898F9F', width: '25%'}}>Стор.:</div>
-                    <div>100</div>
-                </div>
-
-                <DeleteIcon style={{color:'red'}}><Del /></DeleteIcon>
-            </ItemMob> */}
-
-					{/* <ItemMob>
-                <div style={{display: 'flex'}}> 
-                    <div style={{marginRight: '15px'}}><Flat /></div>
-                    <div style={{padding: '0 25px 0 0'}}>5 Пороков команды. Притчи о лидерстве.</div>
-                </div>
-
-                <div style={{display: 'flex', margin: '0 0 0 34px',}}> 
-                    <div style={{margin: '0 15px 14px 0', color: '#898F9F', width: '25%'}}>Автор:</div>
-                    <div>Том ДеМарко</div>
-                </div>
-                <div style={{display: 'flex', margin: '0 0 0 34px',}}> 
-                    <div style={{margin: '0 15px 14px 0', color: '#898F9F', width: '25%'}}>Рік:</div>
-                    <div>2015</div>
-                </div>
-                <div style={{display: 'flex', margin: '0 0 0 34px',}}> 
-                    <div style={{margin: '0 15px 14px 0', color: '#898F9F', width: '25%'}}>Стор.:</div>
-                    <div>100</div>
-                </div>
-
-                <DeleteIcon style={{color:'red'}}><Del /></DeleteIcon>
-            </ItemMob> */}
 					<Button>Почати тренування</Button>
 				</ListMob>
 			</Wrapper>
 
+
+{/* desk */}
 			<ListDesk>
 				<Title className="title__wrapper">
 					<div>Назва книги</div>
@@ -154,15 +108,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 				</Title>
 				{/* <ListDesk> */}
 				{books?.map(({ _id, title, author, publishYear, pagesTotal }) => (
-					<li
-						key={_id}
-						style={{
-							display: 'flex',
-							justifyContent: 'space-between',
-							alignItems: 'center',
-							borderBottom: '1px solid #E0E5EB',
-						}}
-					>
+					<ItemDesk key={_id}>
 						<div className="title icon" style={{ display: 'flex' }}>
 							<div style={{ marginRight: '15px' }}>
 								{/* <Flat /> */}
@@ -182,7 +128,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 								<Del className={css.svgDel} />
 							</button>
 						)}
-					</li>
+					</ItemDesk>
 				))}
 				{books.length > 0 && (
 					<Button type="button" onClick={handleAddBookPlanning}>
