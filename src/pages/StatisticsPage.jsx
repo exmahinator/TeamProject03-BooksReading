@@ -9,7 +9,7 @@ export const StatisticsPage = () => {
 	const dispatch = useDispatch();
 
 	const pages = {
-		pages: 1,
+		pages: 50,
 	};
 
 	const handleAddResults = () => {
@@ -21,7 +21,7 @@ export const StatisticsPage = () => {
 			<Container>
 				<StatisticsContainerCommon>
 					<div>Statistic</div>
-          <TimerBlock/>
+					<TimerBlock />
 					<StatisticsInput />
 					<StatisticsButton type="button" onClick={handleAddResults}>
 						Додати результат
