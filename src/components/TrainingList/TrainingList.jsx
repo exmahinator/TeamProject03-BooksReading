@@ -8,6 +8,10 @@ import {
 	Wrapper,
 	FlatWrapper,
 	ItemDesk,
+	BookName,
+	AuthorName,
+	PublishYear,
+	Pages,
 } from 'ui/TrainingPage';
 import { ReactComponent as Flat } from '../../images/icons/Flat.svg';
 import { ReactComponent as Del } from '../../images/icons/delete.svg';
@@ -50,7 +54,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 				<ListMob>
 					{books?.map(({ _id, title, author, publishYear, pagesTotal }) => (
 						<ItemMob key={_id}>
-							<div style={{ display: 'flex' }}>
+							<div className={css.bookNameMob}>
 								<FlatWrapper>
 									<Flat />
 								</FlatWrapper>
@@ -106,24 +110,24 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 
 			{/* desk */}
 			<ListDesk>
-				<Title className="title__wrapper">
-					<div>Назва книги</div>
-					<div>Автор</div>
-					<div>Рік</div>
-					<div>Стор.</div>
+				<Title>
+					<BookName>Назва книги</BookName>
+					<AuthorName>Автор</AuthorName>
+					<PublishYear>Рік</PublishYear>
+					<Pages>Стор.</Pages>
 				</Title>
 				{/* <ListDesk> */}
 				{books?.map(({ _id, title, author, publishYear, pagesTotal, pagesFinished }) => (
 					<ItemDesk key={_id}>
-						<div className="title icon" style={{ display: 'flex' }}>
+						<BookName className={css.bookName}>
 							<div style={{ marginRight: '15px' }}>
 								{location.pathname === '/training' ? <Flat /> : <CheckBox pagesFinished={pagesFinished} pagesTotal={pagesTotal}  />}
 							</div>
 							<p>{title}</p>
-						</div>
-						<div className="author">{author}</div>
-						<div className="year">{publishYear}</div>
-						<div className="page">{pagesTotal}</div>
+						</BookName>
+						<AuthorName>{author}</AuthorName>
+						<PublishYear>{publishYear}</PublishYear>
+						<Pages>{pagesTotal}</Pages>
 						{location.pathname === '/training' && (
 							<button
 								className={css.delButton}
