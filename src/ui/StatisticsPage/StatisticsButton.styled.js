@@ -17,6 +17,11 @@ const StatisticsButton = styled.button`
 	color: #ffffff;
 	margin-top: 28px;
 	margin-bottom: 24px;
+	@media screen and (min-width: 768px) {
+		margin-bottom: 0;
+		margin-top: 0;
+		height: 42px;
+	}
 `;
 
 export default StatisticsButton;
