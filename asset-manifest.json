@@ -1,22 +1,27 @@
 {
   "files": {
-    "main.css": "/BOOKS-READING/static/css/main.21f17dc2.css",
-    "main.js": "/BOOKS-READING/static/js/main.edcf5ced.js",
+    "main.css": "/BOOKS-READING/static/css/main.bac07828.css",
+    "main.js": "/BOOKS-READING/static/js/main.3c9ac860.js",
     "static/media/imgDesktop.jpg": "/BOOKS-READING/static/media/imgDesktop.effa0dcc8122d8ad1695.jpg",
     "static/media/imgTablet.jpg": "/BOOKS-READING/static/media/imgTablet.4c4cec88bed8ecc6bebf.jpg",
+    "static/media/google-icon.svg": "/BOOKS-READING/static/media/google-icon.bd05d64077c444bcdd93ba8d3964951e.svg",
     "static/media/imgPhone.jpg": "/BOOKS-READING/static/media/imgPhone.77038ae03af4f53fad7a.jpg",
     "static/media/Flat.svg": "/BOOKS-READING/static/media/Flat.f8b078362c41adf663e6586e8f0dec97.svg",
     "static/media/book.svg": "/BOOKS-READING/static/media/book.ed544401f0a12e7921fb02fd86f99d19.svg",
     "index.html": "/BOOKS-READING/index.html",
+    "static/media/GreyBook.svg": "/BOOKS-READING/static/media/GreyBook.400d5214daac650c59df6ee28b1b12c2.svg",
+    "static/media/OrangeBook.svg": "/BOOKS-READING/static/media/OrangeBook.66088834ad16bc76285a68b1f5bdaf26.svg",
+    "static/media/checkboxChecked.svg": "/BOOKS-READING/static/media/checkboxChecked.39f2b286cb569e5e14e2ae1721dac6a1.svg",
     "static/media/Arrow.svg": "/BOOKS-READING/static/media/Arrow.3158c564816e324e859d08b2c56f5594.svg",
-    "static/media/delete.svg": "/BOOKS-READING/static/media/delete.5c75aeaa325fafd53a2d53563d15c63c.svg",
+    "static/media/delete.svg": "/BOOKS-READING/static/media/delete.c22faa4084edc81f09101acf9bf177a5.svg",
     "static/media/home.svg": "/BOOKS-READING/static/media/home.b3cc0a6a4d8a1f2461a5a0058dafff68.svg",
+    "static/media/checkboxDisabled.svg": "/BOOKS-READING/static/media/checkboxDisabled.531e3adb386208b7ab7da4def4e32561.svg",
     "static/media/line.svg": "/BOOKS-READING/static/media/line.0b447d5c5db6f1cb96771cd843fa3733.svg",
-    "main.21f17dc2.css.map": "/BOOKS-READING/static/css/main.21f17dc2.css.map",
-    "main.edcf5ced.js.map": "/BOOKS-READING/static/js/main.edcf5ced.js.map"
+    "main.bac07828.css.map": "/BOOKS-READING/static/css/main.bac07828.css.map",
+    "main.3c9ac860.js.map": "/BOOKS-READING/static/js/main.3c9ac860.js.map"
   },
   "entrypoints": [
-    "static/css/main.21f17dc2.css",
-    "static/js/main.edcf5ced.js"
+    "static/css/main.bac07828.css",
+    "static/js/main.3c9ac860.js"
   ]
 }
