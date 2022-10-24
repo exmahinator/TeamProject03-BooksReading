@@ -13,6 +13,7 @@ import { addFinishedPages } from '../../redux/library/libraryOperation';
 
 import StatisticsTablet from './StatisticsTablet';
 import { useState } from 'react';
+import { DatePicker } from '@mui/x-date-pickers';
 const Statistics = () => {
 	const dispatch = useDispatch();
 	const [pages, setPages] = useState('');
@@ -33,7 +34,7 @@ const Statistics = () => {
 				<StatCommonContainer>
 					<StatSubContainer>
 						<StatLabel htmlFor="data">Дата</StatLabel>
-						<StatInput id="data" type="text" />
+						<StatInput id="data" type="text" defaultValue={new Date().toLocaleDateString()} />
 					</StatSubContainer>
 					<StatSubContainer>
 						<StatLabel htmlFor="pages">Кількість сторінок </StatLabel>

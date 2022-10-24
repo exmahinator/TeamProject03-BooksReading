@@ -7,7 +7,7 @@ export const userBooks = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
 			const { data } = await axios.get('user/books');
-			console.log('userBooks', data)
+			// console.log('userBooks', data)
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);
@@ -33,7 +33,7 @@ export const addBookPlanning = createAsyncThunk(
 	async (planningData, thunkAPI) => {
 		try {
 			const { data } = await axios.post('/planning', planningData);
-			console.log('data:', data);
+			// console.log('data:', data);
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);
@@ -46,7 +46,7 @@ export const getBookPlanning = createAsyncThunk(
     async (_, thunkAPI) => {
 		try {
 			const { data } = await axios.get('/planning');
-			console.log('getBookPlanning:', data);
+			// console.log('getBookPlanning:', data);
 			return data;
 		} catch (error) {
 		console.log(error.message)

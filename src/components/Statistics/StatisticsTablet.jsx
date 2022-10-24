@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import {
 	StatisticsTabletText,
 	StatisticsContainerTablet,
@@ -6,31 +7,37 @@ import {
 	StatTableTime,
 	StatTableTextPage,
 } from 'ui/StatisticsPage';
+import { getStats } from '../../redux/library/librarySelector';
+import { nanoid } from 'nanoid'
 
 const StatisticsTablet = () => {
+	const stats = useSelector(getStats);
+
+	const dateAndTime = stats.map(({ time, pagesCount }) => {
+		const splitDateAndTime = time.split(' ');
+
+		return {
+			date: new Date(splitDateAndTime[0]),
+			time: splitDateAndTime[1],
+			page: pagesCount,
+		};
+	});
+
 	return (
 		<StatisticsContainerTablet>
 			<StatisticsTabletText>Статистика</StatisticsTabletText>
 			<StatTable>
 				<tbody>
-				<tr>
-					<StatTableDate>10.10.2019</StatTableDate>
-					<StatTableTime>08:10:23</StatTableTime>
-					<StatTableDate>
-						30 <StatTableTextPage>стор.</StatTableTextPage>
-					</StatTableDate>
-				</tr>
-				<tr>
-					<td>12.10.2019</td>
-					<td>08:10:23</td>
-					<td>30стр</td>
-				</tr>
-				<tr>
-					<td>12.10.2019</td>
-					<td>08:10:23</td>
-					<td>30 стр</td>
-					</tr>
-					</tbody>
+					{dateAndTime.map(({ date, time, page }) => (
+						<tr key={nanoid()}>
+							<StatTableDate>{date.toLocaleDateString()}</StatTableDate>
+							<StatTableTime>{time}</StatTableTime>
+							<StatTableDate>
+								{page} <StatTableTextPage>стор.</StatTableTextPage>
+							</StatTableDate>
+						</tr>
+					))}
+				</tbody>
 			</StatTable>
 		</StatisticsContainerTablet>
 	);
