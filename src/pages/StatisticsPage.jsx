@@ -1,32 +1,32 @@
 import TimerBlock from 'components/TimerBlock/TimerBlock';
-import StatisticsTablet from 'components/Statistics/StatisticsTablet';
-import StatisticsInput from 'components/Statistics/StatisticsInput';
-import { useDispatch } from 'react-redux';
+import Statistics from 'components/Statistics/Statistics';
+import LineChart from 'components/Chart/Chart';
 import { Section, Container } from 'ui/BasicStyles';
-import { addFinishedPages } from '../redux/library/libraryOperation';
-import { StatisticsButton, StatisticsContainerCommon } from 'ui/StatisticsPage';
+import { StatisticsContainerCommon } from 'ui/StatisticsPage';
+import { useSelector } from 'react-redux';
+import {
+	getCurrentlyReading,
+	getFinishedReading,
+} from '../redux/library/librarySelector';
+import TrainingList from 'components/TrainingList';
+
 export const StatisticsPage = () => {
-	const dispatch = useDispatch();
-
-	const pages = {
-		pages: 50,
-	};
-
-	const handleAddResults = () => {
-		dispatch(addFinishedPages(pages));
-	};
+	const currentlyReading = useSelector(getCurrentlyReading);
+	const finishedReading = useSelector(getFinishedReading);
 
 	return (
 		<Section>
 			<Container>
+				<TimerBlock />
+				<TrainingList
+					books={[...currentlyReading, ...finishedReading]}
+					// startDate={startDate}
+					// endDate={endDate}
+					// booksDelete={hanleDelete}
+				/>
+				<LineChart />
 				<StatisticsContainerCommon>
-					<div>Statistic</div>
-					<TimerBlock />
-					<StatisticsInput />
-					<StatisticsButton type="button" onClick={handleAddResults}>
-						Додати результат
-					</StatisticsButton>
-					<StatisticsTablet />
+					<Statistics />
 				</StatisticsContainerCommon>
 			</Container>
 		</Section>

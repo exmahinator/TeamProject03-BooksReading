@@ -7,3 +7,4 @@ export { default as TimerText } from './TimerText.styled';
 export { default as TimerTime } from './TimerTime.styled';
 export { default as TimerBox } from './TimerBox.styled';
 export { default as TimerMain } from './TimerMain.styled';
+
