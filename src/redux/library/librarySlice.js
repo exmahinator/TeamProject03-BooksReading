@@ -6,7 +6,7 @@ import {
 	getBookPlanning,
 	addFinishedPages,
 } from './libraryOperation';
-import { logIn, logOut } from '../auth/authOperation';
+import { logIn, logOut, loginWithGoogle } from '../auth/authOperation';
 import { Navigate } from 'react-router-dom';
 
 const initialState = {
@@ -59,8 +59,14 @@ const librarySlice = createSlice({
 			state.endDate = action.payload.planning.endDate;
 			state.stats = action.payload.planning.stats;
 		},
+
 		[addFinishedPages.fulfilled](state, action) {
 			state.stats = action.payload.planning.stats;
+		},
+		[loginWithGoogle.fulfilled](state, action) {
+			state.goingToRead = action.payload.data.goingToRead;
+			state.currentlyReading = action.payload.data.currentlyReading;
+			state.finishedReading = action.payload.data.finishedReading;
 		},
 	},
 });

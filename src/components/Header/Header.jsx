@@ -21,12 +21,12 @@ import {
 	UserName,
 	LineStyle,
 } from 'ui/Header';
-import Modal from 'components/Modal/ModalLogout';
-import { ModalLogoutText } from 'ui/ModalLogout/Modal.styled';
-import { ButtonExit } from 'ui/ModalLogout/Modal.styled';
-import { ButtonLogout } from 'ui/ModalLogout/Modal.styled';
-import { ButtonConteiner } from 'ui/ModalLogout/Modal.styled';
-import { ModalConteiner } from 'ui/ModalLogout/Modal.styled';
+import Modal from 'components/Modal/Modal';
+import { ModalLogoutText } from 'ui/Modal/Modal.styled';
+import { ButtonExit } from 'ui/Modal/Modal.styled';
+import { ButtonLogout } from 'ui/Modal/Modal.styled';
+import { ButtonConteiner } from 'ui/Modal/Modal.styled';
+import { ModalConteiner } from 'ui/Modal/Modal.styled';
 
 const Header = () => {
 	const [isModal, setIsModal] = useState(false);

@@ -1,6 +1,7 @@
 import axios from 'config';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { setAuthHeader } from 'config';
 
 export const userBooks = createAsyncThunk(
     'book/userBooks',
@@ -49,7 +50,8 @@ export const getBookPlanning = createAsyncThunk(
 			// console.log('getBookPlanning:', data);
 			return data;
 		} catch (error) {
-			return thunkAPI.rejectWithValue(error.message);
+			return console.log(error.message);
+			// return thunkAPI.rejectWithValue(error.message);
 		}
 	}
 )

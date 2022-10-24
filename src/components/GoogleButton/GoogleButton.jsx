@@ -1,12 +1,8 @@
-import { useDispatch } from "react-redux";
+import { LoginButtonGoogle } from "ui/AuthPage";
+import {ReactComponent as GoogleIcon} from'../../ui/AuthPage/Image/google-icon.svg'
 
-import { loginWithGoogle } from 'redux/auth/authOperation';
-
-const GoogleButton = ({setMarkup}) => {
-    const dispatch = useDispatch();
-    return (
-        <button type="button" onClick={()=>{dispatch(loginWithGoogle(setMarkup))}}>Google</button>
-    )
+const GoogleButton = ({ setMarkup }) => {
+	return <LoginButtonGoogle href="https://bookread-backend.goit.global/auth/google"><GoogleIcon style={{marginRight: '17'}}/>Google</LoginButtonGoogle>;
 };
 
 export default GoogleButton;
