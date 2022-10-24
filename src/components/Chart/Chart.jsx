@@ -69,9 +69,6 @@ export default function LineChart() {
 	const startDate = useSelector(getStartDate);
 	const endDate = useSelector(getEndDate);
 	const pagesPerDay = useSelector(getPagesPerDay);
-
-    
-
 	
 	const calcDays = (startDate, endDate) => {
 		const time = Date.parse(endDate) - Date.parse(startDate);
