@@ -205,7 +205,7 @@ function LibraryFilld() {
 						</LibraryBooklistTabletArticle> */}
 					</LibraryBooklistContainer>
 				)}
-				{currentlyReading > 0 && (
+				{currentlyReading.length > 0 && (
 					<LibraryBooklistContainer>
 						<LibraryBooklistTitle>Читаю</LibraryBooklistTitle>
 						<LibraryBooklistTabletHeader>
@@ -338,27 +338,33 @@ function LibraryFilld() {
 								return (
 									<LibraryBooklistSubContainer key={_id}>
 										<LibraryBooklistTable>
-											<LibraryBooklistRow>
-												<LibraryBooklistNameCell colspan="2">
-													{title}
-												</LibraryBooklistNameCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Автор:</LibraryBooklistCell>
-												<LibraryBooklistCell>{author}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Рік:</LibraryBooklistCell>
-												<LibraryBooklistCell>{publishYear}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Стор.:</LibraryBooklistCell>
-												<LibraryBooklistCell>{pagesTotal}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Рейтинг:</LibraryBooklistCell>
-												<LibraryBooklistCell>* * * * *</LibraryBooklistCell>
-											</LibraryBooklistRow>
+											<tbody>
+												<LibraryBooklistRow>
+													<LibraryBooklistNameCell colspan="2">
+														{title}
+													</LibraryBooklistNameCell>
+												</LibraryBooklistRow>
+												<LibraryBooklistRow>
+													<LibraryBooklistCell>Автор:</LibraryBooklistCell>
+													<LibraryBooklistCell>{author}</LibraryBooklistCell>
+												</LibraryBooklistRow>
+												<LibraryBooklistRow>
+													<LibraryBooklistCell>Рік:</LibraryBooklistCell>
+													<LibraryBooklistCell>
+														{publishYear}
+													</LibraryBooklistCell>
+												</LibraryBooklistRow>
+												<LibraryBooklistRow>
+													<LibraryBooklistCell>Стор.:</LibraryBooklistCell>
+													<LibraryBooklistCell>
+														{pagesTotal}
+													</LibraryBooklistCell>
+												</LibraryBooklistRow>
+												<LibraryBooklistRow>
+													<LibraryBooklistCell>Рейтинг:</LibraryBooklistCell>
+													<LibraryBooklistCell>* * * * *</LibraryBooklistCell>
+												</LibraryBooklistRow>
+											</tbody>
 										</LibraryBooklistTable>
 										<LibraryBooklistButton type="button">
 											Резюме
@@ -377,23 +383,29 @@ function LibraryFilld() {
 								return (
 									<LibraryBooklistSubContainer key={_id}>
 										<LibraryBooklistTable>
-											<LibraryBooklistRow>
-												<LibraryBooklistNameCell orange colspan="2">
-													{title}
-												</LibraryBooklistNameCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Автор:</LibraryBooklistCell>
-												<LibraryBooklistCell>{author}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Рік:</LibraryBooklistCell>
-												<LibraryBooklistCell>{publishYear}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Стор.:</LibraryBooklistCell>
-												<LibraryBooklistCell>{pagesTotal}</LibraryBooklistCell>
-											</LibraryBooklistRow>
+											<tbody>
+												<LibraryBooklistRow>
+													<LibraryBooklistNameCell orange colspan="2">
+														{title}
+													</LibraryBooklistNameCell>
+												</LibraryBooklistRow>
+												<LibraryBooklistRow>
+													<LibraryBooklistCell>Автор:</LibraryBooklistCell>
+													<LibraryBooklistCell>{author}</LibraryBooklistCell>
+												</LibraryBooklistRow>
+												<LibraryBooklistRow>
+													<LibraryBooklistCell>Рік:</LibraryBooklistCell>
+													<LibraryBooklistCell>
+														{publishYear}
+													</LibraryBooklistCell>
+												</LibraryBooklistRow>
+												<LibraryBooklistRow>
+													<LibraryBooklistCell>Стор.:</LibraryBooklistCell>
+													<LibraryBooklistCell>
+														{pagesTotal}
+													</LibraryBooklistCell>
+												</LibraryBooklistRow>
+											</tbody>
 										</LibraryBooklistTable>
 									</LibraryBooklistSubContainer>
 								);
@@ -409,23 +421,29 @@ function LibraryFilld() {
 								return (
 									<LibraryBooklistSubContainer key={_id}>
 										<LibraryBooklistTable>
-											<LibraryBooklistRow>
-												<LibraryBooklistNameCell colspan="2">
-													{title}
-												</LibraryBooklistNameCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Автор:</LibraryBooklistCell>
-												<LibraryBooklistCell>{author}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Рік:</LibraryBooklistCell>
-												<LibraryBooklistCell>{publishYear}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Стор.:</LibraryBooklistCell>
-												<LibraryBooklistCell>{pagesTotal}</LibraryBooklistCell>
-											</LibraryBooklistRow>
+											<tbody>
+												<LibraryBooklistRow>
+													<LibraryBooklistNameCell colspan="2">
+														{title}
+													</LibraryBooklistNameCell>
+												</LibraryBooklistRow>
+												<LibraryBooklistRow>
+													<LibraryBooklistCell>Автор:</LibraryBooklistCell>
+													<LibraryBooklistCell>{author}</LibraryBooklistCell>
+												</LibraryBooklistRow>
+												<LibraryBooklistRow>
+													<LibraryBooklistCell>Рік:</LibraryBooklistCell>
+													<LibraryBooklistCell>
+														{publishYear}
+													</LibraryBooklistCell>
+												</LibraryBooklistRow>
+												<LibraryBooklistRow>
+													<LibraryBooklistCell>Стор.:</LibraryBooklistCell>
+													<LibraryBooklistCell>
+														{pagesTotal}
+													</LibraryBooklistCell>
+												</LibraryBooklistRow>
+											</tbody>
 										</LibraryBooklistTable>
 									</LibraryBooklistSubContainer>
 								);
