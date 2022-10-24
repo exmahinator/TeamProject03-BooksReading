@@ -15,9 +15,11 @@ const StatTextResolt = styled.h2`
 		margin-left: auto;
 		margin-right: auto;
 	}
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1280px) {
 		font-size: 12px;
 		line-height: 15px;
+		margin: 0;
+		margin-bottom: 12px;
 	}
 `;
 
