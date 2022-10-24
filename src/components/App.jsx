@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useSearchParams } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,34 +12,35 @@ import { StatisticsPage } from '../pages/StatisticsPage';
 import { AuthRegistration } from '../pages/AuthRegistration';
 import PrivateRoute from './Route/PrivatePoute';
 import PublicRoute from './Route/PublicRoute';
-import { refreshUser } from 'redux/auth/authOperation';
+import { refreshUser, loginWithGoogle } from 'redux/auth/authOperation';
 import { getSid, getIsRefreshing } from 'redux/auth/authSelector';
-import { getAccessToken } from '../redux/auth/authSelector';
-import { userBooks, getBookPlanning } from '../redux/library/libraryOperation';
+// import { getAccessToken } from '../redux/auth/authSelector';
+// import { userBooks, getBookPlanning } from '../redux/library/libraryOperation';
 
 export const App = () => {
+	const [searchParams] = useSearchParams();
+	const accessTokenParams = searchParams.get('accessToken');
+	const refreshTokenParams = searchParams.get('refreshToken');
+	const sidParams = searchParams.get('sid');
+	console.log();
 	const sid = useSelector(getSid);
 	const isRefreshing = useSelector(getIsRefreshing);
 
-	const accessToken = useSelector(getAccessToken);
+	// const accessToken = useSelector(getAccessToken);
 
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (accessTokenParams) {
+			dispatch(loginWithGoogle({accessTokenParams, refreshTokenParams, sidParams}))
+		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	useEffect(() => {
 		dispatch(refreshUser({ sid }));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [dispatch]);
-
-	useEffect(() => {
-		if (!accessToken) {
-			return;
-		}
-		setTimeout(() => {
-			dispatch(userBooks());
-			// тут запит на бек, тому що в запиті userBooks не приходить currentlyReading
-			dispatch(getBookPlanning())
-		});
-	}, [accessToken, dispatch]);
 
 	return (
           !isRefreshing && (<Routes>

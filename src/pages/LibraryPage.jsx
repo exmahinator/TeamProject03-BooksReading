@@ -1,6 +1,6 @@
 import { AddBook, LibraryInfo } from 'components/Library';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	getGoingToRead,
 	getFinishedReading,
@@ -14,8 +14,14 @@ import {
 	LibraryTabletContainer,
 } from 'ui/LibraryPage';
 import LibraryFilld from '../components/Library/LibraryFilld/LibraryFilld';
+import { userBooks, getBookPlanning } from '../redux/library/libraryOperation';
+import { getAccessToken } from '../redux/auth/authSelector';
+import { useEffect } from 'react';
+
 
 export const LibraryPage = () => {
+	const dispatch = useDispatch();
+	const accessToken = useSelector(getAccessToken);
 	const goingToRead = useSelector(getGoingToRead).length;
 	const finishedReading = useSelector(getFinishedReading).length;
 	const currentlyReading = useSelector(getCurrentlyReading).length;
@@ -23,6 +29,19 @@ export const LibraryPage = () => {
 	const togglePage = () => {
 		setToggle(!toggle);
 	};
+
+
+	useEffect(() => {
+		if (!accessToken) {
+			return;
+		}
+		setTimeout(() => {
+			dispatch(userBooks());
+			// тут запит на бек, тому що в запиті userBooks не приходить currentlyReading
+			dispatch(getBookPlanning())
+		});
+	}, [accessToken, dispatch]);
+
 	return (
 		<Section>
 			<Container>

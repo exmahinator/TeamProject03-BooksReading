@@ -24,9 +24,6 @@ const MyGoals = () => {
 
 	const numberOfDays = Math.floor((Date.parse(endDate) - Date.parse(startDate)) / (1000 * 60 * 60 * 24))
 
-	
-
-
 	return (
 		<ProgressContainer>
 			<ProgressSubContainer>
@@ -39,7 +36,7 @@ const MyGoals = () => {
 						<ProgressText>Кількість книжок</ProgressText>
 					</ProgressItem>
 					<ProgressItem>
-						<ProgressNumber>{numberOfDays}</ProgressNumber>
+						<ProgressNumber>{Boolean(numberOfDays) ? numberOfDays : 0 }</ProgressNumber>
 						<ProgressText>Кількість днів</ProgressText>
 					</ProgressItem>
 					{location.pathname === '/statistics' && (

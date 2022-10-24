@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Notiflix from 'notiflix';
-// import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
 	LoginContainer,
@@ -11,19 +10,26 @@ import {
 	LoginSubContainer,
 	LoginButton,
 	RegistrationContainerLink,
-	// LoginButtonGoogle,
+	LoginButtonGoogle,
 	LoginLink,
 	RegistrationTextLink,
 } from 'ui/AuthPage';
 
 import { register } from 'redux/auth/authOperation';
-import GoogleButton from './../GoogleButton/GoogleButton';
+import Modal from 'components/Modal/Modal';
+import { ReactComponent as GoogleIcon } from '../../ui/AuthPage/Image/google-icon.svg';
+import { ModalGoogleText } from 'ui/Modal/ModalGoogle.styled';
+import { ButtonConteinerGoogle } from 'ui/Modal/ModalGoogle.styled';
+import { ButtonReturn } from 'ui/Modal/ModalGoogle.styled';
+import { ModalButtonGoogle } from 'ui/Modal/ModalGoogle.styled';
+import { ModalConteinerGoogle } from 'ui/Modal/ModalGoogle.styled';
 
 const Registration = () => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [checkPassword, setCheckPassword] = useState('');
+	const [isModal, setIsModal] = useState(false);
 
 	const dispatch = useDispatch();
 
@@ -68,11 +74,34 @@ const Registration = () => {
 		setCheckPassword('');
 	};
 
+	const toogleModal = () => {
+		setIsModal(!isModal);
+	};
 	return (
 		<>
 			<LoginContainerBg>
 				<LoginContainer>
-					<GoogleButton />
+					<LoginButtonGoogle type="button" onClick={toogleModal}>
+						<GoogleIcon style={{ marginRight: '17' }} />
+						Google
+					</LoginButtonGoogle>
+
+					{isModal && (
+						<Modal toogleModal={toogleModal}>
+							<ModalConteinerGoogle>
+								<ModalGoogleText>увійти в акаунт можливо тільки якщо ви зареєстровані у додатку</ModalGoogleText>
+								<ButtonConteinerGoogle>
+									<ButtonReturn to="/register" onClick={toogleModal}>
+										Повернутись
+									</ButtonReturn>
+									<ModalButtonGoogle href="https://bookread-backend.goit.global/auth/google">
+										<GoogleIcon style={{ marginRight: '17' }} />
+										Google
+									</ModalButtonGoogle>
+								</ButtonConteinerGoogle>
+							</ModalConteinerGoogle>
+						</Modal>
+					)}
 					<LoginForm onSubmit={handelSubmit}>
 						<LoginSubContainer>
 							<LoginLabel htmlFor="name">Ім'я*</LoginLabel>

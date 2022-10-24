@@ -6,12 +6,15 @@ import {
 	StatisticsButton,
 	StatPagesContainer,
 	StatSubContainerTable,
+	StatTextResolt,
 } from 'ui/StatisticsPage';
 import { useDispatch } from 'react-redux';
 import { addFinishedPages } from '../../redux/library/libraryOperation';
 
 import StatisticsTablet from './StatisticsTablet';
 import { useState } from 'react';
+// import { DatePicker } from '@mui/x-date-pickers';
+
 const Statistics = () => {
 	const dispatch = useDispatch();
 	const [pages, setPages] = useState('');
@@ -27,20 +30,30 @@ const Statistics = () => {
 
 	return (
 		<StatPagesContainer>
+			<StatTextResolt>Результаты</StatTextResolt>
 			<StatSubContainerTable>
 				<StatCommonContainer>
 					<StatSubContainer>
 						<StatLabel htmlFor="data">Дата</StatLabel>
-						<StatInput id="data" type="text" />
+						<StatInput
+							id="data"
+							type="date"
+							defaultValue={new Date().toLocaleDateString()}
+						/>
 					</StatSubContainer>
 					<StatSubContainer>
 						<StatLabel htmlFor="pages">Кількість сторінок </StatLabel>
-						<StatInput id="pages" type="text" onChange={handleChangePage} value={pages} />
+						<StatInput
+							id="pages"
+							type="text"
+							onChange={handleChangePage}
+							value={pages}
+						/>
 					</StatSubContainer>
 				</StatCommonContainer>
 				<StatisticsButton
 					type="button"
-					onClick={()=>handleAddResults({pages})}
+					onClick={() => handleAddResults({ pages })}
 				>
 					Додати результат
 				</StatisticsButton>

@@ -10,321 +10,242 @@ import {
 	LibraryBooklistButton,
 	LibraryControlMobileSection,
 	LibraryControlTabletSection,
-	LibraryBooklistTableHead,
-	LibraryBooklistTableBody,
-	LibraryBooklistTableHeaders,
-	LibraryBooklistTabletCell,
-	LibraryBooklistTabletRow,
-	LibraryBooklistTabletText,
-	LibraryBooklistTabletHeader,
-	LibraryBooklistTabletBookname,
-	LibraryBooklistTabletInfo,
-	LibraryBooklistTabletArticle,
-	LibraryBooklistTabletAuthor,
-	LibraryBooklistTabletYear,
-	LibraryBooklistTabletPages,
-	LibraryBooklistTabletSubContainer,
-	LibraryBooklistTabletCombineContainer,
-	LibraryBooklistTabletRating,
-	LibraryBooklistTabletDoneContainer,
+	// LibraryBooklistTabletHeader,
+	// LibraryBooklistTabletBookname,
+	// LibraryBooklistTabletArticle,
+	// LibraryBooklistTabletAuthor,
+	// LibraryBooklistTabletYear,
+	// LibraryBooklistTabletPages,
+	// LibraryBooklistTabletSubContainer,
+	// LibraryBooklistTabletCombineContainer,
 	LibraryBooklistTabletButton,
+	LibraryBooklistTabletTable,
+	LibraryBooklistTabletHead,
+	LibraryBooklistTabletHeadCell,
+	LibraryBooklistTabletBody,
+	LibraryBooklistTabletBodyCell,
+	LibraryBooklistTabletRow,
 } from 'ui/LibraryFilld';
 import {
 	getGoingToRead,
 	getFinishedReading,
 	getCurrentlyReading,
 } from '../../../redux/library/librarySelector';
+import LibraryModal from '../LibraryModal/LibraryModal';
 
 function LibraryFilld() {
 	const goingToRead = useSelector(getGoingToRead);
 	const finishedReading = useSelector(getFinishedReading);
 	const currentlyReading = useSelector(getCurrentlyReading);
-	console.log(currentlyReading);
 
 	return (
 		<>
 			<LibraryControlTabletSection>
-				{/* {finishedReading.length > 0 && (
-					<LibraryBooklistContainer>
-						<LibraryBooklistTitle>Прочитано ПЛАНШЕТ</LibraryBooklistTitle>
-						{finishedReading.map(
-							({ title, author, publishYear, pagesTotal, _id }) => {
-								return (
-									<LibraryBooklistSubContainer key={_id}>
-										<LibraryBooklistTable>
-											<LibraryBooklistRow>
-												<LibraryBooklistNameCell colspan="2">
-													{title}
-												</LibraryBooklistNameCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Автор:</LibraryBooklistCell>
-												<LibraryBooklistCell>{author}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Рік:</LibraryBooklistCell>
-												<LibraryBooklistCell>{publishYear}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Стор.:</LibraryBooklistCell>
-												<LibraryBooklistCell>{pagesTotal}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Рейтинг:</LibraryBooklistCell>
-												<LibraryBooklistCell>* * * * *</LibraryBooklistCell>
-											</LibraryBooklistRow>
-										</LibraryBooklistTable>
-										<LibraryBooklistButton type="button">
-											Резюме
-										</LibraryBooklistButton>
-									</LibraryBooklistSubContainer>
-								);
-							}
-						)}
-					</LibraryBooklistContainer>
-				)}
-				{currentlyReading.length > 0 && (
-					<LibraryBooklistContainer>
-						<LibraryBooklistTitle>Читаю</LibraryBooklistTitle>
-						{currentlyReading.map(
-							({ title, author, publishYear, pagesTotal, _id }) => {
-								return (
-									<LibraryBooklistSubContainer key={_id}>
-										<LibraryBooklistTable>
-											<LibraryBooklistRow>
-												<LibraryBooklistNameCell orange colspan="2">
-													{title}
-												</LibraryBooklistNameCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Автор:</LibraryBooklistCell>
-												<LibraryBooklistCell>{author}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Рік:</LibraryBooklistCell>
-												<LibraryBooklistCell>{publishYear}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-											<LibraryBooklistRow>
-												<LibraryBooklistCell>Стор.:</LibraryBooklistCell>
-												<LibraryBooklistCell>{pagesTotal}</LibraryBooklistCell>
-											</LibraryBooklistRow>
-										</LibraryBooklistTable>
-									</LibraryBooklistSubContainer>
-								);
-							}
-						)}
-					</LibraryBooklistContainer>
-				)} */}
 				{finishedReading.length > 0 && (
-					<LibraryBooklistContainer>
-						<LibraryBooklistTitle>Прочитав</LibraryBooklistTitle>
-						<LibraryBooklistTabletHeader>
-							<LibraryBooklistTabletSubContainer noPadding>
-								<LibraryBooklistTabletDoneContainer>
-									<span>Назва книги</span>
-								</LibraryBooklistTabletDoneContainer>
-								<LibraryBooklistTabletDoneContainer shrinkedWidth>
-									<span>Автор</span>
-								</LibraryBooklistTabletDoneContainer>
-							</LibraryBooklistTabletSubContainer>
-							<LibraryBooklistTabletSubContainer noPadding>
-								<LibraryBooklistTabletCombineContainer>
-									<LibraryBooklistTabletYear>Рік</LibraryBooklistTabletYear>
-									<span>Стор.</span>
-								</LibraryBooklistTabletCombineContainer>
-								<LibraryBooklistTabletRating>
-									<span>Рейтинг</span>
-								</LibraryBooklistTabletRating>
-							</LibraryBooklistTabletSubContainer>
-						</LibraryBooklistTabletHeader>
-						{/* {goingToRead.map(
-							({ title, author, publishYear, pagesTotal, _id }) => {
-								return (
-									<LibraryBooklistTabletArticle key={_id}>
-										<LibraryBooklistTabletSubContainer bookName>
-											<LibraryBooklistTabletBookname>
-												{title}
-											</LibraryBooklistTabletBookname>
-										</LibraryBooklistTabletSubContainer>
-										<LibraryBooklistTabletSubContainer>
-											<LibraryBooklistTabletAuthor>
-												{author}
-											</LibraryBooklistTabletAuthor>
-											<LibraryBooklistTabletCombineContainer>
-												<LibraryBooklistTabletYear>
+					<LibraryBooklistContainer tabletSize>
+						<LibraryBooklistTitle tabletSize>Прочитав</LibraryBooklistTitle>
+						<LibraryBooklistTabletTable>
+							<LibraryBooklistTabletHead>
+								<tr>
+									<LibraryBooklistTabletHeadCell colspan="2">
+										Назва книги
+									</LibraryBooklistTabletHeadCell>
+									<LibraryBooklistTabletHeadCell authorPadding>
+										Автор
+									</LibraryBooklistTabletHeadCell>
+									<LibraryBooklistTabletHeadCell right yearPadding>
+										Рік
+									</LibraryBooklistTabletHeadCell>
+									<LibraryBooklistTabletHeadCell right>
+										Стор.
+									</LibraryBooklistTabletHeadCell>
+									<LibraryBooklistTabletHeadCell colspan="2" ratingPadding>
+										Рейтинг книги
+									</LibraryBooklistTabletHeadCell>
+								</tr>
+							</LibraryBooklistTabletHead>
+							<LibraryBooklistTabletBody>
+								{/* <LibraryBooklistTabletRow>
+									<LibraryBooklistTabletBodyCell
+										colspan="2"
+										booknamePadding
+										tabletBooknameWidth
+									>
+										Very very very very very very very very very very very long
+										name
+									</LibraryBooklistTabletBodyCell>
+									<LibraryBooklistTabletBodyCell authorPadding>
+										Some author
+									</LibraryBooklistTabletBodyCell>
+									<LibraryBooklistTabletBodyCell right yearPadding>
+										2000
+									</LibraryBooklistTabletBodyCell>
+									<LibraryBooklistTabletBodyCell right>
+										200
+									</LibraryBooklistTabletBodyCell>
+									<LibraryBooklistTabletBodyCell ratingPadding>
+										*****
+									</LibraryBooklistTabletBodyCell>
+									<LibraryBooklistTabletBodyCell buttonPadding>
+										<LibraryBooklistTabletButton type="button">
+											Резюме
+										</LibraryBooklistTabletButton>
+									</LibraryBooklistTabletBodyCell>
+								</LibraryBooklistTabletRow> */}
+								{finishedReading.map(
+									({ title, author, publishYear, pagesTotal, _id }) => {
+										return (
+											<LibraryBooklistTabletRow key={_id}>
+												<LibraryBooklistTabletBodyCell
+													colspan="2"
+													booknamePadding
+													tabletBooknameWidth
+												>
+													{title}
+												</LibraryBooklistTabletBodyCell>
+												<LibraryBooklistTabletBodyCell authorPadding>
+													{author}
+												</LibraryBooklistTabletBodyCell>
+												<LibraryBooklistTabletBodyCell right yearPadding>
 													{publishYear}
-												</LibraryBooklistTabletYear>
-												<LibraryBooklistTabletPages>
+												</LibraryBooklistTabletBodyCell>
+												<LibraryBooklistTabletBodyCell right>
 													{pagesTotal}
-												</LibraryBooklistTabletPages>
-											</LibraryBooklistTabletCombineContainer>
-										</LibraryBooklistTabletSubContainer>
-									</LibraryBooklistTabletArticle>
-								);
-							}
-						)} */}
-						<LibraryBooklistTabletArticle>
-							<LibraryBooklistTabletSubContainer bookDesktopName>
-								<LibraryBooklistTabletBookname>
-									Разработка ценностных предложений.
-								</LibraryBooklistTabletBookname>
-								<LibraryBooklistTabletAuthor shrinkedWidth>
-									Флекс Остервальдер, Ив Пинье
-								</LibraryBooklistTabletAuthor>
-							</LibraryBooklistTabletSubContainer>
-							<LibraryBooklistTabletSubContainer noPadding shrinkedWidth>
-								<LibraryBooklistTabletCombineContainer>
-									<LibraryBooklistTabletYear>2013</LibraryBooklistTabletYear>
-									<LibraryBooklistTabletPages>368</LibraryBooklistTabletPages>
-								</LibraryBooklistTabletCombineContainer>
-							</LibraryBooklistTabletSubContainer>
-							<LibraryBooklistTabletSubContainer noPadding shrinkedWidth>
-								<LibraryBooklistTabletRating>
-									<div> * * * * * </div>
-									<LibraryBooklistTabletButton type="button">
-										Резюме
-									</LibraryBooklistTabletButton>
-								</LibraryBooklistTabletRating>
-							</LibraryBooklistTabletSubContainer>
-						</LibraryBooklistTabletArticle>
-						{/* <LibraryBooklistTabletArticle>
-							<LibraryBooklistTabletSubContainer bookName>
-								<LibraryBooklistTabletBookname>
-									Разработка.
-								</LibraryBooklistTabletBookname>
-							</LibraryBooklistTabletSubContainer>
-							<LibraryBooklistTabletSubContainer>
-								<LibraryBooklistTabletAuthor>
-									Флекс Остервальд
-								</LibraryBooklistTabletAuthor>
-								<LibraryBooklistTabletCombineContainer>
-									<LibraryBooklistTabletYear>2013</LibraryBooklistTabletYear>
-									<LibraryBooklistTabletPages>68</LibraryBooklistTabletPages>
-								</LibraryBooklistTabletCombineContainer>
-							</LibraryBooklistTabletSubContainer>
-						</LibraryBooklistTabletArticle> */}
+												</LibraryBooklistTabletBodyCell>
+												<LibraryBooklistTabletBodyCell ratingPadding>
+													*****
+												</LibraryBooklistTabletBodyCell>
+												<LibraryBooklistTabletBodyCell buttonPadding>
+													<LibraryBooklistTabletButton type="button">
+														Резюме
+													</LibraryBooklistTabletButton>
+												</LibraryBooklistTabletBodyCell>
+											</LibraryBooklistTabletRow>
+										);
+									}
+								)}
+							</LibraryBooklistTabletBody>
+						</LibraryBooklistTabletTable>
 					</LibraryBooklistContainer>
 				)}
 				{currentlyReading.length > 0 && (
-					<LibraryBooklistContainer>
-						<LibraryBooklistTitle>Читаю</LibraryBooklistTitle>
-						<LibraryBooklistTabletHeader>
-							<LibraryBooklistTabletSubContainer noPadding>
-								<span>Назва книги</span>
-							</LibraryBooklistTabletSubContainer>
-							<LibraryBooklistTabletSubContainer leftPadding>
-								<span>Автор</span>
-								<LibraryBooklistTabletCombineContainer>
-									<LibraryBooklistTabletYear bookYear>
+					<LibraryBooklistContainer tabletSize>
+						<LibraryBooklistTitle tabletSize>Читаю</LibraryBooklistTitle>
+						<LibraryBooklistTabletTable>
+							<LibraryBooklistTabletHead>
+								<tr>
+									<LibraryBooklistTabletHeadCell colspan="2">
+										Назва книги
+									</LibraryBooklistTabletHeadCell>
+									<LibraryBooklistTabletHeadCell authorPadding>
+										Автор
+									</LibraryBooklistTabletHeadCell>
+									<LibraryBooklistTabletHeadCell right yearPadding>
 										Рік
-									</LibraryBooklistTabletYear>
-									<span>Стор.</span>
-								</LibraryBooklistTabletCombineContainer>
-							</LibraryBooklistTabletSubContainer>
-						</LibraryBooklistTabletHeader>
-						{currentlyReading.map(
-							({ title, author, publishYear, pagesTotal, _id }) => {
-								return (
-									<LibraryBooklistTabletArticle key={_id}>
-										<LibraryBooklistTabletSubContainer bookName>
-											<LibraryBooklistTabletBookname orange>
-												{title}
-											</LibraryBooklistTabletBookname>
-										</LibraryBooklistTabletSubContainer>
-										<LibraryBooklistTabletSubContainer>
-											<LibraryBooklistTabletAuthor>
-												{author}
-											</LibraryBooklistTabletAuthor>
-											<LibraryBooklistTabletCombineContainer>
-												<LibraryBooklistTabletYear>
+									</LibraryBooklistTabletHeadCell>
+									<LibraryBooklistTabletHeadCell right pagesPadding>
+										Стор.
+									</LibraryBooklistTabletHeadCell>
+								</tr>
+							</LibraryBooklistTabletHead>
+							<LibraryBooklistTabletBody>
+								{currentlyReading.map(
+									({ title, author, publishYear, pagesTotal, _id }) => {
+										return (
+											<LibraryBooklistTabletRow key={_id}>
+												<LibraryBooklistTabletBodyCell
+													colspan="2"
+													booknameFullPadding
+													tabletBooknameWidth
+													orange
+												>
+													{title}
+												</LibraryBooklistTabletBodyCell>
+												<LibraryBooklistTabletBodyCell authorPadding>
+													{author}
+												</LibraryBooklistTabletBodyCell>
+												<LibraryBooklistTabletBodyCell right yearPadding>
 													{publishYear}
-												</LibraryBooklistTabletYear>
-												<LibraryBooklistTabletPages>
+												</LibraryBooklistTabletBodyCell>
+												<LibraryBooklistTabletBodyCell right pagesPadding>
 													{pagesTotal}
-												</LibraryBooklistTabletPages>
-											</LibraryBooklistTabletCombineContainer>
-										</LibraryBooklistTabletSubContainer>
-									</LibraryBooklistTabletArticle>
-								);
-							}
-						)}
+												</LibraryBooklistTabletBodyCell>
+											</LibraryBooklistTabletRow>
+										);
+									}
+								)}
+								{/* <LibraryBooklistTabletRow>
+									<LibraryBooklistTabletBodyCell
+										colspan="2"
+										booknameFullPadding
+										tabletBooknameWidth
+										orange
+									>
+										Google
+									</LibraryBooklistTabletBodyCell>
+									<LibraryBooklistTabletBodyCell authorPadding>
+										GoogleAuthor
+									</LibraryBooklistTabletBodyCell>
+									<LibraryBooklistTabletBodyCell right yearPadding>
+										2000
+									</LibraryBooklistTabletBodyCell>
+									<LibraryBooklistTabletBodyCell right pagesPadding>
+										200
+									</LibraryBooklistTabletBodyCell>
+								</LibraryBooklistTabletRow> */}
+							</LibraryBooklistTabletBody>
+						</LibraryBooklistTabletTable>
 					</LibraryBooklistContainer>
 				)}
 				{goingToRead.length > 0 && (
-					<LibraryBooklistContainer>
-						<LibraryBooklistTitle>Маю намір прочитати</LibraryBooklistTitle>
-						<LibraryBooklistTabletHeader>
-							<LibraryBooklistTabletSubContainer noPadding bookName>
-								<span>Назва книги</span>
-							</LibraryBooklistTabletSubContainer>
-							<LibraryBooklistTabletSubContainer leftPadding>
-								<span>Автор</span>
-								<LibraryBooklistTabletCombineContainer>
-									<LibraryBooklistTabletYear bookYear>
+					<LibraryBooklistContainer tabletSize>
+						<LibraryBooklistTitle tabletSize>
+							Маю намір прочитати
+						</LibraryBooklistTitle>
+						<LibraryBooklistTabletTable>
+							<LibraryBooklistTabletHead>
+								<tr>
+									<LibraryBooklistTabletHeadCell colspan="2">
+										Назва книги
+									</LibraryBooklistTabletHeadCell>
+									<LibraryBooklistTabletHeadCell authorPadding>
+										Автор
+									</LibraryBooklistTabletHeadCell>
+									<LibraryBooklistTabletHeadCell right yearPadding>
 										Рік
-									</LibraryBooklistTabletYear>
-									<span>Стор.</span>
-								</LibraryBooklistTabletCombineContainer>
-							</LibraryBooklistTabletSubContainer>
-						</LibraryBooklistTabletHeader>
-						{goingToRead.map(
-							({ title, author, publishYear, pagesTotal, _id }) => {
-								return (
-									<LibraryBooklistTabletArticle key={_id}>
-										<LibraryBooklistTabletSubContainer bookName>
-											<LibraryBooklistTabletBookname>
-												{title}
-											</LibraryBooklistTabletBookname>
-										</LibraryBooklistTabletSubContainer>
-										<LibraryBooklistTabletSubContainer>
-											<LibraryBooklistTabletAuthor>
-												{author}
-											</LibraryBooklistTabletAuthor>
-											<LibraryBooklistTabletCombineContainer>
-												<LibraryBooklistTabletYear>
+									</LibraryBooklistTabletHeadCell>
+									<LibraryBooklistTabletHeadCell right pagesPadding>
+										Стор.
+									</LibraryBooklistTabletHeadCell>
+								</tr>
+							</LibraryBooklistTabletHead>
+							<LibraryBooklistTabletBody>
+								{goingToRead.map(
+									({ title, author, publishYear, pagesTotal, _id }) => {
+										return (
+											<LibraryBooklistTabletRow key={_id}>
+												<LibraryBooklistTabletBodyCell
+													colspan="2"
+													booknameFullPadding
+													tabletBooknameWidth
+												>
+													{title}
+												</LibraryBooklistTabletBodyCell>
+												<LibraryBooklistTabletBodyCell authorPadding>
+													{author}
+												</LibraryBooklistTabletBodyCell>
+												<LibraryBooklistTabletBodyCell right yearPadding>
 													{publishYear}
-												</LibraryBooklistTabletYear>
-												<LibraryBooklistTabletPages>
+												</LibraryBooklistTabletBodyCell>
+												<LibraryBooklistTabletBodyCell right pagesPadding>
 													{pagesTotal}
-												</LibraryBooklistTabletPages>
-											</LibraryBooklistTabletCombineContainer>
-										</LibraryBooklistTabletSubContainer>
-									</LibraryBooklistTabletArticle>
-								);
-							}
-						)}
-						{/* <LibraryBooklistTabletArticle>
-							<LibraryBooklistTabletSubContainer bookName>
-								<LibraryBooklistTabletBookname>
-									Разработка ценностных предложений.
-								</LibraryBooklistTabletBookname>
-							</LibraryBooklistTabletSubContainer>
-							<LibraryBooklistTabletSubContainer>
-								<LibraryBooklistTabletAuthor>
-									Флекс Остервальдер, Ив Пинье
-								</LibraryBooklistTabletAuthor>
-								<LibraryBooklistTabletCombineContainer>
-									<LibraryBooklistTabletYear>2013</LibraryBooklistTabletYear>
-									<LibraryBooklistTabletPages>368</LibraryBooklistTabletPages>
-								</LibraryBooklistTabletCombineContainer>
-							</LibraryBooklistTabletSubContainer>
-						</LibraryBooklistTabletArticle>
-						<LibraryBooklistTabletArticle>
-							<LibraryBooklistTabletSubContainer bookName>
-								<LibraryBooklistTabletBookname>
-									Разработка.
-								</LibraryBooklistTabletBookname>
-							</LibraryBooklistTabletSubContainer>
-							<LibraryBooklistTabletSubContainer>
-								<LibraryBooklistTabletAuthor>
-									Флекс Остервальд
-								</LibraryBooklistTabletAuthor>
-								<LibraryBooklistTabletCombineContainer>
-									<LibraryBooklistTabletYear>2013</LibraryBooklistTabletYear>
-									<LibraryBooklistTabletPages>68</LibraryBooklistTabletPages>
-								</LibraryBooklistTabletCombineContainer>
-							</LibraryBooklistTabletSubContainer>
-						</LibraryBooklistTabletArticle> */}
+												</LibraryBooklistTabletBodyCell>
+											</LibraryBooklistTabletRow>
+										);
+									}
+								)}
+							</LibraryBooklistTabletBody>
+						</LibraryBooklistTabletTable>
 					</LibraryBooklistContainer>
 				)}
 			</LibraryControlTabletSection>
@@ -452,6 +373,8 @@ function LibraryFilld() {
 					</LibraryBooklistContainer>
 				)}
 			</LibraryControlMobileSection>
+
+			<LibraryModal/>
 		</>
 	);
 }

@@ -10,9 +10,9 @@ import {
 	Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { getStats } from '../../redux/library/librarySelector';
+import { getStartDate, getEndDate, getPagesPerDay } from '../../redux/library/librarySelector';
 import { useSelector } from 'react-redux';
-import { red } from '@mui/material/colors';
+// import { red } from '@mui/material/colors';
 
 // import faker from 'faker';
 
@@ -104,41 +104,59 @@ const options = {
 
 // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
+
 export default function LineChart() {
-	// const stats = useSelector(getStats);
-	// console.log(stats);
+
+	// const stats = useSelector(getStats)
+	const startDate = useSelector(getStartDate);
+	const endDate = useSelector(getEndDate);
+	const pagesPerDay = useSelector(getPagesPerDay);
+	
+	const calcDays = (startDate, endDate) => {
+		const time = Date.parse(endDate) - Date.parse(startDate);
+		let TotalDays = Math.ceil(time / (1000 * 3600 * 24));
+		const days = [];
+		
+		for (let i = 0; i < TotalDays; i++) {
+			days.push(i);
+		}
+		return days;
+	}
+	const days = calcDays(startDate, endDate);
+
+	const statsPlan = days.map((day)=>({pagesCount: pagesPerDay}))
+
+	// const dateArr = stats.map(({time})=>{
+	// 	const splitDate = time.split(' ');
+	// 	const date = Date.parse(splitDate[0]);
+	// 	return date
+	// })
+
+	// const statsFact = stats.filter(({pagesCount, time}) => {
+	// 	const pages = 0;
+
+	// 	const splitDate = time.split(' ');
+	// 	const date = Date.parse(splitDate[0]);
+
+	// 	const fact = {
+	// 		pagesCount: pages,
+	// 	}
+	// 	return fact
+	// });
+
+
+	
 	const statsFact = [
 		{ pagesCount: 5 },
 		{ pagesCount: 15 },
-		{ pagesCount: 25 },
-		{ pagesCount: 35 },
-		{ pagesCount: 12 },
 		{ pagesCount: 13 },
-	];
-	const statsPlan = [
-		{ pagesCount: 4 },
-		{ pagesCount: 8 },
-		{ pagesCount: 12 },
-		{ pagesCount: 8 },
-		{ pagesCount: 22 },
-		{ pagesCount: 54 },
-	];
-
-	// const calcDays = (date_1, date_2) => {
-	// 	let difference = date_2.getTime() - date_1.getTime();
-	// 	let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
-	// 	const days = [];
-
-	// 	for (let i = 0; i < TotalDays; i++) {
-	// 		days.push(i);
-	// 	}
-	// 	return days;
-	// }
-	// const labels = calcDays(startDate, endDate);
+		// { pagesCount: 35 },
+		// { pagesCount: 12 },
+		// { pagesCount: 13 },
+	]
 
 	// let startDate = new Date('10/22/2022');
 	// let endDate = new Date('10/25/2022');
-
 	// const ShadowLineElement = Line.elements.Line.extend({
 	// 	draw() {
 	// 		console.log(this);

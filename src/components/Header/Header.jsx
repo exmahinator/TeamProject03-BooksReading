@@ -8,7 +8,7 @@ import { ReactComponent as Home } from '../../ui/Header/image/home.svg';
 import { ReactComponent as Line } from '../../ui/Header/image/line.svg';
 import { logOut } from 'redux/auth/authOperation';
 import { getUserName, getAccessToken } from 'redux/auth/authSelector';
-import { getCurrentlyReading } from '../../redux/library/librarySelector';
+// import { getCurrentlyReading } from '../../redux/library/librarySelector';
 import {
 	LogoutButton,
 	HeaderContainer,
@@ -21,12 +21,12 @@ import {
 	UserName,
 	LineStyle,
 } from 'ui/Header';
-import Modal from 'components/Modal/ModalLogout';
-import { ModalLogoutText } from 'ui/ModalLogout/Modal.styled';
-import { ButtonExit } from 'ui/ModalLogout/Modal.styled';
-import { ButtonLogout } from 'ui/ModalLogout/Modal.styled';
-import { ButtonConteiner } from 'ui/ModalLogout/Modal.styled';
-import { ModalConteiner } from 'ui/ModalLogout/Modal.styled';
+import Modal from 'components/Modal/Modal';
+import { ModalLogoutText } from 'ui/Modal/Modal.styled';
+import { ButtonExit } from 'ui/Modal/Modal.styled';
+import { ButtonLogout } from 'ui/Modal/Modal.styled';
+import { ButtonConteiner } from 'ui/Modal/Modal.styled';
+import { ModalConteiner } from 'ui/Modal/Modal.styled';
 
 const Header = () => {
 	const [isModal, setIsModal] = useState(false);
@@ -34,7 +34,7 @@ const Header = () => {
 	const userName = useSelector(getUserName);
 	const accessToken = useSelector(getAccessToken);
 	const isLoggedIn = useSelector(getIsLoggedIn);
-	const currentlyReading = useSelector(getCurrentlyReading);
+	// const currentlyReading = useSelector(getCurrentlyReading);
 	const isMobile = useMediaQuery({
 		query: '(max-width: 768px)',
 	});
