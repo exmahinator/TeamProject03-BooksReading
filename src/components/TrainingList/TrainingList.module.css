@@ -20,12 +20,16 @@
     fill: #FF6B08;
 }
 
-/* .deskLi{
-    display: 'flex';
-    justify-content: 'space-between';
-    font-size: 14px;
-    align-items: 'center';
-    border-bottom: '1px solid #E0E5EB';
-    color: red; 
-} */
+.bookName {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px 0;
+    width: 50%;
+}
+
+.bookNameMob {
+    display: flex;
+    align-items: center;
+    margin: 0 0 12px 0;
+}
 

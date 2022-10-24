@@ -15,3 +15,10 @@ export { default as ItemMob } from './ItemMob.styled';
 export { default as Button } from './Button.styled';
 export { default as DeleteIcon } from './DeleteIcon.styled';
 export { default as ItemDesk } from './ItemDesk.styled';
+export { default as BookName } from './BookName.styled';
+export { default as AuthorName } from './AuthorName.styled';
+export { default as PublishYear } from './PublishYear.styled';
+export { default as Pages } from './Pages.styled';
+
+
+
