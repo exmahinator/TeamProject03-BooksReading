@@ -1,12 +1,9 @@
 import styled from 'styled-components';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import Select from '@mui/material/Select';
-
 
 export const Wrapper = styled.div`
 	width: 100%;
 `;
-
 
 export const Title = styled.h2`
 	display: flex;
@@ -33,35 +30,53 @@ export const Title = styled.h2`
 
 export const WrapperDatePicker = styled(DatePicker)`
 	width: 100%;
-	border-radius: 0;
+	gap: 20px;
+	@media screen and (min-width: 768px) {
+ 		width: 250px;
+ 		margin-right: 40px;
+ 		&:last-child {
+ 			margin-right: 0;
+		}
+ 	}
 `;
 
 export const BoxForm = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+	@media screen and (min-width: 768px) {
+		gap: 0;
+	}
 `;
 
 export const WrapperCallendar = styled.div`
+
 	@media screen and (min-width: 768px) {
 		display: flex;
 		flex-wrap: nowrap;
-		margin-bottom: 24px;
 
-		/* @media screen and (min-width: 768px) {
-		gap: 0;
-	} */
+		@media screen and (min-width: 1280px) {
+		margin-left: auto;
+		margin-right: auto;
+	}
 	}
 `;
 
 export const BoxCallendar = styled.div`
+width: 100%;
+margin-bottom: 20px;
+&:last-child {
+			margin-bottom: 0;
+		}
 	@media screen and (min-width: 768px) {
-		width: 250px;
-		height: 42px;
+		width: 300px;
 		margin-right: 40px;
 		&:last-child {
 			margin-right: 0;
 		}
+	}	
+	@media screen and (min-width: 1280px) {
+		
 	}
 `;
 
@@ -74,6 +89,9 @@ align-items: center;
 	flex-direction: row;
 		flex-wrap: nowrap;
 		margin-bottom: 40px;
+	}
+	@media screen and (min-width: 1280px) {
+		align-items: flex-start;
 	}
 `;
 
@@ -90,20 +108,10 @@ export const SelectForm = styled.select`
 	box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
 	border: 1px solid transparent;
 
-	@media screen and (min-width: 768px) {
-
-	}
 	@media screen and (min-width: 1280px) {
-	margin-top: 24px;
 	margin-bottom: 24px;
 	}
 `;
-
-// export const SelectBox = styled.div`
-// 	@media screen and (min-width: 768px) {
-
-// 	}
-// `;
 
 export const Button = styled.button`
 	box-sizing: border-box;
@@ -122,7 +130,6 @@ export const Button = styled.button`
 	@media screen and (min-width: 768px) {
 		margin: 0 0 0 50px;
 	}
-
 	
 	@media screen and (min-width: 1280px) {
 		width: 181px;

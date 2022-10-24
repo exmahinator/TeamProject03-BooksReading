@@ -1,15 +1,9 @@
-// import OutlinedInput from '@mui/material/OutlinedInput';
-// import MenuItem from '@mui/material/MenuItem';
-// import FormControl from '@mui/material/FormControl';
-
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
-// import { addBookPlanning } from '../../redux/library/libraryOperation';
 import { getGoingToRead } from '../../redux/library/librarySelector';
 import {
 	WrapperDatePicker,
@@ -17,10 +11,9 @@ import {
 	Title,
 	BoxForm,
 	SelectForm,
-	// WrapperCallendar,
-	// BoxCallendar,
+	WrapperCallendar,
+	BoxCallendar,
 	WrapperSelect,
-	// SelectBox,
 	Button,
 } from './MyTraining.styled';
 import TrainingList from '../TrainingList/TrainingList';
@@ -33,18 +26,6 @@ export default function MyTraining() {
 	const [startDate, setStartDate] = useState(null);
 	const [endDate, setEndDate] = useState(null);
 	const [books, setBooks] = useState([]);
-
-
-	// const ITEM_HEIGHT = 48;
-	// const ITEM_PADDING_TOP = 8;
-	// const MenuProps = {
-	// 	PaperProps: {
-	// 		style: {
-	// 			maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-	// 			width: 250,
-	// 		},
-	// 	},
-	// };
 
 	const goingToRead = useSelector(getGoingToRead);
 
@@ -90,8 +71,8 @@ export default function MyTraining() {
 		<Wrapper>
 			<Title>Моє тренування</Title>
 			<BoxForm>
-				{/* <WrapperCallendar>
-					<BoxCallendar> */}
+				<WrapperCallendar>
+					<BoxCallendar>
 				<LocalizationProvider dateAdapter={AdapterDayjs}>
 					<WrapperDatePicker
 						label="Початок"
@@ -101,9 +82,8 @@ export default function MyTraining() {
 						renderInput={params => <TextField {...params} />}
 					/>
 				</LocalizationProvider>
-				{/* </BoxCallendar> */}
-
-				{/* <BoxCallendar> */}
+				</BoxCallendar>
+				<BoxCallendar>
 				<LocalizationProvider dateAdapter={AdapterDayjs}>
 					<WrapperDatePicker
 						label="Завершення"
@@ -113,32 +93,9 @@ export default function MyTraining() {
 						renderInput={params => <TextField {...params} />}
 					/>
 				</LocalizationProvider>
-				{/* </BoxCallendar>
-				</WrapperCallendar> */}
-
+				</BoxCallendar>
+				</WrapperCallendar>
 				<WrapperSelect>
-				{/* <FormControl> */}
-				{/* <SelectBox>
-					<SelectForm
-							// multiple
-							// style={{ height: 42, borderRadius: 0, }}
-							displayEmpty
-							value={booksId}
-							onChange={handleChange}
-							input={<OutlinedInput />}
-							MenuProps={MenuProps}
-							inputProps={{ 'aria-label': 'Without label' }}
-						>
-							<MenuItem disabled value="">
-								<em>Обрати книги з бібліотеки</em>
-							</MenuItem>
-							{goingToRead?.map(({ _id, title, author }) => (
-								<MenuItem key={_id} value={_id}>
-									{title} ({author})
-								</MenuItem>
-							))}
-						</SelectForm>
-					</SelectBox> */}
 				<SelectForm name="select"  onChange={handleChange}>
 					<option>Обрати книги з бібліотеки</option>
 					{goingToRead?.map(({ _id, title, author }) => (
@@ -146,15 +103,10 @@ export default function MyTraining() {
 									{title} ({author})
 								</option>
 							))}
-							
-					
 				</SelectForm>
-
 				<Button type="button" onClick={handleSubmit}>
 					Додати
 				</Button>
-
-				{/* </FormControl> */}
 				</WrapperSelect> 
 			</BoxForm>
 			<TrainingList
