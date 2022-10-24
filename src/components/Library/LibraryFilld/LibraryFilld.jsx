@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import {
 	LibraryBooklistContainer,
 	LibraryBooklistTitle,
@@ -32,12 +33,22 @@ import {
 	getCurrentlyReading,
 } from '../../../redux/library/librarySelector';
 import LibraryModal from '../LibraryModal/LibraryModal';
+
+import Modal from 'components/Modal/Modal';
+import ConteinerModal from 'ui/LibraryModal/ConteinerModal.styled';
+
 import Rating from '@mui/material/Rating';
+
 
 function LibraryFilld() {
 	const goingToRead = useSelector(getGoingToRead);
 	const finishedReading = useSelector(getFinishedReading);
 	const currentlyReading = useSelector(getCurrentlyReading);
+	const [isModal, setIsModal] = useState(false);
+
+	const toogleModal = () => {
+		setIsModal(!isModal);
+	};
 
 	const valueReview = 4;
 
@@ -119,9 +130,20 @@ function LibraryFilld() {
 													<Rating name="read-only" value={valueReview} readOnly />
 												</LibraryBooklistTabletBodyCell>
 												<LibraryBooklistTabletBodyCell buttonPadding>
-													<LibraryBooklistTabletButton type="button">
+													<LibraryBooklistTabletButton
+														type="button"
+														onClick={toogleModal}
+													>
 														Резюме
 													</LibraryBooklistTabletButton>
+
+												{isModal && (
+											<Modal toogleModal={toogleModal}>
+												<ConteinerModal>
+																<LibraryModal toogleModal={toogleModal} />
+												</ConteinerModal>
+											</Modal>
+										)}
 												</LibraryBooklistTabletBodyCell>
 											</LibraryBooklistTabletRow>
 										);
@@ -290,9 +312,17 @@ function LibraryFilld() {
 												</LibraryBooklistRow>
 											</tbody>
 										</LibraryBooklistTable>
-										<LibraryBooklistButton type="button">
+										<LibraryBooklistButton type="button" onClick={toogleModal}>
 											Резюме
 										</LibraryBooklistButton>
+
+										{isModal && (
+											<Modal toogleModal={toogleModal}>
+												<ConteinerModal>
+													<LibraryModal toogleModal={toogleModal} />
+												</ConteinerModal>
+											</Modal>
+										)}
 									</LibraryBooklistSubContainer>
 								);
 							}
@@ -377,7 +407,7 @@ function LibraryFilld() {
 				)}
 			</LibraryControlMobileSection>
 
-			<LibraryModal/>
+			{/* <LibraryModal /> */}
 		</>
 	);
 }
