@@ -66,3 +66,16 @@ export const addFinishedPages = createAsyncThunk(
 		}
 	}
 )
+
+export const addBookReview = createAsyncThunk(
+	'book/addBookReview',
+	async (reviewData, thunkAPI) => {
+		try {
+			const { data } = await axios.patch('/book/review', reviewData);
+			console.log('addBookReview:', data);
+			return data;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.message);
+		}
+	}
+)

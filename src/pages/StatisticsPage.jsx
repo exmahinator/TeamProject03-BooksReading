@@ -19,7 +19,7 @@ export const StatisticsPage = () => {
 			<Container>
 				<TimerBlock />
 				<TrainingList
-					books={[...currentlyReading, ...finishedReading]}
+					books={[...finishedReading, ...currentlyReading]}
 					// startDate={startDate}
 					// endDate={endDate}
 					// booksDelete={hanleDelete}
