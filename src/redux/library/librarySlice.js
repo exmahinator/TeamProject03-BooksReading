@@ -15,6 +15,7 @@ const initialState = {
 	finishedReading: [],
 	startDate: null,
 	endDate: null,
+	pagesPerDay: null,
 	stats: [],
 
 	error: null,
@@ -50,6 +51,7 @@ const librarySlice = createSlice({
 			state.currentlyReading.push(action.payload.books[0]);
 			state.startDate = action.payload.startDate;
 			state.endDate = action.payload.endDate;
+			state.pagesPerDay = action.payload.pagesPerDay;
 		},
 		[getBookPlanning.fulfilled](state, action) {
 			state.currentlyReading = action.payload.planning.books.filter(
