@@ -12,6 +12,7 @@ const LoginButton = styled.button`
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	cursor: pointer;
 `;
 
 export default LoginButton;

@@ -5,6 +5,7 @@ const RegistrationDescriptionButton = styled.button`
 	color: white;
 	width: 130px;
 	height: 40px;
+	cursor: pointer;
 	@media screen and (min-width: 768px) {
 		display: none;
 	}
