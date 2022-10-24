@@ -32,11 +32,14 @@ import {
 	getCurrentlyReading,
 } from '../../../redux/library/librarySelector';
 import LibraryModal from '../LibraryModal/LibraryModal';
+import Rating from '@mui/material/Rating';
 
 function LibraryFilld() {
 	const goingToRead = useSelector(getGoingToRead);
 	const finishedReading = useSelector(getFinishedReading);
 	const currentlyReading = useSelector(getCurrentlyReading);
+
+	const valueReview = 4;
 
 	return (
 		<>
@@ -113,7 +116,7 @@ function LibraryFilld() {
 													{pagesTotal}
 												</LibraryBooklistTabletBodyCell>
 												<LibraryBooklistTabletBodyCell ratingPadding>
-													*****
+													<Rating name="read-only" value={valueReview} readOnly />
 												</LibraryBooklistTabletBodyCell>
 												<LibraryBooklistTabletBodyCell buttonPadding>
 													<LibraryBooklistTabletButton type="button">
