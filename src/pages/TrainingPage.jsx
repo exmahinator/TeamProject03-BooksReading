@@ -30,8 +30,6 @@ export const TrainingPage = () => {
 				<NavLink to="/statistics">Statistics</NavLink>
 				<MyTraining />
 				</GoalTrainingBox>
-				
-				{/* <TrainingList /> */}
 				<LineChart />
 			</Container>
 		</Section>

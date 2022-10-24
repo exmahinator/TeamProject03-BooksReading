@@ -30,7 +30,7 @@ const LoginContainerBg = styled.div`
 		background-size: cover;
 		padding: 0;
 
-		width: 768px;
+		width: 100%;
 		height: 737px;
 	}
 	@media screen and (min-width: 1280px) {

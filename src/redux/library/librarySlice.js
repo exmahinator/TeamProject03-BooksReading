@@ -52,7 +52,9 @@ const librarySlice = createSlice({
 			state.endDate = action.payload.endDate;
 		},
 		[getBookPlanning.fulfilled](state, action) {
-			state.currentlyReading = [...state.currentlyReading, ...action.payload.planning.books];
+			state.currentlyReading = action.payload.planning.books.filter(
+				book => book.pagesTotal !== book.pagesFinished
+			);
 			state.startDate = action.payload.planning.startDate;
 			state.endDate = action.payload.planning.endDate;
 			state.stats = action.payload.planning.stats;
