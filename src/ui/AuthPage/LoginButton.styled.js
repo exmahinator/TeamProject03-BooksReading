@@ -12,6 +12,16 @@ const LoginButton = styled.button`
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+
+ &:hover {
+ 	color: #242a37;
+ 	border: 1px solid #242a37;
+ 	background: #ffffff;
+ 	box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
+ }
+
+	cursor: pointer;
+
 `;
 
 export default LoginButton;

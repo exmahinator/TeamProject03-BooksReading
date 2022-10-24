@@ -18,7 +18,7 @@ const LoginContainerBg = styled.div`
 	background-size: cover;
 
 	@media screen and (min-width: 768px) {
-		padding: 65px 185px;
+		/* padding: 65px 185px; */
 		background-image: linear-gradient(
 				to right,
 				rgba(9, 30, 63, 0.8),
@@ -28,9 +28,12 @@ const LoginContainerBg = styled.div`
 		background-repeat: no-repeat;
 		background-position: bottom;
 		background-size: cover;
+		padding: 0;
+
+		width: 100%;
+		height: 737px;
 	}
 	@media screen and (min-width: 1280px) {
-		padding: 185px 75px;
 		background-image: linear-gradient(
 				to right,
 				rgba(9, 30, 63, 0.8),
@@ -40,6 +43,9 @@ const LoginContainerBg = styled.div`
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
+		padding: 0;
+		width: 550px;
+		height: 790px;
 	}
 `;
 

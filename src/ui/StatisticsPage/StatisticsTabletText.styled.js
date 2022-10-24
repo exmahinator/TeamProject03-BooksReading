@@ -11,6 +11,7 @@ const StatisticsTabletText = styled.h2`
 	text-transform: uppercase;
 
 	color: #242a37;
+	margin-bottom: 4px;
 `;
 
 export default StatisticsTabletText;

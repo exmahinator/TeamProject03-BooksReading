@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import {
-	logIn,
-	// loginWithGoogle
-} from 'redux/auth/authOperation';
+import { logIn } from 'redux/auth/authOperation';
 import {
 	LoginContainer,
 	LoginForm,
@@ -13,16 +10,21 @@ import {
 	LoginLabel,
 	LoginSubContainer,
 	LoginButton,
-	// LoginButtonGoogle,
 	LoginLink,
+	LoginButtonGoogle,
 } from 'ui/AuthPage';
-// import GoogleAuth from 'components/GoogleAuth/GoogleAuth';
-// import GoogleButton from 'components/GoogleButton/GoogleButton';
+import { ReactComponent as GoogleIcon } from '../../ui/AuthPage/Image/google-icon.svg';
+import Modal from 'components/Modal/Modal';
+import { ModalConteinerGoogle } from 'ui/Modal/ModalGoogle.styled';
+import { ModalGoogleText } from 'ui/Modal/ModalGoogle.styled';
+import { ButtonConteinerGoogle } from 'ui/Modal/ModalGoogle.styled';
+import { ButtonReturn } from 'ui/Modal/ModalGoogle.styled';
+import { ModalButtonGoogle } from 'ui/Modal/ModalGoogle.styled';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	// const [isGoodle, setIsGoogle] = useState(null);
+	const [isModal, setIsModal] = useState(false);
 
 	const dispatch = useDispatch();
 
@@ -47,12 +49,39 @@ const Login = () => {
 		setPassword('');
 	};
 
+	const toogleModal = () => {
+		setIsModal(!isModal);
+	};
 	return (
 		<>
 			<LoginContainerBg>
 				<LoginContainer>
-					{/* {isGoodle && <GoogleAuth markup={isGoodle} />} */}
-					{/* <GoogleButton setMarkup={setIsGoogle} /> */}
+					{/* <GoogleButton/> */}
+
+					<LoginButtonGoogle type="button" onClick={toogleModal}>
+						<GoogleIcon style={{ marginRight: '17' }} />
+						Google
+					</LoginButtonGoogle>
+
+					{isModal && (
+						<Modal toogleModal={toogleModal}>
+							<ModalConteinerGoogle>
+								<ModalGoogleText>
+									увійти в акаунт можливо тільки якщо ви зареєстровані у додатку
+								</ModalGoogleText>
+								<ButtonConteinerGoogle>
+									<ButtonReturn to="/register" onClick={toogleModal}>
+										Повернутись
+									</ButtonReturn>
+									<ModalButtonGoogle href="https://bookread-backend.goit.global/auth/google">
+										<GoogleIcon style={{ marginRight: '17' }} />
+										Google
+									</ModalButtonGoogle>
+								</ButtonConteinerGoogle>
+							</ModalConteinerGoogle>
+						</Modal>
+					)}
+
 					<LoginForm onSubmit={handleSubmit}>
 						<LoginSubContainer>
 							<LoginLabel htmlFor="email">Електронна адреса *</LoginLabel>

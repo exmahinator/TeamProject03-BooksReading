@@ -11,6 +11,11 @@ const LogoutButton = styled.button`
 	border-bottom: 1px solid #242a37;
 	background-color: transparent;
 	color: #242a37;
+	// color: fff;
+
+	&:hover {
+		border-bottom: 1px solid transparent;
+	}
 `;
 
 export default LogoutButton;

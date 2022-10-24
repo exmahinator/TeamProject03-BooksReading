@@ -1,3 +1,4 @@
+import MyGoals from 'components/MyGoals/MyGoals';
 import React from 'react';
 import {
 	TimerMain,
@@ -9,31 +10,53 @@ import {
 	TimerBox,
 	TimerTime,
 	TimerText,
+	TimerSec,
 } from 'ui/TimerBlock';
-// import { ReactDOM } from 'react';
-// import * as ReactDOM from 'https://cdn.skypack.dev/react-dom@17.0.1';
+import css from './TimerBlock.module.css';
+import { useSelector } from 'react-redux';
+import { getEndDate } from 'redux/library/librarySelector';
 
 const TimerBlock = () => {
+	const endDate = useSelector(getEndDate);
+	// console.log(endDate);
 	return (
-		<TimerMain>
-			<TimerHeader>До закінчення року залишилось</TimerHeader>
-			<TimerStyle>
-				<TimerContainer>
-					<Timer />
-				</TimerContainer>
-			</TimerStyle>
-		</TimerMain>
-		
+		<>
+			<TimerMain>
+				{/* блок "До кінця року залишилось" -----> */}
+				<div>
+					<TimerHeader>До закінчення року залишилось</TimerHeader>
+					<TimerStyle className={css.mRight}>
+						<TimerContainer>
+							<Timer endDate={'December, 31, 2022'} />
+						</TimerContainer>
+					</TimerStyle>
+				</div>
+
+				{/* блок "До досягнення мети залишилось" -----> */}
+				<div>
+					<TimerHeader>До досягнення мети залишилось</TimerHeader>
+					<TimerStyle>
+						<TimerContainer>
+							<Timer endDate={endDate} />
+						</TimerContainer>
+					</TimerStyle>
+				</div>
+			</TimerMain>
+			<MyGoals />
+		</>
 	);
 };
 
-const Timer = () => {
+const Timer = ({ endDate }) => {
 	const [days, setDays] = React.useState(0);
 	const [hours, setHours] = React.useState(0);
 	const [minutes, setMinutes] = React.useState(0);
 	const [seconds, setSeconds] = React.useState(0);
 
-	const deadline = 'December, 31, 2022';
+
+	
+	// const deadline = 'December, 31, 2022';
+	const deadline = endDate;
 
 	const getTime = () => {
 		const time = Date.parse(deadline) - Date.now();
@@ -45,13 +68,16 @@ const Timer = () => {
 	};
 
 	React.useEffect(() => {
+		if (!Boolean(endDate)) {
+		return;
+	}
 		const interval = setInterval(() => getTime(deadline), 1000);
 
 		return () => clearInterval(interval);
-	}, []);
+	});
 
 	return (
-		<TimerCounter role="timer">
+		<TimerCounter className={css.lastChild} role="timer">
 			<TimerCol>
 				<TimerBox>
 					<TimerTime id="day">{days < 10 ? '0' + days : days}</TimerTime>
@@ -74,9 +100,9 @@ const Timer = () => {
 			</TimerCol>
 			<TimerCol>
 				<TimerBox>
-					<TimerTime id="second">
+					<TimerSec id="second">
 						{seconds < 10 ? '0' + seconds : seconds}
-					</TimerTime>
+					</TimerSec>
 					<TimerText>сек</TimerText>
 				</TimerBox>
 			</TimerCol>

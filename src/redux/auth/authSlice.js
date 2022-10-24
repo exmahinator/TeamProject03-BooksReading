@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser } from './authOperation';
+import {
+	register,
+	logIn,
+	logOut,
+	refreshUser,
+	loginWithGoogle,
+} from './authOperation';
 
 const initialState = {
 	accessToken: null,
@@ -25,11 +31,11 @@ const authSlice = createSlice({
 	initialState,
 	extraReducers: {
 		[register.fulfilled](state, action) {
-				// state.userData = action.payload.userData;
-				state.sid = action.payload.sid;
-				state.accessToken = action.payload.accessToken;
-				state.refreshToken = action.payload.refreshToken;
-				state.isLoggedIn = true;
+			// state.userData = action.payload.userData;
+			state.sid = action.payload.sid;
+			state.accessToken = action.payload.accessToken;
+			state.refreshToken = action.payload.refreshToken;
+			state.isLoggedIn = true;
 		},
 		[logIn.fulfilled](state, action) {
 			// state.userData = action.payload.userData;
@@ -65,7 +71,16 @@ const authSlice = createSlice({
 		[refreshUser.rejected](state) {
 			state.isRefreshing = false;
 		},
-		
+		[loginWithGoogle.pending](state) {
+			state.isRefreshing = true;
+		},
+		[loginWithGoogle.fulfilled](state, action) {
+			state.accessToken = action.payload.accessTokenParams;
+			state.refreshToken = action.payload.refreshTokenParams;
+			state.sid = action.payload.sidParams;
+			state.isLoggedIn = true;
+			state.userData.name = action.payload.data.name;
+		},
 	},
 });
 

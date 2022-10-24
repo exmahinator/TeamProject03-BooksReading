@@ -5,7 +5,7 @@ const Button = styled.button`
     justify-content: center;
 
     padding: 13px;
-    margin: 32px auto 32px auto;
+    margin: 0 auto 32px auto;
 
     color: #fff;
     font-weight: 500;
@@ -20,14 +20,16 @@ const Button = styled.button`
 
     border: none;
 
-    transition: border-radius 0.4s;
+    transition: border-radius 0.4s, box-shadow 0.4s;
+
     :hover {
         cursor: pointer;
         border-radius:3px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     @media screen and (min-width: 768px) {
-        
+        margin: 40px auto 40px auto;
     }
     @media screen and (min-width: 1280px) {
         

@@ -7,6 +7,8 @@ const ItemMob = styled.li`
     :first-child {
         border-top: 1px solid #E0E5EB;
     }
+
+    
 `
 
 export default ItemMob;
