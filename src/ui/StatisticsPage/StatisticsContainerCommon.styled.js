@@ -5,6 +5,9 @@ const StatisticsContainerCommon = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
+
+
 `;
 
 export default StatisticsContainerCommon;
