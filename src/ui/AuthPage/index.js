@@ -6,7 +6,7 @@ export { default as AuthContainer } from './AuthContainer.styled';
 export { default as LoginLabel } from './LoginLabel.styled';
 export { default as LoginSubContainer } from './LoginSubContainer.styled';
 export { default as LoginButton } from './LoginButton.styled';
-// export { default as LoginButtonGoogle } from './LoginButtonGoogle.styled';
+export { default as LoginButtonGoogle } from './LoginButtonGoogle.styled';
 export { default as LoginLink } from './LoginLink.styled';
 export { default as LoginCitateContainer } from './LoginCitateContainer.styled';
 export { default as LoginCitateText } from './LoginCitateText.styled';

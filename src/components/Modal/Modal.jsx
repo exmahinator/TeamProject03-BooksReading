@@ -1,13 +1,13 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 
-import { Overlay } from 'ui/ModalLogout/Modal.styled';
-import { ModalWindow } from 'ui/ModalLogout/Modal.styled';
+import { Overlay } from 'ui/Modal/Modal.styled';
+import { ModalWindow } from 'ui/Modal/Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const ModalLogOutWindow = ({ toogleModal, children }) => { 
-   useEffect(() => {
+export const Modal = ({ toogleModal, children }) => {
+	useEffect(() => {
 		window.addEventListener('keydown', onKeyDown);
 		return () => {
 			window.removeEventListener('keydown', onKeyDown);
@@ -28,12 +28,10 @@ export const ModalLogOutWindow = ({ toogleModal, children }) => {
 
 	return createPortal(
 		<Overlay onClick={onOverlayClick}>
-      <ModalWindow>
-        {children}
-			</ModalWindow>
+			<ModalWindow>{children}</ModalWindow>
 		</Overlay>,
 		modalRoot
 	);
 };
 
-export default ModalLogOutWindow;
+export default Modal;
