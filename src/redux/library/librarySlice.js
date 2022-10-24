@@ -60,7 +60,7 @@ const librarySlice = createSlice({
 			state.startDate = action.payload.planning.startDate;
 			state.endDate = action.payload.planning.endDate;
 			state.stats = action.payload.planning.stats;
-			state.pagesPerDay = action.payload.planing.pagesPerDay;
+			state.pagesPerDay = action.payload.planning.pagesPerDay;
 		},
 		[addFinishedPages.fulfilled](state, action) {
 			state.stats = action.payload.planning.stats;
