@@ -9,7 +9,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
-// import {getIsLoggedIn} from '../../redux/selectors';
 // import { addBookPlanning } from '../../redux/library/libraryOperation';
 import { getGoingToRead } from '../../redux/library/librarySelector';
 import {
@@ -26,11 +25,6 @@ import {
 } from './MyTraining.styled';
 import TrainingList from '../TrainingList/TrainingList';
 
-// "startDate": "2022-10-20",
-//   "endDate": "2022-10-25",
-//   "books": [
-//     "635150dd3551fd60da50fed6", "507f1f77bcf86cd799439013"
-//   ]
 
 export default function MyTraining() {
 	const [booksId, setBooksId] = useState([]);
@@ -40,7 +34,6 @@ export default function MyTraining() {
 	const [endDate, setEndDate] = useState(null);
 	const [books, setBooks] = useState([]);
 
-	// const books = useSelector(getIsLoggedIn);
 
 	// const ITEM_HEIGHT = 48;
 	// const ITEM_PADDING_TOP = 8;
@@ -89,7 +82,7 @@ export default function MyTraining() {
 		console.log(books);
 	};
 
-	const hanleDelete = id => {
+	const handleDelete = id => {
 		return setBooks(books.filter(book => book._id !== id));
 	};
 
@@ -146,8 +139,15 @@ export default function MyTraining() {
 							))}
 						</SelectForm>
 					</SelectBox> */}
-				<SelectForm name="select">
-					<option value={booksId} onChange={handleChange}>Обрати книги з бібліотеки</option>
+				<SelectForm name="select"  onChange={handleChange}>
+					<option>Обрати книги з бібліотеки</option>
+					{goingToRead?.map(({ _id, title, author }) => (
+								<option key={_id} value={_id}>
+									{title} ({author})
+								</option>
+							))}
+							
+					
 				</SelectForm>
 
 				<Button type="button" onClick={handleSubmit}>
@@ -161,7 +161,7 @@ export default function MyTraining() {
 				books={books}
 				startDate={startDate}
 				endDate={endDate}
-				booksDelete={hanleDelete}
+				booksDelete={handleDelete}
 			/>
 		</Wrapper>
 	);

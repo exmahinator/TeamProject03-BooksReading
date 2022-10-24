@@ -27,7 +27,7 @@ export const Title = styled.h2`
 	}
 
 	@media screen and (min-width: 1280px) {
-	margin: 0;
+	margin: 0 0 24px 0;
 	}
 `;
 
@@ -92,7 +92,11 @@ export const SelectForm = styled.select`
 
 	@media screen and (min-width: 768px) {
 
-// 	}
+	}
+	@media screen and (min-width: 1280px) {
+	margin-top: 24px;
+	margin-bottom: 24px;
+	}
 `;
 
 // export const SelectBox = styled.div`
@@ -117,5 +121,10 @@ export const Button = styled.button`
 
 	@media screen and (min-width: 768px) {
 		margin: 0 0 0 50px;
+	}
+
+	
+	@media screen and (min-width: 1280px) {
+		width: 181px;
 	}
 `;
