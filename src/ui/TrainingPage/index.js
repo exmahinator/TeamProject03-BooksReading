@@ -20,6 +20,3 @@ export { default as BookName } from './BookName.styled';
 export { default as AuthorName } from './AuthorName.styled';
 export { default as PublishYear } from './PublishYear.styled';
 export { default as Pages } from './Pages.styled';
-
-
-
