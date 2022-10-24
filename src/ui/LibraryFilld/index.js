@@ -1,5 +1,8 @@
 export { default as AddButton } from './AddButton.styled';
 
+export { default as LibraryControlMobileSection } from './LibraryControlMobileSection.styled';
+export { default as LibraryControlTabletSection } from './LibraryControlTabletSection.styled';
+
 export { default as LibraryBooklistContainer } from './LibraryBooklistContainer.styled';
 export { default as LibraryBooklistTitle } from './LibraryBooklistTitle.styled';
 export { default as LibraryBooklistSubContainer } from './LibraryBooklistSubContainer.styled';
@@ -8,22 +11,12 @@ export { default as LibraryBooklistRow } from './LibraryBooklistRow.styled';
 export { default as LibraryBooklistCell } from './LibraryBooklistCell.styled';
 export { default as LibraryBooklistNameCell } from './LibraryBooklistNameCell.styled';
 export { default as LibraryBooklistButton } from './LibraryBooklistButton.styled';
-export { default as LibraryControlMobileSection } from './LibraryControlMobileSection.styled';
-export { default as LibraryControlTabletSection } from './LibraryControlTabletSection.styled';
-export { default as LibraryBooklistTableHead } from './LibraryBooklistTableHead.styled';
-export { default as LibraryBooklistTableBody } from './LibraryBooklistTableBody.styled';
-export { default as LibraryBooklistTableHeaders } from './LibraryBooklistTableHeaders.styled';
-export { default as LibraryBooklistTabletCell } from './LibraryBooklistTabletCell.styled';
-export { default as LibraryBooklistTabletRow } from './LibraryBooklistTabletRow.styled';
-export { default as LibraryBooklistTabletHeader } from './LibraryBooklistTabletHeader.styled';
-export { default as LibraryBooklistTabletBookname } from './LibraryBooklistTabletBookname.styled';
-export { default as LibraryBooklistTabletInfo } from './LibraryBooklistTabletInfo.styled';
-export { default as LibraryBooklistTabletArticle } from './LibraryBooklistTabletArticle.styled';
-export { default as LibraryBooklistTabletAuthor } from './LibraryBooklistTabletAuthor.styled';
-export { default as LibraryBooklistTabletYear } from './LibraryBooklistTabletYear.styled';
-export { default as LibraryBooklistTabletPages } from './LibraryBooklistTabletPages.styled';
-export { default as LibraryBooklistTabletSubContainer } from './LibraryBooklistTabletSubContainer.styled';
-export { default as LibraryBooklistTabletCombineContainer } from './LibraryBooklistTabletCombineContainer.styled';
-export { default as LibraryBooklistTabletRating } from './LibraryBooklistTabletRating.styled';
-export { default as LibraryBooklistTabletDoneContainer } from './LibraryBooklistTabletDoneContainer.styled';
+
 export { default as LibraryBooklistTabletButton } from './LibraryBooklistTabletButton.styled';
+
+export { default as LibraryBooklistTabletTable } from './LibraryBooklistTabletTable.styled';
+export { default as LibraryBooklistTabletHead } from './LibraryBooklistTabletHead.styled';
+export { default as LibraryBooklistTabletHeadCell } from './LibraryBooklistTabletHeadCell.styled';
+export { default as LibraryBooklistTabletBody } from './LibraryBooklistTabletBody.styled';
+export { default as LibraryBooklistTabletBodyCell } from './LibraryBooklistTabletBodyCell.styled';
+export { default as LibraryBooklistTabletRow } from './LibraryBooklistTabletRow.styled';

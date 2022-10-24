@@ -10,6 +10,7 @@ import {
 	TimerBox,
 	TimerTime,
 	TimerText,
+	TimerSec,
 } from 'ui/TimerBlock';
 import css from './TimerBlock.module.css';
 import { useSelector } from 'react-redux';
@@ -94,9 +95,9 @@ const Timer = ({ endDate }) => {
 			</TimerCol>
 			<TimerCol>
 				<TimerBox>
-					<TimerTime id="second">
+					<TimerSec id="second">
 						{seconds < 10 ? '0' + seconds : seconds}
-					</TimerTime>
+					</TimerSec>
 					<TimerText>сек</TimerText>
 				</TimerBox>
 			</TimerCol>
