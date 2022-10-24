@@ -5,6 +5,7 @@ import {
 	addBookPlanning,
 	getBookPlanning,
 	addFinishedPages,
+	addBookReview,
 } from './libraryOperation';
 import { logIn, logOut } from '../auth/authOperation';
 import { Navigate } from 'react-router-dom';
@@ -17,6 +18,7 @@ const initialState = {
 	endDate: null,
 	pagesPerDay: null,
 	stats: [],
+	rating: null,
 
 	error: null,
 };
@@ -64,6 +66,9 @@ const librarySlice = createSlice({
 		},
 		[addFinishedPages.fulfilled](state, action) {
 			state.stats = action.payload.planning.stats;
+		},
+		[addBookReview.fulfilled](state, action) {
+			// state.rating = action.payload.rating;
 		},
 	},
 });

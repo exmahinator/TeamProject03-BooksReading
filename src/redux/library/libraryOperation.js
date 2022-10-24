@@ -49,7 +49,6 @@ export const getBookPlanning = createAsyncThunk(
 			// console.log('getBookPlanning:', data);
 			return data;
 		} catch (error) {
-		console.log(error.message)
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	}
