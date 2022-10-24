@@ -35,12 +35,12 @@ const Statistics = () => {
 					</StatSubContainer>
 					<StatSubContainer>
 						<StatLabel htmlFor="pages">Кількість сторінок </StatLabel>
-						<StatInput id="pages" type="text" />
+						<StatInput id="pages" type="text" onChange={handleChangePage} value={pages} />
 					</StatSubContainer>
 				</StatCommonContainer>
 				<StatisticsButton
 					type="button"
-					// onClick={handleAddResults(pages)}
+					onClick={()=>handleAddResults({pages})}
 				>
 					Додати результат
 				</StatisticsButton>
