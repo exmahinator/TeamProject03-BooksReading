@@ -19,6 +19,11 @@ const ListDesk = styled.ul`
   @media screen and (min-width: 768px) {
   display: block;
 	}
+  
+  @media screen and (min-width: 1280px) {
+    width: 100%;
+    margin: 0 32px 0 0;
+  }
 `
 
 export default ListDesk;
