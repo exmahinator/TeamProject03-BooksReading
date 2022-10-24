@@ -6,6 +6,7 @@ import {
 	StatisticsButton,
 	StatPagesContainer,
 	StatSubContainerTable,
+	StatTextResolt,
 } from 'ui/StatisticsPage';
 import { useDispatch } from 'react-redux';
 import { addFinishedPages } from '../../redux/library/libraryOperation';
@@ -27,6 +28,7 @@ const Statistics = () => {
 
 	return (
 		<StatPagesContainer>
+			<StatTextResolt>Результаты</StatTextResolt>
 			<StatSubContainerTable>
 				<StatCommonContainer>
 					<StatSubContainer>
