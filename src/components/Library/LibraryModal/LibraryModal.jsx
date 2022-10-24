@@ -25,15 +25,19 @@ function LibraryModal() {
 
 	const handleAddReview = (newValue, coment, bookId) => {
         dispatch(
-            addBookReview(bookId, newValue, coment)
-		);
-	};
-
-    console.log({
+            addBookReview({
         bookId,
 		rating: newValue,
 		feedback: coment,
-	});
+	})
+		);
+	};
+
+    // console.log({
+    //     bookId,
+	// 	rating: newValue,
+	// 	feedback: coment,
+	// });
 
 	return (
 		<>
