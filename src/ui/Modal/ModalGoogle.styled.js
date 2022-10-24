@@ -7,7 +7,7 @@ export const ModalButtonGoogle = styled.a`
 	padding-right: 50px;
 	padding-left: 17px;
 	background: #ff6b08;
-	font-family: 'Roboto';
+	font-family: 'Montserrat';
 	font-weight: 700;
 	font-size: 16px;
 	align-items: center;
@@ -17,7 +17,7 @@ export const ModalButtonGoogle = styled.a`
 	box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
 	text-decoration: none;
 	cursor: pointer;
-	 @media screen and (max-width: 767px) {
+	@media screen and (max-width: 767px) {
 		padding-right: 16px;
 		padding-left: 4;
 	}
