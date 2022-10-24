@@ -13,7 +13,8 @@ import { addFinishedPages } from '../../redux/library/libraryOperation';
 
 import StatisticsTablet from './StatisticsTablet';
 import { useState } from 'react';
-import { DatePicker } from '@mui/x-date-pickers';
+// import { DatePicker } from '@mui/x-date-pickers';
+
 const Statistics = () => {
 	const dispatch = useDispatch();
 	const [pages, setPages] = useState('');

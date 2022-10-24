@@ -14,7 +14,7 @@ import PrivateRoute from './Route/PrivatePoute';
 import PublicRoute from './Route/PublicRoute';
 import { refreshUser, loginWithGoogle } from 'redux/auth/authOperation';
 import { getSid, getIsRefreshing } from 'redux/auth/authSelector';
-import { getAccessToken } from '../redux/auth/authSelector';
+// import { getAccessToken } from '../redux/auth/authSelector';
 // import { userBooks, getBookPlanning } from '../redux/library/libraryOperation';
 
 export const App = () => {
@@ -26,7 +26,7 @@ export const App = () => {
 	const sid = useSelector(getSid);
 	const isRefreshing = useSelector(getIsRefreshing);
 
-	const accessToken = useSelector(getAccessToken);
+	// const accessToken = useSelector(getAccessToken);
 
 	const dispatch = useDispatch();
 
@@ -41,18 +41,6 @@ export const App = () => {
 		dispatch(refreshUser({ sid }));
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [dispatch]);
-
-
-	// useEffect(() => {
-	// 	if (!accessToken) {
-	// 		return;
-	// 	}
-	// 	setTimeout(() => {
-	// 		dispatch(userBooks());
-	// 		// тут запит на бек, тому що в запиті userBooks не приходить currentlyReading
-	// 		dispatch(getBookPlanning())
-	// 	});
-	// }, [accessToken, dispatch]);
 
 	return (
           !isRefreshing && (<Routes>

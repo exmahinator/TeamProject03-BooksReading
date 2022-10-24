@@ -8,7 +8,6 @@ import {
 	addBookReview,
 } from './libraryOperation';
 import { logIn, logOut, loginWithGoogle } from '../auth/authOperation';
-import { Navigate } from 'react-router-dom';
 
 const initialState = {
 	goingToRead: [],
@@ -55,10 +54,15 @@ const librarySlice = createSlice({
 			state.endDate = action.payload.endDate;
 			state.pagesPerDay = action.payload.pagesPerDay;
 		},
+		
 		[getBookPlanning.fulfilled](state, action) {
+			if (!action.payload) {
+				return;
+			}
 			state.currentlyReading = action.payload.planning.books.filter(
 				book => book.pagesTotal !== book.pagesFinished
 			);
+
 			state.startDate = action.payload.planning.startDate;
 			state.endDate = action.payload.planning.endDate;
 			state.stats = action.payload.planning.stats;
@@ -73,10 +77,9 @@ const librarySlice = createSlice({
 			state.goingToRead = action.payload.data.goingToRead;
 			state.currentlyReading = action.payload.data.currentlyReading;
 			state.finishedReading = action.payload.data.finishedReading;
-
+		},
 		[addBookReview.fulfilled](state, action) {
 			// state.rating = action.payload.rating;
-
 		},
 	},
 });

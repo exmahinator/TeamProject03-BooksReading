@@ -53,6 +53,8 @@ const Timer = ({ endDate }) => {
 	const [minutes, setMinutes] = React.useState(0);
 	const [seconds, setSeconds] = React.useState(0);
 
+
+	
 	// const deadline = 'December, 31, 2022';
 	const deadline = endDate;
 
@@ -66,10 +68,13 @@ const Timer = ({ endDate }) => {
 	};
 
 	React.useEffect(() => {
+		if (!Boolean(endDate)) {
+		return;
+	}
 		const interval = setInterval(() => getTime(deadline), 1000);
 
 		return () => clearInterval(interval);
-	}, []);
+	});
 
 	return (
 		<TimerCounter className={css.lastChild} role="timer">

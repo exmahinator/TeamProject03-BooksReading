@@ -10,7 +10,7 @@ import {
 	Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { getStats, getStartDate, getEndDate, getPagesPerDay } from '../../redux/library/librarySelector';
+import { getStartDate, getEndDate, getPagesPerDay } from '../../redux/library/librarySelector';
 import { useSelector } from 'react-redux';
 // import { red } from '@mui/material/colors';
 
