@@ -1,5 +1,6 @@
 export { default as ProgressItem } from './ProgressItem.styled';
 export { default as ProgressNumber } from './ProgressNumber.styled';
+export {default as ProgressNumberLast} from './ProgressNumberLast.styled'
 export { default as ProgressText } from './ProgressText.styled';
 export { default as ProgressList } from './ProgressList.styled';
 export { default as ProgressTitle } from './ProgressTitle.styled';
@@ -19,6 +20,7 @@ export { default as BookName } from './BookName.styled';
 export { default as AuthorName } from './AuthorName.styled';
 export { default as PublishYear } from './PublishYear.styled';
 export { default as Pages } from './Pages.styled';
+
 
 
 

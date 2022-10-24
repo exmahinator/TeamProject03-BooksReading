@@ -9,6 +9,7 @@ const StatisticsTablet = () => {
 		<StatisticsContainerTablet>
 			<StatisticsTabletText>Статистика</StatisticsTabletText>
 			<StatTable>
+				<tbody>
 				<tr>
 					<td>10.10.2019</td>
 					<td>08:10:23</td>
@@ -22,8 +23,9 @@ const StatisticsTablet = () => {
 				<tr>
 					<td>12.10.2019</td>
 					<td>08:10:23</td>
-					<td>30стр</td>
-				</tr>
+					<td>30 стр</td>
+					</tr>
+					</tbody>
 			</StatTable>
 		</StatisticsContainerTablet>
 	);
