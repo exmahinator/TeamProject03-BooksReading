@@ -10,7 +10,7 @@ const StatPagesContainer = styled.div`
 	align-items: center;
 	@media screen and (min-width: 768px) {
 		width: 704px;
-		height: 309px;
+		/* min-height: 309px; */
 
 		background: #ffffff;
 		box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
@@ -20,6 +20,7 @@ const StatPagesContainer = styled.div`
 		height: 340px;
 		width: 288px;
 		align-items: center;
+		padding-top: 20px;
 	}
 `;
 

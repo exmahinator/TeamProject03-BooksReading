@@ -16,6 +16,22 @@ import { useSelector } from 'react-redux';
 
 // import faker from 'faker';
 
+// window.onload=function(){
+// let draw = ChartJS.controllers.line.prototype.draw;
+// ChartJS.controllers.line = ChartJS.controllers.line.extend({
+//     draw: function() {
+//            let ctx = this.chart.chart.ctx;
+//         ctx.save();
+//         ctx.shadowColor = 'red';
+//         ctx.shadowBlur = 10;
+//         ctx.shadowOffsetX = 0;
+//         ctx.shadowOffsetY = 4;
+//         ctx.stroke();
+//         draw.apply(this, arguments);
+//         ctx.restore();
+//     }
+// });
+
 ChartJS.register(
 	CategoryScale,
 	LinearScale,
@@ -28,6 +44,13 @@ ChartJS.register(
 
 const options = {
 	responsive: true,
+	title: {
+		// display: true,
+		// text: 'TEST',
+		// fontSize: 24,
+		// fontColor: 'red',
+	},
+
 	plugins: {
 		legend: {
 			display: true,
@@ -36,36 +59,54 @@ const options = {
 		title: {
 			display: true,
 			text: 'КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ 0',
-		},   
+			position: 'top',
+			// defaultFontSize: 24,
+			// fontColor: '#666',
+			// fontFamily: 'Montserrat',
+			// fontStyle: normal,
+			// fontWeight: 500,
+			// defaultFontSize: 24,
+			// lineHeight: 15,
+			// textTransform: uppercase,
+		},
 	},
+
+	stroke: {
+		shadowColor: 'black',
+		shadowBlur: 3,
+		shadowOffsetX: 3,
+		shadowOffsetY: 10,
+	},
+
 	scales: {
 		xAxes: {
 			ticks: {
-			  display: false,
+				display: false,
 			},
 			grid: {
-                // display: false,
+				// display: false,
 				lineWidth: 2,
 				color: '#B1B5C2',
 				borderColor: '#B1B5C2',
 				borderWidth: 2,
-            },
+			},
 		},
 		yAxes: {
 			ticks: {
 				display: false,
 			},
 			grid: {
-				display: false
+				display: false,
 			},
 		},
-	}
+	},
 };
 
 // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
 
 export default function LineChart() {
+
 	// const stats = useSelector(getStats)
 	const startDate = useSelector(getStartDate);
 	const endDate = useSelector(getEndDate);
@@ -90,7 +131,6 @@ export default function LineChart() {
 	// 	const date = Date.parse(splitDate[0]);
 	// 	return date
 	// })
-
 
 	// const statsFact = stats.filter(({pagesCount, time}) => {
 	// 	const pages = 0;
@@ -117,28 +157,68 @@ export default function LineChart() {
 
 	// let startDate = new Date('10/22/2022');
 	// let endDate = new Date('10/25/2022');
+	// const ShadowLineElement = Line.elements.Line.extend({
+	// 	draw() {
+	// 		console.log(this);
+
+	// 		const { ctx } = this._chart;
+
+	// 		const originalStroke = ctx.stroke;
+
+	// 		ctx.stroke = function () {
+	// 			ctx.save();
+	// 			ctx.shadowColor = 'gray';
+	// 			ctx.shadowBlur = 10;
+	// 			ctx.shadowOffsetX = 0;
+	// 			ctx.shadowOffsetY = 4;
+	// 			originalStroke.apply(this, arguments);
+	// 			ctx.restore();
+	// 		};
+
+	// 		Line.elements.Line.prototype.draw.apply(this, arguments);
+
+	// 		ctx.stroke = originalStroke;
+	// 	},
+	// });
+
+	// Line.defaults.ShadowLine = Line.defaults.Line;
+	// Line.controllers.ShadowLine = Line.controllers.Line.extend({
+	// 	datasetElementType: ShadowLineElement,
+	// });
+
 	// const days = [1, 2, 3, 4, 5, 6];
 
-    const data = {
-	labels: days,
-	datasets: [
-		{
-			label: 'План', // вычислить за сколько дней прочесть книгу и количество страниц startData & endDatta
-			data: statsPlan.map((stat) => stat.pagesCount),
-			shadowColor: 'red',
-			borderColor: 'rgb(255, 99, 132)',
-			backgroundColor: 'rgba(255, 99, 132, 0.5)',
-			lineTension: 0.4,
-		},
-		{
-			label: 'Факт', // stats (key) > [data.количество страницї]
-			data: statsFact.map((stat) => stat.pagesCount),
-			borderColor: 'rgb(53, 162, 235)',
-			backgroundColor: 'rgba(53, 162, 235, 0.5)',
-			lineTension: 0.4,
-		},
-	],
-}
+	const data = {
+		labels: days,
+		datasets: [
+			{
+				label: 'План', // вычислить за сколько дней прочесть книгу и количество страниц startData & endDatta
+				data: statsPlan.map(stat => stat.pagesCount),
+				pointBorderWidth: 6,
+				// border: '2px solid #091E3F',
+				// boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+				// backgroundShadowColor: 'red',
+				// shadowColor: 'black',
+				// shadowBlur: 3,
+				// shadowOffsetX: 3,
+				// shadowOffsetY: 10,
+				// xValue: ctx => value(ctx, 0, 2, 'x'),
+				// yValue: ctx => value(ctx, 0, 2, 'y'),
+				borderColor: '#091E3F',
+				backgroundColor: '#091E3F',
+				lineTension: 0.4,
+			},
+			{
+				label: 'Факт', // stats (key) > [data.количество страницї]
+				data: statsFact.map(stat => stat.pagesCount),
+				borderColor: '#FF6B08',
+				backgroundColor: '#FF6B08',
+				// boxShadow: '0px 2px 3px rgba(9, 30, 63, 0.25)',
+				lineTension: 0.4,
+				pointBorderWidth: 6,
+			},
+		],
+	};
 
 	return <Line options={options} data={data} />;
 }

@@ -35,16 +35,21 @@ const Statistics = () => {
 				<StatCommonContainer>
 					<StatSubContainer>
 						<StatLabel htmlFor="data">Дата</StatLabel>
-						<StatInput id="data" type="text" defaultValue={new Date().toLocaleDateString()} />
+						<StatInput id="data" type="date" defaultValue="2022-10-25" />
 					</StatSubContainer>
 					<StatSubContainer>
 						<StatLabel htmlFor="pages">Кількість сторінок </StatLabel>
-						<StatInput id="pages" type="text" onChange={handleChangePage} value={pages} />
+						<StatInput
+							id="pages"
+							type="text"
+							onChange={handleChangePage}
+							value={pages}
+						/>
 					</StatSubContainer>
 				</StatCommonContainer>
 				<StatisticsButton
 					type="button"
-					onClick={()=>handleAddResults({pages})}
+					onClick={() => handleAddResults({ pages })}
 				>
 					Додати результат
 				</StatisticsButton>
