@@ -5,6 +5,7 @@ const LibraryBooklistContainer = styled.div`
 	color: #242a37;
 	:not(:last-child) {
 		margin-bottom: 20px;
+		margin-bottom: ${props => props.tabletSize && '40px'};
 	}
 `;
 
