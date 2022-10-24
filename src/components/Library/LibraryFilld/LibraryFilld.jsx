@@ -34,6 +34,7 @@ import {
 	getFinishedReading,
 	getCurrentlyReading,
 } from '../../../redux/library/librarySelector';
+import LibraryModal from '../LibraryModal/LibraryModal';
 
 function LibraryFilld() {
 	const goingToRead = useSelector(getGoingToRead);
@@ -452,6 +453,8 @@ function LibraryFilld() {
 					</LibraryBooklistContainer>
 				)}
 			</LibraryControlMobileSection>
+
+			<LibraryModal/>
 		</>
 	);
 }

@@ -16,10 +16,9 @@ import {
 import { ReactComponent as Flat } from '../../images/icons/Flat.svg';
 import { ReactComponent as Del } from '../../images/icons/delete.svg';
 import css from './TrainingList.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addBookPlanning } from '../../redux/library/libraryOperation';
 // import { Navigate } from 'react-router-dom';
-import { getCurrentlyReading } from '../../redux/library/librarySelector';
 import { useLocation } from 'react-router-dom';
 import { ReactComponent as CheckboxCheked } from "../../images/icons/checkboxChecked.svg";
 import { ReactComponent as CheckboxDisabled } from "../../images/icons/checkboxDisabled.svg";

@@ -1,5 +1,6 @@
 export { default as ProgressItem } from './ProgressItem.styled';
 export { default as ProgressNumber } from './ProgressNumber.styled';
+export {default as ProgressNumberLast} from './ProgressNumberLast.styled'
 export { default as ProgressText } from './ProgressText.styled';
 export { default as ProgressList } from './ProgressList.styled';
 export { default as ProgressTitle } from './ProgressTitle.styled';

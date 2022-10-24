@@ -17,6 +17,7 @@ const StatisticsButton = styled.button`
 	color: #ffffff;
 	margin-top: 28px;
 	margin-bottom: 24px;
+	cursor: pointer;
 	@media screen and (min-width: 768px) {
 		margin-bottom: 0;
 		margin-top: 0;

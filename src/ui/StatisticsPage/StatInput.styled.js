@@ -7,6 +7,7 @@ const StatInput = styled.input`
 	background-color: inherit;
 	border: 1px solid #a6abb9;
 	outline: none;
+	background: #f6f7fb;
 `;
 
 export default StatInput;
