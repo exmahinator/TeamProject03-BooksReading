@@ -16,8 +16,8 @@ import { addBookReview } from '../../../redux/library/libraryOperation';
 function LibraryModal() {
 	const [newValue, setNewValue] = useState(null);
 	const [coment, setComent] = useState('');
-	console.log(newValue);
-	console.log(coment);
+	// console.log(newValue);
+	// console.log(coment);
 
     const dispatch = useDispatch();
     
