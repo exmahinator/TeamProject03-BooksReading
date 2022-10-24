@@ -15,7 +15,7 @@ import PublicRoute from './Route/PublicRoute';
 import { refreshUser } from 'redux/auth/authOperation';
 import { getSid, getIsRefreshing } from 'redux/auth/authSelector';
 import { getAccessToken } from '../redux/auth/authSelector';
-import { userBooks, getBookPlanning } from '../redux/library/libraryOperation';
+// import { userBooks, getBookPlanning } from '../redux/library/libraryOperation';
 
 export const App = () => {
 	const sid = useSelector(getSid);
@@ -30,16 +30,17 @@ export const App = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [dispatch]);
 
-	useEffect(() => {
-		if (!accessToken) {
-			return;
-		}
-		setTimeout(() => {
-			dispatch(userBooks());
-			// тут запит на бек, тому що в запиті userBooks не приходить currentlyReading
-			dispatch(getBookPlanning())
-		});
-	}, [accessToken, dispatch]);
+
+	// useEffect(() => {
+	// 	if (!accessToken) {
+	// 		return;
+	// 	}
+	// 	setTimeout(() => {
+	// 		dispatch(userBooks());
+	// 		// тут запит на бек, тому що в запиті userBooks не приходить currentlyReading
+	// 		dispatch(getBookPlanning())
+	// 	});
+	// }, [accessToken, dispatch]);
 
 	return (
           !isRefreshing && (<Routes>
