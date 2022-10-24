@@ -14,15 +14,17 @@ export const Overlay = styled.div`
 `;
 
 export const ModalWindow = styled.div`
-	width: 394px;
-	height: 204px;
+	// width: 394px;
+	// height: 204px;
+	width: ${props => props.libraryRating && '300px'};
+	height: ${props => props.libraryRating && '350px'};
 	background-color: #fff;
 	box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
 
-	@media screen and (max-width: 767px) {
-		width: 280px;
-		height: 222px;
-	}
+	// @media screen and (max-width: 767px) {
+	// 	width: 280px;
+	// 	height: 222px;
+	// }
 `;
 
 export const ModalLogoutText = styled.div`
@@ -94,8 +96,11 @@ export const ButtonConteiner = styled.div`
 
 export const ModalConteiner = styled.div`
 	padding: 48px 53px;
+	width: 290px;
 
 	@media screen and (max-width: 767px) {
 		padding: 48px 35px;
+		width: 210px;
 	}
 `;
+
