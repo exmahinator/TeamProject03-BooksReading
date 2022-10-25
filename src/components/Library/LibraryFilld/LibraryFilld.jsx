@@ -105,7 +105,7 @@ function LibraryFilld() {
 									</LibraryBooklistTabletBodyCell>
 								</LibraryBooklistTabletRow> */}
 								{finishedReading.map(
-									({ title, author, publishYear, pagesTotal, _id }) => {
+									({ title, author, publishYear, pagesTotal, _id, rating }) => {
 										return (
 											<LibraryBooklistTabletRow key={_id}>
 												<LibraryBooklistTabletBodyCell
@@ -125,7 +125,7 @@ function LibraryFilld() {
 													{pagesTotal}
 												</LibraryBooklistTabletBodyCell>
 												<LibraryBooklistTabletBodyCell ratingPadding>
-													<Rating name="read-only" value={valueReview} readOnly />
+													<Rating name="read-only" value={rating} readOnly />
 												</LibraryBooklistTabletBodyCell>
 												<LibraryBooklistTabletBodyCell buttonPadding>
 													<LibraryBooklistTabletButton

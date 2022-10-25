@@ -54,7 +54,7 @@ const librarySlice = createSlice({
 			state.endDate = action.payload.endDate;
 			state.pagesPerDay = action.payload.pagesPerDay;
 		},
-		
+
 		[getBookPlanning.fulfilled](state, action) {
 			if (!action.payload) {
 				return;
@@ -79,7 +79,13 @@ const librarySlice = createSlice({
 			state.finishedReading = action.payload.data.finishedReading;
 		},
 		[addBookReview.fulfilled](state, action) {
-			// state.rating = action.payload.rating;
+			state.finishedReading.splice(
+				state.finishedReading.findIndex(
+					book => book._id === action.payload._id
+				),
+				1,
+				action.payload
+			);
 		},
 	},
 });

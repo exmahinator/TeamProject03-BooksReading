@@ -17,28 +17,19 @@ import { addBookReview } from '../../../redux/library/libraryOperation';
 function LibraryModal() {
 	const [newValue, setNewValue] = useState(null);
 	const [coment, setComent] = useState('');
-	
-	// console.log(newValue);
-	// console.log(coment);
 
 	const dispatch = useDispatch();
 
 	const { isModal, toogleModal } = useContext(ReviewContext);
-	
-	console.log(isModal);
 
-	// const bookId = '63554a973551fd60da511947';
 	const typeOfChange = {
 		'simple-controlled': setNewValue,
 		review: setComent,
-	}
+	};
 
 	const handleChange = ({ target: { name, value } }) => {
-		
-		// console.log(name, value);
 		typeOfChange[name](value);
-		
-	}
+	};
 
 	const handleAddReview = () => {
 		dispatch(
@@ -48,13 +39,8 @@ function LibraryModal() {
 				feedback: coment,
 			})
 		);
+		toogleModal();
 	};
-
-	// console.log({
-	//     bookId,
-	// 	rating: newValue,
-	// 	feedback: coment,
-	// });
 
 	return (
 		<>
@@ -64,7 +50,7 @@ function LibraryModal() {
 					<Typography component="legend"></Typography>
 					<Rating
 						name="simple-controlled"
-						value={newValue}
+						value={+newValue}
 						onChange={handleChange}
 					/>
 				</RaitingStar>
@@ -72,21 +58,21 @@ function LibraryModal() {
 					<label htmlFor="content">Резюме</label>
 				</ResumeTitle>
 				<InputModal>
-					<textarea style={{'width': '100%'}}
+					<textarea
+						style={{ width: '100%' }}
 						onChange={handleChange}
 						rows="10"
 						cols="50"
 						id="content"
-						name='review'
+						name="review"
 					></textarea>
 				</InputModal>
 			</RaitingBlok>
 			<ButtonBlock>
-				<ButtonModal type="button" onClick={toogleModal}>Назад</ButtonModal>
-				<ButtonModal
-					type="button"
-					onClick={handleAddReview}
-				>
+				<ButtonModal type="button" onClick={toogleModal}>
+					Назад
+				</ButtonModal>
+				<ButtonModal type="button" onClick={handleAddReview}>
 					Рейтинг
 				</ButtonModal>
 			</ButtonBlock>
