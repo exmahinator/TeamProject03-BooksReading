@@ -14,3 +14,4 @@ export { default as StatTableTime } from './StatTableTime.styled';
 export { default as StatTableTextPage } from './StatTableTextPage.styled';
 export { default as StatTextResolt } from './StatTextResolt.styled';
 export { default as StatTableScroll } from './StatTableScroll.styled';
+export {BoxStatGoals, BoxStatGoalsDesctop, BoxStatDesctop, BoxGoalsDesctop} from './BoxStatGoals.styled';

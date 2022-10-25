@@ -21,6 +21,7 @@ const ProgressContainer = styled.div`
 		max-height: 329px;
 		height: 100%;
 		padding: 0;
+		margin-bottom: 40px;
 	}
 `;
 
