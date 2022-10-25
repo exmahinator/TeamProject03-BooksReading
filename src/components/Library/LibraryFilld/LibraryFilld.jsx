@@ -44,10 +44,8 @@ function LibraryFilld() {
 	const goingToRead = useSelector(getGoingToRead);
 	const finishedReading = useSelector(getFinishedReading);
 	const currentlyReading = useSelector(getCurrentlyReading);
+	const {isModal, toogleModal} = useContext(ReviewContext);
 
-	const { isModal, toogleModal } = useContext(ReviewContext);
-
-	const valueReview = 2;
 
 	return (
 		<>
