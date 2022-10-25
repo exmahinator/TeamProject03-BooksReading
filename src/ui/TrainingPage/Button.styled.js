@@ -5,7 +5,7 @@ const Button = styled.button`
     justify-content: center;
 
     padding: 13px;
-    margin: 0 auto 32px auto;
+    margin: 32px auto 32px auto;
 
     color: #fff;
     font-weight: 500;
@@ -29,7 +29,7 @@ const Button = styled.button`
     }
 
     @media screen and (min-width: 768px) {
-        margin: 40px auto 40px auto;
+        margin: 0 auto 40px auto;
     }
     @media screen and (min-width: 1280px) {
         

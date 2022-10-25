@@ -20,8 +20,8 @@ import { useDispatch } from 'react-redux';
 import { addBookPlanning } from '../../redux/library/libraryOperation';
 // import { Navigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { ReactComponent as CheckboxCheked } from "../../images/icons/checkboxChecked.svg";
-import { ReactComponent as CheckboxDisabled } from "../../images/icons/checkboxDisabled.svg";
+import { ReactComponent as CheckboxCheked } from '../../images/icons/checkboxChecked.svg';
+import { ReactComponent as CheckboxDisabled } from '../../images/icons/checkboxDisabled.svg';
 
 function TrainingList({ books, startDate, endDate, booksDelete }) {
 	const dispatch = useDispatch();
@@ -43,71 +43,89 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 	};
 
 	const CheckBox = ({ pagesFinished, pagesTotal }) => {
-	return	pagesFinished !== pagesTotal ? <CheckboxDisabled/> : <CheckboxCheked />
-		
-	}
+		return pagesFinished !== pagesTotal ? (
+			<CheckboxDisabled />
+		) : (
+			<CheckboxCheked />
+		);
+	};
 
 	return (
 		<>
 			<Wrapper>
 				<ListMob>
-					{books?.map(({ _id, title, author, publishYear, pagesTotal }) => (
-						<ItemMob key={_id}>
-							<div className={css.bookNameMob}>
-								<FlatWrapper>
-									<Flat />
-								</FlatWrapper>
-								<div style={{ padding: '0 25px 0 0' }}>{title}</div>
-							</div>
-
-							<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
-								<div
-									style={{
-										margin: '0 15px 14px 0',
-										color: '#898F9F',
-										width: '25%',
-									}}
-								>
-									Автор:
+					{books?.map(
+						({
+							_id,
+							title,
+							author,
+							publishYear,
+							pagesTotal,
+							pagesFinished,
+						}) => (
+							 <ItemMob key={_id}>
+								<div className={css.bookNameMob}>
+									<FlatWrapper>
+										{location.pathname === '/training' ? (
+											<Flat />
+										) : (
+											<CheckBox
+												pagesFinished={pagesFinished}
+												pagesTotal={pagesTotal}
+											/>
+										)}
+										{/* <Flat /> */}
+									</FlatWrapper>
+									<div style={{ padding: '0 25px 0 0' }}>{title}</div>
 								</div>
-								<div>{author}</div>
-							</div>
-							<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
-								<div
-									style={{
-										margin: '0 15px 14px 0',
-										color: '#898F9F',
-										width: '25%',
-									}}
-								>
-									Рік:
-								</div>
-								<div>{publishYear}</div>
-							</div>
-							<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
-								<div
-									style={{
-										marginRight: '15px',
-										color: '#898F9F',
-										width: '25%',
-									}}
-								>
-									Стор.:
-								</div>
-								<div>{pagesTotal}</div>
-							</div>
 
-							<DeleteIcon>
-								<Del className={css.delButton} />
-							</DeleteIcon>
-						</ItemMob>
-					))}
-
-					<Button>Почати тренування</Button>
+								<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
+									<div>
+										Автор:
+									</div>
+									<div>{author}</div>
+								</div>
+								<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
+									<div
+										style={{
+											margin: '0 15px 14px 0',
+											color: '#898F9F',
+											width: '25%',
+										}}
+									>
+										Рік:
+									</div>
+									<div>{publishYear}</div>
+								</div>
+								<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
+									<div
+										style={{
+											marginRight: '15px',
+											color: '#898F9F',
+											width: '25%',
+										}}
+									>
+										Стор.:
+									</div>
+									<div>{pagesTotal}</div>
+								</div>
+								{location.pathname === '/training' && (
+									<DeleteIcon>
+										<Del className={css.delButton} />
+									</DeleteIcon>
+								)}
+							</ItemMob>
+						)
+					)} <ItemDesk>
+							<Flat style={{marginRight: '12px'}} /><p>...</p>
+						</ItemDesk>
 				</ListMob>
+					{/* {books.length > 0 && location.pathname === '/training' && (
+						<Button>Почати тренування</Button>
+					)} */}
 			</Wrapper>
 
-			{/* desk */}
+		{/* desk */}
 			<ListDesk>
 				<Title>
 					<BookName>Назва книги</BookName>
@@ -116,34 +134,45 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 					<Pages>Стор.</Pages>
 				</Title>
 				{/* <ListDesk> */}
-				{books?.map(({ _id, title, author, publishYear, pagesTotal, pagesFinished }) => (
-					<ItemDesk key={_id}>
-						<BookName className={css.bookName}>
-							<div style={{ marginRight: '15px' }}>
-								{location.pathname === '/training' ? <Flat /> : <CheckBox pagesFinished={pagesFinished} pagesTotal={pagesTotal}  />}
-							</div>
-							<p>{title}</p>
-						</BookName>
-						<AuthorName>{author}</AuthorName>
-						<PublishYear>{publishYear}</PublishYear>
-						<Pages>{pagesTotal}</Pages>
-						{location.pathname === '/training' && (
-							<button
-								className={css.delButton}
-								type="button"
-								onClick={() => booksDelete(_id)}
-							>
-								<Del className={css.svgDel} />
-							</button>
-						)}
+				{books?.map(
+					({ _id, title, author, publishYear, pagesTotal, pagesFinished }) => (
+						<ItemDesk key={_id}>
+							<BookName className={css.bookName}>
+								<div style={{ marginRight: '15px' }}>
+									{location.pathname === '/training' ? (
+										<Flat />
+									) : (
+										<CheckBox
+											pagesFinished={pagesFinished}
+											pagesTotal={pagesTotal}
+										/>
+									)}
+								</div>
+								<p>{title}</p>
+							</BookName>
+							<AuthorName>{author}</AuthorName>
+							<PublishYear>{publishYear}</PublishYear>
+							<Pages>{pagesTotal}</Pages>
+							{location.pathname === '/training' && (
+								<button
+									className={css.delButton}
+									type="button"
+									onClick={() => booksDelete(_id)}
+								>
+									<Del className={css.svgDel} />
+								</button>
+							)}
+						</ItemDesk>
+					)
+				)} <ItemDesk>
+						<Flat style={{marginRight: '16px'}} /><p>...</p>
 					</ItemDesk>
-				))}
+			</ListDesk>
 				{books.length > 0 && location.pathname === '/training' && (
 					<Button type="button" onClick={handleAddBookPlanning}>
 						Почати тренування
 					</Button>
 				)}
-			</ListDesk>
 		</>
 	);
 }
