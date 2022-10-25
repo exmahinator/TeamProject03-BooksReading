@@ -7,22 +7,19 @@ import MyGoals from '../components/MyGoals/MyGoals';
 import { NavLink } from 'react-router-dom';
 // import { getCurrentlyReading } from '../redux/library/librarySelector';
 
-
 export const TrainingPage = () => {
 	// const dispatch = useDispatch();
 	// const gcurrentlyReading = useSelector(getCurrentlyReading);
 	// let trainingNow = false;
 
-	// прпописати тогл відображення сторінки тренінг або статистика
-	// якщо в CurrentlyReading щось є, то перенаправляємо на статистику!
-
 	return (
 		<Section>
 			<Container>
-				<GoalTrainingBox>
-				<MyGoals />
 				<NavLink to="/statistics">Statistics</NavLink>
-				<MyTraining />
+				<GoalTrainingBox>
+					<MyGoals />
+
+					<MyTraining />
 				</GoalTrainingBox>
 				<LineChart />
 			</Container>

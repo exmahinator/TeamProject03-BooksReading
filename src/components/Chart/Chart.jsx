@@ -11,12 +11,26 @@ import {
 } from 'chart.js';
 
 // import { Line } from 'react-chartjs-2';
-import { getStartDate, getEndDate, getPagesPerDay, getStats } from '../../redux/library/librarySelector';
+import {
+	getStartDate,
+	getEndDate,
+	getPagesPerDay,
+	getStats,
+	getCurrentlyReading,
+} from '../../redux/library/librarySelector';
 import { useSelector } from 'react-redux';
 // import { red } from '@mui/material/colors';
 
 // import faker from 'faker';
-import { ChartWrapper, ChartBox, ChartTitle, ChartTime, ChartNumber} from 'ui/ChartStyled';
+import {
+	ChartWrapper,
+	ChartBox,
+	ChartTitle,
+	ChartTime,
+	ChartNumber,
+	ChartInfo,
+	ChartInfoBox,
+} from 'ui/ChartStyled';
 
 // window.onload=function(){
 // let draw = ChartJS.controllers.line.prototype.draw;
@@ -108,11 +122,12 @@ const options = {
 // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
 export default function LineChart() {
-
 	const stats = useSelector(getStats);
 	const startDate = useSelector(getStartDate);
 	const endDate = useSelector(getEndDate);
 	const pagesPerDay = useSelector(getPagesPerDay);
+
+	const currentlyReading = useSelector(getCurrentlyReading);
 
 	// const calcDays = (startDate, endDate) => {
 	// 	const time = Date.parse(endDate) - Date.parse(startDate);
@@ -187,24 +202,26 @@ export default function LineChart() {
 	// 	datasetElementType: ShadowLineElement,
 	// });
 
-	const generateDateArr = function(start, end) {
+	const generateDateArr = function (start, end) {
 		const startDate = new Date(start);
 		const endDate = new Date(end);
 		const arr = [];
 		const dt = new Date(startDate);
 
 		while (dt <= endDate) {
-			const fullDate = `${dt.getFullYear()}-${dt.getMonth() + 1}-${dt.getDate()}`;
-			arr.push({time: fullDate});
+			const fullDate = `${dt.getFullYear()}-${
+				dt.getMonth() + 1
+			}-${dt.getDate()}`;
+			arr.push({ time: fullDate });
 			dt.setDate(dt.getDate() + 1);
 		}
 		return arr;
-	}
+	};
 
 	const datesArr = generateDateArr(startDate, endDate);
-	
+
 	const statsPlan = datesArr.map(stat => {
-		const newStat = {...stat};
+		const newStat = { ...stat };
 		newStat.pagesCount = pagesPerDay;
 		return newStat;
 	});
@@ -215,15 +232,17 @@ export default function LineChart() {
 
 		stats.forEach(el => {
 			const factDate = new Date(el.time);
-			const factFullDate = `${factDate.getFullYear()}-${factDate.getMonth() + 1}-${factDate.getDate()}`;
+			const factFullDate = `${factDate.getFullYear()}-${
+				factDate.getMonth() + 1
+			}-${factDate.getDate()}`;
 
-			if(factFullDate === time) {
+			if (factFullDate === time) {
 				newStat.pagesCount += el.pagesCount;
 			}
 		});
 
 		return newStat;
-	})
+	});
 
 	const data = {
 		labels: datesArr.map(el => el.time),
@@ -258,10 +277,22 @@ export default function LineChart() {
 	};
 
 	return (
-		<ChartBox>
-			<ChartTitle>Кількість сторінок / день <ChartNumber>34</ChartNumber> </ChartTitle>
-			<ChartWrapper options={options} data={data} />
-			<ChartTime>Час </ChartTime>
-		</ChartBox>
+		<>
+			{currentlyReading.length === 0 && (
+				<ChartInfoBox>
+					<ChartInfo>
+						Тут буде відображена Ваша статистика читання коли почнете
+						тренування:
+					</ChartInfo>
+				</ChartInfoBox>
+			)}
+			<ChartBox>
+				<ChartTitle>
+					Кількість сторінок / день <ChartNumber>34</ChartNumber>{' '}
+				</ChartTitle>
+				<ChartWrapper options={options} data={data} />
+				<ChartTime>Час </ChartTime>
+			</ChartBox>
+		</>
 	);
 }
