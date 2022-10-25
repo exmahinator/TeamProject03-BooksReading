@@ -9,12 +9,14 @@ import {
 	Tooltip,
 	Legend,
 } from 'chart.js';
+
 import { Line } from 'react-chartjs-2';
 import { getStartDate, getEndDate, getPagesPerDay, getStats } from '../../redux/library/librarySelector';
 import { useSelector } from 'react-redux';
 // import { red } from '@mui/material/colors';
 
 // import faker from 'faker';
+import { ChartWrapper, ChartBox, ChartTitle, ChartTime, ChartNumber} from 'ui/ChartStyled';
 
 // window.onload=function(){
 // let draw = ChartJS.controllers.line.prototype.draw;
@@ -44,39 +46,40 @@ ChartJS.register(
 
 const options = {
 	responsive: true,
-	title: {
-		// display: true,
-		// text: 'TEST',
-		// fontSize: 24,
-		// fontColor: 'red',
-	},
+	// title: {
+	// 	display: true,
+	// 	text: 'TEST',
+	// 	fontSize: 24,
+	// 	fontColor: 'red',
+	// },
 
 	plugins: {
 		legend: {
-			display: true,
+			display: false,
 			position: 'top',
+			backgroundColor: 'white',
 		},
-		title: {
-			display: true,
-			text: 'КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ 0',
-			position: 'top',
-			// defaultFontSize: 24,
-			// fontColor: '#666',
-			// fontFamily: 'Montserrat',
-			// fontStyle: normal,
-			// fontWeight: 500,
-			// defaultFontSize: 24,
-			// lineHeight: 15,
-			// textTransform: uppercase,
-		},
+		// title: {
+		// 	display: true,
+		// 	text: 'КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ 0',
+		// 	position: 'top',
+		// 	// defaultFontSize: 24,
+		// 	// fontColor: '#666',
+		// 	// fontFamily: 'Montserrat',
+		// 	// fontStyle: normal,
+		// 	// fontWeight: 500,
+		// 	// defaultFontSize: 24,
+		// 	// lineHeight: 15,
+		// 	// textTransform: uppercase,
+		// },
 	},
 
-	stroke: {
-		shadowColor: 'black',
-		shadowBlur: 3,
-		shadowOffsetX: 3,
-		shadowOffsetY: 10,
-	},
+	// stroke: {
+	// 	shadowColor: 'black',
+	// 	shadowBlur: 3,
+	// 	shadowOffsetX: 3,
+	// 	shadowOffsetY: 10,
+	// },
 
 	scales: {
 		xAxes: {
@@ -104,12 +107,56 @@ const options = {
 
 // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-
 export default function LineChart() {
+
 	const stats = useSelector(getStats);
 	const startDate = useSelector(getStartDate);
 	const endDate = useSelector(getEndDate);
 	const pagesPerDay = useSelector(getPagesPerDay);
+
+	const calcDays = (startDate, endDate) => {
+		const time = Date.parse(endDate) - Date.parse(startDate);
+		let TotalDays = Math.ceil(time / (1000 * 3600 * 24));
+		const days = [];
+
+		for (let i = 0; i < TotalDays; i++) {
+			days.push(i);
+		}
+		return days;
+	};
+	const days = calcDays(startDate, endDate);
+
+	const statsPlan = days.map(day => ({ pagesCount: pagesPerDay }));
+
+	// const dateArr = stats.map(({time})=>{
+	// 	const splitDate = time.split(' ');
+	// 	const date = Date.parse(splitDate[0]);
+	// 	return date
+	// })
+
+	// const statsFact = stats.filter(({pagesCount, time}) => {
+	// 	const pages = 0;
+
+	// 	const splitDate = time.split(' ');
+	// 	const date = Date.parse(splitDate[0]);
+
+	// 	const fact = {
+	// 		pagesCount: pages,
+	// 	}
+	// 	return fact
+	// });
+
+	const statsFact = [
+		{ pagesCount: 5 },
+		{ pagesCount: 15 },
+		{ pagesCount: 13 },
+		// { pagesCount: 35 },
+		// { pagesCount: 12 },
+		// { pagesCount: 13 },
+	];
+
+	// let startDate = new Date('10/22/2022');
+	// let endDate = new Date('10/25/2022');
 
 	// const ShadowLineElement = Line.elements.Line.extend({
 	// 	draw() {
@@ -210,5 +257,11 @@ export default function LineChart() {
 		],
 	};
 
-	return <Line options={options} data={data} />;
+	return (
+		<ChartBox>
+			<ChartTitle>Кількість сторінок / день <ChartNumber>34</ChartNumber> </ChartTitle>
+			<ChartWrapper options={options} data={data} />
+			<ChartTime>Час </ChartTime>
+		</ChartBox>
+	);
 }
