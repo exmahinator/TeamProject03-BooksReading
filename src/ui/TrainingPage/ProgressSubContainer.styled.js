@@ -21,7 +21,7 @@ const ProgressSubContainer = styled.div`
 		box-shadow: ${props => props.progressList && 'none'};
 	}
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1280px) {
 		width: auto;
 		margin-right: ${props => props.progressTitle && '0'};
 		padding: ${props => props.progressTitle && '18px 28px'};
