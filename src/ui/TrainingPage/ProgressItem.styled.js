@@ -1,11 +1,24 @@
 import styled from 'styled-components';
 
 const ProgressItem = styled.li`
-	display: flex;
+	display: inline-flex;
 	flex-direction: column;
-	max-width: 100px;
+	align-items: center;
+	width: 100%;
 	:not(:last-child) {
-		margin-right: 20px;
+		margin-right: 12px;
+		margin-right: ${props => props.progressItemNoStat && '20px'};
+	}
+	@media screen and (min-width: 768px) {
+		:not(:last-child) {
+			margin-right: 20px;
+			margin-right: ${props => props.progressItemNoStat && '40px'};
+		}
+	}
+	@media screen and (min-width: 768px) {
+		:not(:last-child) {
+			margin-right: ${props => props.progressItemNoStat && '20px'};
+		}
 	}
 `;
 
