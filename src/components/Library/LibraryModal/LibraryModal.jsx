@@ -1,6 +1,7 @@
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
-import { useState } from 'react';
+import { ReviewContext } from 'components/ReviewContext/ReviewContext';
+import { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
 	ModalTitle,
@@ -13,20 +14,36 @@ import {
 } from 'ui/LibraryModal';
 import { addBookReview } from '../../../redux/library/libraryOperation';
 
-function LibraryModal({ toogleModal }) {
+function LibraryModal() {
 	const [newValue, setNewValue] = useState(null);
 	const [coment, setComent] = useState('');
+	
 	// console.log(newValue);
 	// console.log(coment);
 
 	const dispatch = useDispatch();
 
-	const bookId = '63554a973551fd60da511947';
+	const { isModal, toogleModal } = useContext(ReviewContext);
+	
+	console.log(isModal);
 
-	const handleAddReview = (newValue, coment, bookId) => {
+	// const bookId = '63554a973551fd60da511947';
+	const typeOfChange = {
+		'simple-controlled': setNewValue,
+		review: setComent,
+	}
+
+	const handleChange = ({ target: { name, value } }) => {
+		
+		// console.log(name, value);
+		typeOfChange[name](value);
+		
+	}
+
+	const handleAddReview = () => {
 		dispatch(
 			addBookReview({
-				bookId,
+				bookId: isModal,
 				rating: newValue,
 				feedback: coment,
 			})
@@ -48,9 +65,7 @@ function LibraryModal({ toogleModal }) {
 					<Rating
 						name="simple-controlled"
 						value={newValue}
-						onChange={(event, newValue) => {
-							setNewValue(newValue);
-						}}
+						onChange={handleChange}
 					/>
 				</RaitingStar>
 				<ResumeTitle>
@@ -58,12 +73,11 @@ function LibraryModal({ toogleModal }) {
 				</ResumeTitle>
 				<InputModal>
 					<textarea style={{'width': '100%'}}
-						onChange={e => {
-							setComent(e.target.value);
-						}}
+						onChange={handleChange}
 						rows="10"
 						cols="50"
 						id="content"
+						name='review'
 					></textarea>
 				</InputModal>
 			</RaitingBlok>
@@ -71,7 +85,7 @@ function LibraryModal({ toogleModal }) {
 				<ButtonModal type="button" onClick={toogleModal}>Назад</ButtonModal>
 				<ButtonModal
 					type="button"
-					onClick={() => handleAddReview(newValue, coment, bookId)}
+					onClick={handleAddReview}
 				>
 					Рейтинг
 				</ButtonModal>

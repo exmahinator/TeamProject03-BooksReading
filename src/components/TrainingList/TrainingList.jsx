@@ -28,7 +28,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 	const location = useLocation();
 	// console.log(location.pathname);
 	// location.pathname === '/training'
-	// console.log('books statistics', books);
+	console.log('books statistics', books);
 
 	const booksId = books.map(book => book._id);
 

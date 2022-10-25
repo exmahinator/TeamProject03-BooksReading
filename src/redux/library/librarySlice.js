@@ -45,11 +45,11 @@ const librarySlice = createSlice({
 			state.stats = [];
 			state.error = null;
 		},
-		[addBookToRead.fulfilled](state, action) {
-			state.goingToRead.push(action.payload.newBook);
-		},
+		// [addBookToRead.fulfilled](state, action) {
+		// 	state.goingToRead.push(action.payload.newBook);
+		// },
 		[addBookPlanning.fulfilled](state, action) {
-			state.currentlyReading.push(action.payload.books[0]);
+			state.currentlyReading = action.payload.books;
 			state.startDate = action.payload.startDate;
 			state.endDate = action.payload.endDate;
 			state.pagesPerDay = action.payload.pagesPerDay;

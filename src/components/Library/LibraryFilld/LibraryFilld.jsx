@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
 	LibraryBooklistContainer,
 	LibraryBooklistTitle,
@@ -38,19 +38,17 @@ import Modal from 'components/Modal/Modal';
 import ConteinerModal from 'ui/LibraryModal/ConteinerModal.styled';
 
 import Rating from '@mui/material/Rating';
+import { ReviewContext } from 'components/ReviewContext/ReviewContext';
 
 
 function LibraryFilld() {
 	const goingToRead = useSelector(getGoingToRead);
 	const finishedReading = useSelector(getFinishedReading);
 	const currentlyReading = useSelector(getCurrentlyReading);
-	const [isModal, setIsModal] = useState(false);
 
-	const toogleModal = () => {
-		setIsModal(!isModal);
-	};
-
-	const valueReview = 4;
+	const {isModal, toogleModal} = useContext(ReviewContext);
+	
+	const valueReview = 2;
 
 	return (
 		<>
@@ -132,15 +130,15 @@ function LibraryFilld() {
 												<LibraryBooklistTabletBodyCell buttonPadding>
 													<LibraryBooklistTabletButton
 														type="button"
-														onClick={toogleModal}
+														onClick={()=>toogleModal(_id)}
 													>
 														Резюме
 													</LibraryBooklistTabletButton>
 
-												{isModal && (
+												{isModal === _id && (
 											<Modal toogleModal={toogleModal}>
 												<ConteinerModal>
-																<LibraryModal toogleModal={toogleModal} />
+																<LibraryModal toogleModal={toogleModal}  />
 												</ConteinerModal>
 											</Modal>
 										)}

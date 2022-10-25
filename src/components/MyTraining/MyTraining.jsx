@@ -43,6 +43,7 @@ export default function MyTraining() {
 	};
 
 	const handleChange = event => {
+		console.log(event.target.value);
 		const {
 			target: { value },
 		} = event;
@@ -59,9 +60,8 @@ export default function MyTraining() {
 			return;
 		}
 		setBooks([...books, ...addingToTraining]);
-
-		console.log(books);
 	};
+	console.log(books);
 
 	const handleDelete = id => {
 		return setBooks(books.filter(book => book._id !== id));

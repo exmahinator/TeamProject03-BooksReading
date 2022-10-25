@@ -33,7 +33,7 @@ export const addBookPlanning = createAsyncThunk(
 	async (planningData, thunkAPI) => {
 		try {
 			const { data } = await axios.post('/planning', planningData);
-			// console.log('data:', data);
+			console.log('addBookPlanning:', data);
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);
