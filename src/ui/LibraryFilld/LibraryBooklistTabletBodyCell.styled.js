@@ -4,6 +4,7 @@ import OrangeBook from '../../images/icons/OrangeBook.svg';
 
 const LibraryBooklistTabletBodyCell = styled.td`
 	text-align: ${props => (props.right ? 'right' : 'left')};
+	vertical-align: ${props => props.middle && 'middle'};
 	padding-left: ${props => props.ratingPadding && '32px'};
 	padding-right: ${props => props.yearPadding && '36px'};
 	padding-left: ${props => props.authorPadding && '21px'};
