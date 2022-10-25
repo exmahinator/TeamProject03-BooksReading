@@ -278,7 +278,7 @@ function LibraryFilld() {
 					<LibraryBooklistContainer>
 						<LibraryBooklistTitle>Прочитано</LibraryBooklistTitle>
 						{finishedReading.map(
-							({ title, author, publishYear, pagesTotal, _id }) => {
+							({ title, author, publishYear, pagesTotal, _id, rating }) => {
 								return (
 									<LibraryBooklistSubContainer key={_id}>
 										<LibraryBooklistTable>
@@ -306,15 +306,15 @@ function LibraryFilld() {
 												</LibraryBooklistRow>
 												<LibraryBooklistRow>
 													<LibraryBooklistCell>Рейтинг:</LibraryBooklistCell>
-													<LibraryBooklistCell>* * * * *</LibraryBooklistCell>
+													<LibraryBooklistCell><Rating name="read-only" value={rating} readOnly /></LibraryBooklistCell>
 												</LibraryBooklistRow>
 											</tbody>
 										</LibraryBooklistTable>
-										<LibraryBooklistButton type="button" onClick={toogleModal}>
+										<LibraryBooklistButton type="button" onClick={()=>toogleModal(_id)}>
 											Резюме
 										</LibraryBooklistButton>
 
-										{isModal && (
+										{isModal === _id && (
 											<Modal toogleModal={toogleModal}>
 												<ConteinerModal>
 													<LibraryModal toogleModal={toogleModal} />
