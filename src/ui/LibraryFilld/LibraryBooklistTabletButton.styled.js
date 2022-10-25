@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 const LibraryBooklistTabletButton = styled.button`
 	display: flex;
+	min-width: 80px;
+	justify-content: center;
 	padding: 12px 11px 11px 10px;
 	background-color: #6d7a8d;
 	color: #ffffff;
