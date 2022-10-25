@@ -118,6 +118,12 @@ export const ButtonConteiner = styled.div`
     padding-top: 24px;
 `;
 
+export const ButtonConteinerCentred = styled.div`
+	display: flex;
+	justify-content: center;
+	padding-top: 24px;
+`;
+
 export const ButtonConteinerStats = styled.div`
 	width: 100%;
 	display: flex;
@@ -141,6 +147,16 @@ export const ModalConteiner = styled.div`
 	}
 `;
 
+export const ModalConteinerFinal = styled.div`
+	padding: 40px 83px;
+	width: 228px;
+
+	@media screen and (max-width: 767px) {
+		padding: 40px 27px;
+		width: 210px;
+	}
+`;
+
 export const ConteinerStats = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -154,4 +170,10 @@ export const ConteinerStats = styled.div`
 		width: 210px;
 	
 	}
+`;
+
+export const IconConteiner = styled.div`
+	display: flex;
+	justify-content: center;
+	padding-bottom: 14px;
 `;
