@@ -4,7 +4,7 @@ const ListDesk = styled.ul`
   padding: 0;
   margin: 0 auto 32px auto;
 
-  height: 171px;
+  max-height: 171px;
   overflow: scroll;
   
   list-style: none;
