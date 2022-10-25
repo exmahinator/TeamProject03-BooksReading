@@ -61,7 +61,7 @@ export default function MyTraining() {
 		}
 		setBooks([...books, ...addingToTraining]);
 	};
-	console.log(books);
+	// console.log(books);
 
 	const handleDelete = id => {
 		return setBooks(books.filter(book => book._id !== id));

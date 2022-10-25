@@ -47,8 +47,6 @@ function LibraryFilld() {
 	const currentlyReading = useSelector(getCurrentlyReading);
 
 	const {isModal, toogleModal} = useContext(ReviewContext);
-	
-	const valueReview = 2;
 
 	return (
 		<>

@@ -4,7 +4,7 @@ import LineChart from '../components/Chart/Chart';
 import { Section, Container } from 'ui/BasicStyles';
 import GoalTrainingBox from '../ui/TrainingPage/GoalTrainingBox.styled';
 import MyGoals from '../components/MyGoals/MyGoals';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 // import { getCurrentlyReading } from '../redux/library/librarySelector';
 
 export const TrainingPage = () => {
@@ -15,7 +15,7 @@ export const TrainingPage = () => {
 	return (
 		<Section>
 			<Container>
-				<NavLink to="/statistics">Statistics</NavLink>
+				{/* <NavLink to="/statistics">Statistics</NavLink> */}
 				<GoalTrainingBox>
 					<MyGoals />
 
