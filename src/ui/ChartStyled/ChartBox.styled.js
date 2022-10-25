@@ -14,7 +14,7 @@ const ChartBox = styled.div`
 		max-width: 928px;
 		/* max-height: 340px; */
 		/* padding-left: 40px; */
-		padding-right: 77px;
+		/* padding-right: 77px; */
 	}
 `;
 
