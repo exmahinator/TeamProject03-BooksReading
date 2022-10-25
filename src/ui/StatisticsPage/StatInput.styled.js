@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 const StatInput = styled.input`
 	display: flex;
-	padding: 13px 7px;
+	padding-top: 13px;
+	padding-bottom: 13px;
+	padding-left: 20px;
 	margin-top: 8px;
 	background-color: inherit;
 	border: 1px solid #a6abb9;
