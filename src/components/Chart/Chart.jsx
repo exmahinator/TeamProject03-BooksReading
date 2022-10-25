@@ -126,7 +126,7 @@ export default function LineChart() {
 	};
 	const days = calcDays(startDate, endDate);
 
-	const statsPlan = days.map(day => ({ pagesCount: pagesPerDay }));
+	// const statsPlan = days.map(day => ({ pagesCount: pagesPerDay }));
 
 	// const dateArr = stats.map(({time})=>{
 	// 	const splitDate = time.split(' ');
