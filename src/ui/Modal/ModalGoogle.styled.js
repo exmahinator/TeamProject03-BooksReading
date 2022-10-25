@@ -7,7 +7,7 @@ export const ModalButtonGoogle = styled.a`
 	padding-right: 50px;
 	padding-left: 17px;
 	background: #ff6b08;
-	font-family: 'Roboto';
+	font-family: 'Montserrat';
 	font-weight: 700;
 	font-size: 16px;
 	align-items: center;
@@ -16,7 +16,7 @@ export const ModalButtonGoogle = styled.a`
 	background: #f5f7fa;
 	box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
 	text-decoration: none;
-
+	cursor: pointer;
 	@media screen and (max-width: 767px) {
 		padding-right: 16px;
 		padding-left: 4;
@@ -71,8 +71,10 @@ export const ButtonConteinerGoogle = styled.div`
 
 export const ModalConteinerGoogle = styled.div`
 	padding: 48px 32px;
+	width: 320px;
 
 	@media screen and (max-width: 767px) {
 		padding: 48px 16px;
+		width: 280px;
 	}
 `;
