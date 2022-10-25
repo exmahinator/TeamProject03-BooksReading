@@ -27,7 +27,7 @@ export const TrainingPage = () => {
 				<BoxPageStatistics>
 					<GoalTrainingBox>
 						<MyGoals />
-						<NavLink to="/statistics">Statistics</NavLink>
+							{/* <NavLink to="/statistics">Statistics</NavLink> */}
 						<MyTraining />
 					</GoalTrainingBox>
 					<LineChart />
