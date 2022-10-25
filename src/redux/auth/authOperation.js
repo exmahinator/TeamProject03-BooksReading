@@ -78,7 +78,6 @@ export const loginWithGoogle = createAsyncThunk(
 		try {
 			setAuthHeader(credentials.accessTokenParams);
 			const { data } = await axios.get('/user/books')
-			console.log({ data, ...credentials });
             return { data, ...credentials };
 		} catch (error) {
 		}
