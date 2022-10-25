@@ -40,6 +40,8 @@ function LibraryModal() {
 			})
 		);
 		toogleModal();
+		setNewValue(null);
+		setComent('');
 	};
 
 	return (

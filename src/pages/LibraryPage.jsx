@@ -30,7 +30,6 @@ export const LibraryPage = () => {
 		setToggle(!toggle);
 	};
 
-
 	useEffect(() => {
 		if (!accessToken) {
 			return;
@@ -41,6 +40,17 @@ export const LibraryPage = () => {
 			dispatch(getBookPlanning())
 		});
 	}, [accessToken, dispatch]);
+
+	// useEffect(() => {
+	// 	if (!accessToken) {
+	// 		return;
+	// 	}
+	// 	setTimeout(() => {
+	// 		dispatch(userBooks());
+	// 		// тут запит на бек, тому що в запиті userBooks не приходить currentlyReading
+	// 		dispatch(getBookPlanning())
+	// 	});
+	// }, [accessToken, dispatch]);
 
 	return (
 		<Section>
