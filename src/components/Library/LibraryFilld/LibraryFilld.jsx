@@ -33,8 +33,12 @@ import {
 	getCurrentlyReading,
 } from '../../../redux/library/librarySelector';
 import LibraryModal from '../LibraryModal/LibraryModal';
+
 import Modal from 'components/Modal/Modal';
 import ConteinerModal from 'ui/LibraryModal/ConteinerModal.styled';
+
+import Rating from '@mui/material/Rating';
+
 
 function LibraryFilld() {
 	const goingToRead = useSelector(getGoingToRead);
@@ -45,6 +49,8 @@ function LibraryFilld() {
 	const toogleModal = () => {
 		setIsModal(!isModal);
 	};
+
+	const valueReview = 4;
 
 	return (
 		<>
@@ -121,7 +127,7 @@ function LibraryFilld() {
 													{pagesTotal}
 												</LibraryBooklistTabletBodyCell>
 												<LibraryBooklistTabletBodyCell ratingPadding>
-													*****
+													<Rating name="read-only" value={valueReview} readOnly />
 												</LibraryBooklistTabletBodyCell>
 												<LibraryBooklistTabletBodyCell buttonPadding>
 													<LibraryBooklistTabletButton

@@ -7,6 +7,8 @@ const ProgressText = styled.span`
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 1.21;
+	color: #898F9F;
+
 	@media screen and (min-width: 768px) {
 		text-align: left;
 		font-size: 11px;
@@ -20,3 +22,14 @@ const ProgressText = styled.span`
 `;
 
 export default ProgressText;
+
+
+
+// font-family: 'Montserrat';
+// font-style: normal;
+// font-weight: 500;
+// font-size: 14px;
+// line-height: 17px;
+// text-align: center;
+
+// color: #898F9F;

@@ -1,4 +1,4 @@
-import MyGoals from 'components/MyGoals/MyGoals';
+// import MyGoals from 'components/MyGoals/MyGoals';
 import React from 'react';
 import {
 	TimerMain,
@@ -42,7 +42,7 @@ const TimerBlock = () => {
 					</TimerStyle>
 				</div>
 			</TimerMain>
-			<MyGoals />
+			
 		</>
 	);
 };

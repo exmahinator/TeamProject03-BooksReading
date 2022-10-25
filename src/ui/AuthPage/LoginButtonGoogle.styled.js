@@ -19,6 +19,7 @@ const LoginButtonGoogle = styled.a`
 	background: #f5f7fa;
 	box-shadow: 0px 2px 2px rgba(9, 30, 63, 0.15);
 	text-decoration: none;
+	cursor: pointer;
 `;
 
 export default LoginButtonGoogle;
