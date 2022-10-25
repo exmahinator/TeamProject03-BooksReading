@@ -8,7 +8,7 @@ import {
 	BoxPageStatistics,
 } from '../ui/TrainingPage/GoalTrainingBox.styled';
 import MyGoals from '../components/MyGoals/MyGoals';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 // import { getCurrentlyReading } from '../redux/library/librarySelector';
 
 export const TrainingPage = () => {
@@ -16,14 +16,11 @@ export const TrainingPage = () => {
 	// const gcurrentlyReading = useSelector(getCurrentlyReading);
 	// let trainingNow = false;
 
-	// прпописати тогл відображення сторінки тренінг або статистика
-	// якщо в CurrentlyReading щось є, то перенаправляємо на статистику!
-
 	return (
 		<Section>
 			<Container>
 				<BoxPageTraining>
-					<NavLink to="/statistics">Statistics</NavLink>
+					{/* <NavLink to="/statistics">Statistics</NavLink> */}
 					<MyTraining />
 				</BoxPageTraining>
 
@@ -35,7 +32,6 @@ export const TrainingPage = () => {
 					</GoalTrainingBox>
 					<LineChart />
 				</BoxPageStatistics>
-
 			</Container>
 		</Section>
 	);

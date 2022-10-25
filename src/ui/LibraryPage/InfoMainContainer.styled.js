@@ -5,7 +5,7 @@ const InfoMainContainer = styled.div`
 	position: absolute;
 	width: 100%;
 	max-height: 425px;
-	top: 62%;
+	top: 56%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	flex-direction: column;

@@ -71,6 +71,13 @@ const librarySlice = createSlice({
 
 		[addFinishedPages.fulfilled](state, action) {
 			state.stats = action.payload.planning.stats;
+			state.currentlyReading.splice(
+				state.currentlyReading.findIndex(
+					book => book._id === action.payload.book._id
+				),
+				1,
+				action.payload.book
+			);
 		},
 
 		[loginWithGoogle.fulfilled](state, action) {

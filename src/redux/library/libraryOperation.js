@@ -60,7 +60,7 @@ export const addFinishedPages = createAsyncThunk(
 	async (pages, thunkAPI) => {
 		try {
 			const { data } = await axios.patch('/planning', pages);
-			// console.log('addFinishedPages:', data);
+			console.log('addFinishedPages:', data);
 			return data;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error.message);

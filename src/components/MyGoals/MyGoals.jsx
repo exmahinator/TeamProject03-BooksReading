@@ -43,7 +43,7 @@ const MyGoals = () => {
 							<ProgressItem progressItemNoStat>
 								<ProgressNumber progressNumberNoStat>
 									<span>
-										{currentlyReading.length + finishedReading.length}
+										{currentlyReading.length<1? 0 : currentlyReading.length + finishedReading.length}
 									</span>
 								</ProgressNumber>
 								<ProgressText progressTextNoStat>Кількість книжок</ProgressText>

@@ -14,6 +14,7 @@ import PrivateRoute from './Route/PrivatePoute';
 import PublicRoute from './Route/PublicRoute';
 import { refreshUser, loginWithGoogle } from 'redux/auth/authOperation';
 import { getSid, getIsRefreshing } from 'redux/auth/authSelector';
+import { getCurrentlyReading } from 'redux/library/librarySelector';
 // import { getAccessToken } from '../redux/auth/authSelector';
 // import { userBooks, getBookPlanning } from '../redux/library/libraryOperation';
 
@@ -25,6 +26,7 @@ export const App = () => {
 	console.log();
 	const sid = useSelector(getSid);
 	const isRefreshing = useSelector(getIsRefreshing);
+	const currentlyReading = useSelector(getCurrentlyReading);
 
 	// const accessToken = useSelector(getAccessToken);
 
@@ -32,9 +34,11 @@ export const App = () => {
 
 	useEffect(() => {
 		if (accessTokenParams) {
-			dispatch(loginWithGoogle({accessTokenParams, refreshTokenParams, sidParams}))
+			dispatch(
+				loginWithGoogle({ accessTokenParams, refreshTokenParams, sidParams })
+			);
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -43,52 +47,58 @@ export const App = () => {
 	}, [dispatch]);
 
 	return (
-          !isRefreshing && (<Routes>
-			<Route path="/" element={<Layout />}>
-				<Route index element={<Navigate to="/login" />} />
-				<Route
-					path="/login"
-					element={
-						<PublicRoute redirect="/library" restricted>
-							<AuthLogin />
-						</PublicRoute>
-					}
-				/>
-				<Route
-					path="/register"
-					element={
-						<PublicRoute redirect="/library" restricted>
-							<AuthRegistration />
-						</PublicRoute>
-					}
-				/>
-				<Route
-					path="/library"
-					element={
-						<PrivateRoute redirect="/">
-							<LibraryPage />
-						</PrivateRoute>
-					}
-				/>
-				<Route
-					path="/training"
-					element={
-						<PrivateRoute redirect="/">
-							<TrainingPage />
-						</PrivateRoute>
-					}
-				/>
-				<Route
-					path="/statistics"
-					element={
-						<PrivateRoute redirect="/">
-							<StatisticsPage />
-						</PrivateRoute>
-					}
-				/>
+		!isRefreshing && (
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route index element={<Navigate to="/login" />} />
+					<Route
+						path="/login"
+						element={
+							<PublicRoute redirect="/library" restricted>
+								<AuthLogin />
+							</PublicRoute>
+						}
+					/>
+					<Route
+						path="/register"
+						element={
+							<PublicRoute redirect="/library" restricted>
+								<AuthRegistration />
+							</PublicRoute>
+						}
+					/>
+					<Route
+						path="/library"
+						element={
+							<PrivateRoute redirect="/">
+								<LibraryPage />
+							</PrivateRoute>
+						}
+					/>
+					<Route
+						path="/training"
+						element={
+							<PrivateRoute redirect="/">
+								{currentlyReading.length > 0 ? (
+									<Navigate to="/statistics" />
+								) : (
+									<TrainingPage />
+								)}
+							</PrivateRoute>
+						}
+					/>
+					<Route
+						path="/statistics"
+						element={
+							<PrivateRoute redirect="/">
+								<StatisticsPage />
+							</PrivateRoute>
+						}
+					/>
 
-				<Route path="*" element={<AuthLogin />} />
-			</Route>
-		</Routes>)
+					<Route path="*" element={<AuthLogin />} />
+				</Route>
+			</Routes>
+		)
 	);
 };
