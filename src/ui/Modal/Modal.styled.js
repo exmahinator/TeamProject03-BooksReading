@@ -16,8 +16,6 @@ export const Overlay = styled.div`
 export const ModalWindow = styled.div`
 	// width: 394px;
 	// height: 204px;
-	width: ${props => props.libraryRating && '300px'};
-	height: ${props => props.libraryRating && '350px'};
 	background-color: #fff;
 	box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
 
@@ -88,10 +86,49 @@ export const ButtonLogout = styled.button`
 	}
 `;
 
+export const ButtonTreining = styled.button`
+	width: 152px;
+	height: 40px;
+	border: none;
+	background-color: #ff6b08;
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 1.2;
+	color: #ffffff;
+	box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
+
+	&:hover {
+		color: #242a37;
+		border: 1px solid #242a37;
+		background: #ffffff;
+		box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
+	}
+
+	@media screen and (max-width: 767px) {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+`;
+
 export const ButtonConteiner = styled.div`
 	display: flex;
 	justify-content: space-between;
     padding-top: 24px;
+`;
+
+export const ButtonConteinerStats = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	padding-top: 24px;
+
+	@media screen and (max-width: 767px) {
+		flex-direction: column;
+		align-items: center;
+		padding-top: 16px;
+	}
 `;
 
 export const ModalConteiner = styled.div`
@@ -104,3 +141,17 @@ export const ModalConteiner = styled.div`
 	}
 `;
 
+export const ConteinerStats = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 336px;
+	// height: 296px;
+	padding: 40px 29px 48px;
+
+	@media screen and (max-width: 767px) {
+		padding: 40px 32px;
+		width: 210px;
+	
+	}
+`;

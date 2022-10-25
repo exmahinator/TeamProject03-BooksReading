@@ -10,7 +10,7 @@ import {
 	Legend,
 } from 'chart.js';
 
-import { Line } from 'react-chartjs-2';
+// import { Line } from 'react-chartjs-2';
 import { getStartDate, getEndDate, getPagesPerDay, getStats } from '../../redux/library/librarySelector';
 import { useSelector } from 'react-redux';
 // import { red } from '@mui/material/colors';
@@ -114,17 +114,17 @@ export default function LineChart() {
 	const endDate = useSelector(getEndDate);
 	const pagesPerDay = useSelector(getPagesPerDay);
 
-	const calcDays = (startDate, endDate) => {
-		const time = Date.parse(endDate) - Date.parse(startDate);
-		let TotalDays = Math.ceil(time / (1000 * 3600 * 24));
-		const days = [];
+	// const calcDays = (startDate, endDate) => {
+	// 	const time = Date.parse(endDate) - Date.parse(startDate);
+	// 	let TotalDays = Math.ceil(time / (1000 * 3600 * 24));
+	// 	const days = [];
 
-		for (let i = 0; i < TotalDays; i++) {
-			days.push(i);
-		}
-		return days;
-	};
-	const days = calcDays(startDate, endDate);
+	// 	for (let i = 0; i < TotalDays; i++) {
+	// 		days.push(i);
+	// 	}
+	// 	return days;
+	// };
+	// const days = calcDays(startDate, endDate);
 
 	// const statsPlan = days.map(day => ({ pagesCount: pagesPerDay }));
 
@@ -146,14 +146,14 @@ export default function LineChart() {
 	// 	return fact
 	// });
 
-	const statsFact = [
-		{ pagesCount: 5 },
-		{ pagesCount: 15 },
-		{ pagesCount: 13 },
-		// { pagesCount: 35 },
-		// { pagesCount: 12 },
-		// { pagesCount: 13 },
-	];
+	// const statsFact = [
+	// 	{ pagesCount: 5 },
+	// 	{ pagesCount: 15 },
+	// 	{ pagesCount: 13 },
+	// 	// { pagesCount: 35 },
+	// 	// { pagesCount: 12 },
+	// 	// { pagesCount: 13 },
+	// ];
 
 	// let startDate = new Date('10/22/2022');
 	// let endDate = new Date('10/25/2022');

@@ -14,10 +14,17 @@ import { addFinishedPages } from '../../redux/library/libraryOperation';
 import StatisticsTablet from './StatisticsTablet';
 import { useState } from 'react';
 // import { DatePicker } from '@mui/x-date-pickers';
+import Modal from 'components/Modal/Modal';
+import { ConteinerStats } from 'ui/Modal/Modal.styled';
+import { ModalLogoutText } from 'ui/Modal/Modal.styled';
+import { ReactComponent as Finger } from '../../ui/Modal/imagas/finger.svg';
+import { ButtonConteinerStats } from 'ui/Modal/Modal.styled';
+import { ButtonTreining } from 'ui/Modal/Modal.styled';
 
 const Statistics = () => {
 	const dispatch = useDispatch();
 	const [pages, setPages] = useState('');
+	const [isModal, setIsModal] = useState(false);
 
 	const handleChangePage = evt => {
 		setPages(Number(evt.target.value));
@@ -26,6 +33,10 @@ const Statistics = () => {
 	const handleAddResults = pages => {
 		dispatch(addFinishedPages(pages));
 		setPages('');
+	};
+
+	const toogleModal = () => {
+		setIsModal(!isModal);
 	};
 
 	return (
@@ -40,8 +51,6 @@ const Statistics = () => {
 							type="text"
 							defaultValue={new Date().toLocaleDateString()}
 						/>
-
-						{/* <StatInput id="data" type="date" defaultValue="2022-10-25" /> */}
 					</StatSubContainer>
 					<StatSubContainer>
 						<StatLabel htmlFor="pages">Кількість сторінок </StatLabel>
@@ -61,6 +70,25 @@ const Statistics = () => {
 				</StatisticsButton>
 			</StatSubContainerTable>
 			<StatisticsTablet />
+
+			{isModal && (
+				<Modal toogleModal={toogleModal}>
+					<ConteinerStats>
+						<Finger/>
+						<ModalLogoutText>
+							Ти молодчина, але потрібно швидше! Наступного разу тобі все
+							вдасться &#41;
+						</ModalLogoutText>
+						<ButtonConteinerStats>
+							<ButtonTreining type='button'>Новє тренування</ButtonTreining>
+							<ButtonTreining type='button' onClick={toogleModal}>Назад</ButtonTreining>
+						</ButtonConteinerStats>
+				</ConteinerStats>
+					</Modal>
+			)}
+			<button type="button" onClick={toogleModal}>
+				модалка "ти молодець"
+			</button>
 		</StatPagesContainer>
 	);
 };
