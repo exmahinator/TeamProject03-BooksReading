@@ -35,7 +35,13 @@ const Statistics = () => {
 				<StatCommonContainer>
 					<StatSubContainer>
 						<StatLabel htmlFor="data">Дата</StatLabel>
-						<StatInput id="data" type="date" defaultValue="2022-10-25" />
+						<StatInput
+							id="data"
+							type="text"
+							defaultValue={new Date().toLocaleDateString()}
+						/>
+
+						{/* <StatInput id="data" type="date" defaultValue="2022-10-25" /> */}
 					</StatSubContainer>
 					<StatSubContainer>
 						<StatLabel htmlFor="pages">Кількість сторінок </StatLabel>
