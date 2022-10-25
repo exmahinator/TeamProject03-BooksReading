@@ -6,7 +6,8 @@ const LoginButtonGoogle = styled.a`
 	padding-right: 50px;
 	padding-left: 17px;
 	background: #ff6b08;
-	font-family: 'Roboto';
+	// font-family: 'Roboto';
+	font-family: 'Montserrat';
 	font-weight: 700;
 	font-size: 16px;
 	align-items: center;
