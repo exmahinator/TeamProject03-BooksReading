@@ -63,7 +63,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 							pagesTotal,
 							pagesFinished,
 						}) => (
-							<ItemMob key={_id}>
+							 <ItemMob key={_id}>
 								<div className={css.bookNameMob}>
 									<FlatWrapper>
 										{location.pathname === '/training' ? (
@@ -80,13 +80,7 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 								</div>
 
 								<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
-									<div
-										style={{
-											margin: '0 15px 14px 0',
-											color: '#898F9F',
-											width: '25%',
-										}}
-									>
+									<div>
 										Автор:
 									</div>
 									<div>{author}</div>
@@ -122,14 +116,16 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 								)}
 							</ItemMob>
 						)
-					)}
-					{books.length > 0 && location.pathname === '/training' && (
-						<Button>Почати тренування</Button>
-					)}
+					)} <ItemDesk>
+							<Flat style={{marginRight: '12px'}} /><p>...</p>
+						</ItemDesk>
 				</ListMob>
+					{/* {books.length > 0 && location.pathname === '/training' && (
+						<Button>Почати тренування</Button>
+					)} */}
 			</Wrapper>
 
-			{/* desk */}
+		{/* desk */}
 			<ListDesk>
 				<Title>
 					<BookName>Назва книги</BookName>
@@ -168,13 +164,15 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 							)}
 						</ItemDesk>
 					)
-				)}
+				)} <ItemDesk>
+						<Flat style={{marginRight: '16px'}} /><p>...</p>
+					</ItemDesk>
+			</ListDesk>
 				{books.length > 0 && location.pathname === '/training' && (
 					<Button type="button" onClick={handleAddBookPlanning}>
 						Почати тренування
 					</Button>
 				)}
-			</ListDesk>
 		</>
 	);
 }
