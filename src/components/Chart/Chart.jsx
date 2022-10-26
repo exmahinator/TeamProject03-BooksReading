@@ -30,6 +30,8 @@ import {
 	ChartNumber,
 	ChartInfo,
 	ChartInfoBox,
+	// ChartLineName,
+	// ChartLineNameBox
 } from 'ui/ChartStyled';
 
 // window.onload=function(){
@@ -60,40 +62,27 @@ ChartJS.register(
 
 const options = {
 	responsive: true,
-	// title: {
-	// 	display: true,
-	// 	text: 'TEST',
-	// 	fontSize: 24,
-	// 	fontColor: 'red',
-	// },
 
 	plugins: {
 		legend: {
 			display: false,
-			position: 'top',
+			position: 'center',
 			backgroundColor: 'white',
 		},
-		// title: {
-		// 	display: true,
-		// 	text: 'КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ 0',
-		// 	position: 'top',
-		// 	// defaultFontSize: 24,
-		// 	// fontColor: '#666',
-		// 	// fontFamily: 'Montserrat',
-		// 	// fontStyle: normal,
-		// 	// fontWeight: 500,
-		// 	// defaultFontSize: 24,
-		// 	// lineHeight: 15,
-		// 	// textTransform: uppercase,
-		// },
-	},
 
-	// stroke: {
-	// 	shadowColor: 'black',
-	// 	shadowBlur: 3,
-	// 	shadowOffsetX: 3,
-	// 	shadowOffsetY: 10,
-	// },
+		tooltip: {
+			intersect: false,
+			boxWidth: 4,
+			boxHeight: 4,
+			boxPadding: 6,
+			titleFont: { weight: 'bold', size: 16, family: 'Montserrat' },
+			caretSize: 6,
+			titleSpacing: 2,
+			cornerRadius: 3,
+			usePointStyle: false,
+
+		}
+	},
 
 	scales: {
 		xAxes: {
@@ -126,81 +115,7 @@ export default function LineChart() {
 	const startDate = useSelector(getStartDate);
 	const endDate = useSelector(getEndDate);
 	const pagesPerDay = useSelector(getPagesPerDay);
-
 	const currentlyReading = useSelector(getCurrentlyReading);
-
-	// const calcDays = (startDate, endDate) => {
-	// 	const time = Date.parse(endDate) - Date.parse(startDate);
-	// 	let TotalDays = Math.ceil(time / (1000 * 3600 * 24));
-	// 	const days = [];
-
-	// 	for (let i = 0; i < TotalDays; i++) {
-	// 		days.push(i);
-	// 	}
-	// 	return days;
-	// };
-	// const days = calcDays(startDate, endDate);
-
-	// const statsPlan = days.map(day => ({ pagesCount: pagesPerDay }));
-
-	// const dateArr = stats.map(({time})=>{
-	// 	const splitDate = time.split(' ');
-	// 	const date = Date.parse(splitDate[0]);
-	// 	return date
-	// })
-
-	// const statsFact = stats.filter(({pagesCount, time}) => {
-	// 	const pages = 0;
-
-	// 	const splitDate = time.split(' ');
-	// 	const date = Date.parse(splitDate[0]);
-
-	// 	const fact = {
-	// 		pagesCount: pages,
-	// 	}
-	// 	return fact
-	// });
-
-	// const statsFact = [
-	// 	{ pagesCount: 5 },
-	// 	{ pagesCount: 15 },
-	// 	{ pagesCount: 13 },
-	// 	// { pagesCount: 35 },
-	// 	// { pagesCount: 12 },
-	// 	// { pagesCount: 13 },
-	// ];
-
-	// let startDate = new Date('10/22/2022');
-	// let endDate = new Date('10/25/2022');
-
-	// const ShadowLineElement = Line.elements.Line.extend({
-	// 	draw() {
-	// 		console.log(this);
-
-	// 		const { ctx } = this._chart;
-
-	// 		const originalStroke = ctx.stroke;
-
-	// 		ctx.stroke = function () {
-	// 			ctx.save();
-	// 			ctx.shadowColor = 'gray';
-	// 			ctx.shadowBlur = 10;
-	// 			ctx.shadowOffsetX = 0;
-	// 			ctx.shadowOffsetY = 4;
-	// 			originalStroke.apply(this, arguments);
-	// 			ctx.restore();
-	// 		};
-
-	// 		Line.elements.Line.prototype.draw.apply(this, arguments);
-
-	// 		ctx.stroke = originalStroke;
-	// 	},
-	// });
-
-	// Line.defaults.ShadowLine = Line.defaults.Line;
-	// Line.controllers.ShadowLine = Line.controllers.Line.extend({
-	// 	datasetElementType: ShadowLineElement,
-	// });
 
 	const generateDateArr = function (start, end) {
 		const startDate = new Date(start);
@@ -251,15 +166,6 @@ export default function LineChart() {
 				label: 'План', // вычислить за сколько дней прочесть книгу и количество страниц startData & endDatta
 				data: statsPlan.map(stat => stat.pagesCount),
 				pointBorderWidth: 6,
-				// border: '2px solid #091E3F',
-				// boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-				// backgroundShadowColor: 'red',
-				// shadowColor: 'black',
-				// shadowBlur: 3,
-				// shadowOffsetX: 3,
-				// shadowOffsetY: 10,
-				// xValue: ctx => value(ctx, 0, 2, 'x'),
-				// yValue: ctx => value(ctx, 0, 2, 'y'),
 				borderColor: '#091E3F',
 				backgroundColor: '#091E3F',
 				lineTension: 0.4,
@@ -269,7 +175,6 @@ export default function LineChart() {
 				data: factPlan.map(stat => stat.pagesCount),
 				borderColor: '#FF6B08',
 				backgroundColor: '#FF6B08',
-				// boxShadow: '0px 2px 3px rgba(9, 30, 63, 0.25)',
 				lineTension: 0.4,
 				pointBorderWidth: 6,
 			},
@@ -291,6 +196,10 @@ export default function LineChart() {
 					Кількість сторінок / день <ChartNumber>34</ChartNumber>{' '}
 				</ChartTitle>
 				<ChartWrapper options={options} data={data} />
+				{/* <ChartLineNameBox>
+					<ChartLineName>План</ChartLineName>
+					<ChartLineName>Факт</ChartLineName>
+				</ChartLineNameBox> */}
 				<ChartTime>Час </ChartTime>
 			</ChartBox>
 		</>
