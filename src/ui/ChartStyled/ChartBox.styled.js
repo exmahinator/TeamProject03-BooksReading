@@ -11,7 +11,7 @@ const ChartBox = styled.div`
 	}
 
 	@media screen and (min-width: 1280px) {
-		max-width: 928px;
+		/* max-width: 928px; */
 		/* max-height: 340px; */
 		/* padding-left: 40px; */
 		/* padding-right: 77px; */
