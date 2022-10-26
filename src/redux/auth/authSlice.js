@@ -32,6 +32,7 @@ const authSlice = createSlice({
 	extraReducers: {
 		[register.fulfilled](state, action) {
 			// state.userData = action.payload.userData;
+			state.userData.name = action.payload.userData.name;
 			state.sid = action.payload.sid;
 			state.accessToken = action.payload.accessToken;
 			state.refreshToken = action.payload.refreshToken;
