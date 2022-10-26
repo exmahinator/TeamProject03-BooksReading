@@ -2,19 +2,17 @@ import styled from 'styled-components';
 
 const ProgressItem = styled.ul`
 	display: flex;
-	width: inherit;
-	/* justify-content: space-between; */
-	padding: 44px 30px;
-	width: 100%;
-	background: #ffffff;
-	box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+	padding: 32px 28px;
+	padding: ${props => props.progressListNoStat && '44px 30px'};
+	width: ${props => props.progressListNoStat && '100%'};
 	@media screen and (min-width: 768px) {
 		padding: 0;
 		box-shadow: none;
 	}
+
 	@media screen and (min-width: 1280px) {
-		padding: 48px 34px;
-		box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+		padding: 80px 18px 79px 18px;
+		padding: ${props => props.progressListNoStat && '48px 34px 48px 34px'};
 	}
 `;
 

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
 import { getGoingToRead } from '../../redux/library/librarySelector';
+
 import {
 	WrapperDatePicker,
 	Wrapper,
@@ -27,6 +28,7 @@ export default function MyTraining() {
 	const [endDate, setEndDate] = useState(null);
 	const [books, setBooks] = useState([]);
 
+	
 	const goingToRead = useSelector(getGoingToRead);
 
 	// Дата старту - готова до використання---
@@ -43,6 +45,7 @@ export default function MyTraining() {
 	};
 
 	const handleChange = event => {
+		console.log(event.target.value);
 		const {
 			target: { value },
 		} = event;
@@ -59,16 +62,17 @@ export default function MyTraining() {
 			return;
 		}
 		setBooks([...books, ...addingToTraining]);
-
-		console.log(books);
 	};
+	// console.log(books);
 
 	const handleDelete = id => {
 		return setBooks(books.filter(book => book._id !== id));
 	};
 
 	return (
-		<Wrapper>
+		<>
+		
+					<Wrapper>
 			<Title>Моє тренування</Title>
 			<BoxForm>
 				<WrapperCallendar>
@@ -109,6 +113,7 @@ export default function MyTraining() {
 				</Button>
 				</WrapperSelect> 
 			</BoxForm>
+			
 			<TrainingList
 				books={books}
 				startDate={startDate}
@@ -116,5 +121,7 @@ export default function MyTraining() {
 				booksDelete={handleDelete}
 			/>
 		</Wrapper>
+		</>
+		
 	);
 }

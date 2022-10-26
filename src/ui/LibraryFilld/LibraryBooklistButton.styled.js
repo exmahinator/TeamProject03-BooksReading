@@ -8,6 +8,7 @@ const LibraryBooklistButton = styled.button`
 	background-color: #6d7a8d;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 	border: none;
+	cursor: pointer;
 	:active {
 		background-color: #ff6b08;
 	}

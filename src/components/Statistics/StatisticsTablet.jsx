@@ -6,9 +6,10 @@ import {
 	StatTableDate,
 	StatTableTime,
 	StatTableTextPage,
+	StatTableScroll,
 } from 'ui/StatisticsPage';
 import { getStats } from '../../redux/library/librarySelector';
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
 
 const StatisticsTablet = () => {
 	const stats = useSelector(getStats);
@@ -26,19 +27,22 @@ const StatisticsTablet = () => {
 	return (
 		<StatisticsContainerTablet>
 			<StatisticsTabletText>Статистика</StatisticsTabletText>
-			<StatTable>
-				<tbody>
-					{dateAndTime.map(({ date, time, page }) => (
-						<tr key={nanoid()}>
-							<StatTableDate>{date.toLocaleDateString()}</StatTableDate>
-							<StatTableTime>{time}</StatTableTime>
-							<StatTableDate>
-								{page} <StatTableTextPage>стор.</StatTableTextPage>
-							</StatTableDate>
-						</tr>
-					))}
-				</tbody>
-			</StatTable>
+
+			<StatTableScroll>
+				<StatTable>
+					<tbody>
+						{dateAndTime.map(({ date, time, page }) => (
+							<tr key={nanoid()}>
+								<StatTableDate>{date.toLocaleDateString()}</StatTableDate>
+								<StatTableTime>{time}</StatTableTime>
+								<StatTableDate>
+									{page} <StatTableTextPage>стор.</StatTableTextPage>
+								</StatTableDate>
+							</tr>
+						))}
+					</tbody>
+				</StatTable>
+			</StatTableScroll>
 		</StatisticsContainerTablet>
 	);
 };

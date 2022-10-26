@@ -53,73 +53,137 @@ function TrainingList({ books, startDate, endDate, booksDelete }) {
 	return (
 		<>
 			<Wrapper>
-				<ListMob>
-					{books?.map(
-						({
-							_id,
-							title,
-							author,
-							publishYear,
-							pagesTotal,
-							pagesFinished,
-						}) => (
-							 <ItemMob key={_id}>
-								<div className={css.bookNameMob}>
-									<FlatWrapper>
-										{location.pathname === '/training' ? (
-											<Flat />
-										) : (
-											<CheckBox
-												pagesFinished={pagesFinished}
-												pagesTotal={pagesTotal}
-											/>
-										)}
-										{/* <Flat /> */}
-									</FlatWrapper>
-									<div style={{ padding: '0 25px 0 0' }}>{title}</div>
-								</div>
+				{books ? 
+					<ListMob>
+						{books?.map(
+							({
+								_id,
+								title,
+								author,
+								publishYear,
+								pagesTotal,
+								pagesFinished,
+							}) => (
+								<ItemMob key={_id}>
+									<div className={css.bookNameMob}>
+										<FlatWrapper>
+											{location.pathname === '/training' ? (
+												<Flat />
+											) : (
+												<CheckBox
+													pagesFinished={pagesFinished}
+													pagesTotal={pagesTotal}
+												/>
+											)}
+										</FlatWrapper>
+										<div style={{ padding: '0 25px 0 0' }}>{title}</div>
+									</div>
 
-								<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
-									<div>
-										Автор:
+									<div style={{ display: 'flex', margin: '0 0 14px 35px' }}>
+										<div style={{
+												marginRight: '15px',
+												color: '#898F9F',
+												width: '35%',
+											}}>
+											Автор:
+										</div>
+										<div>{author}</div>
 									</div>
-									<div>{author}</div>
-								</div>
-								<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
-									<div
-										style={{
-											margin: '0 15px 14px 0',
-											color: '#898F9F',
-											width: '25%',
-										}}
-									>
-										Рік:
+									<div style={{ display: 'flex', margin: '0 0 14px 35px' }}>
+										<div
+											style={{
+												margin: '0 15px 0 0',
+												color: '#898F9F',
+												width: '35%',
+											}}
+										>
+											Рік:
+										</div>
+										<div>{publishYear}</div>
 									</div>
-									<div>{publishYear}</div>
-								</div>
-								<div style={{ display: 'flex', margin: '0 0 0 35px' }}>
-									<div
-										style={{
-											marginRight: '15px',
-											color: '#898F9F',
-											width: '25%',
-										}}
-									>
-										Стор.:
+									<div style={{ display: 'flex', margin: '0 0 14px 35px' }}>
+										<div
+											style={{
+												marginRight: '15px',
+												color: '#898F9F',
+												width: '35%',
+											}}
+										>
+											Стор.:
+										</div>
+										<div>{pagesTotal}</div>
 									</div>
-									<div>{pagesTotal}</div>
+									{location.pathname === '/training' && (
+										<DeleteIcon>
+											<Del className={css.delButton} />
+											
+										</DeleteIcon>
+									)}
+								</ItemMob>
+							)
+						)} <ItemDesk>
+								<Flat style={{marginRight: '12px'}} />
+								<p>...</p>
+							</ItemDesk>
+					</ListMob> : 
+					<ListMob>
+						<ItemMob>
+							<div className={css.bookNameMob}>
+								<FlatWrapper>
+									{location.pathname === '/training' ? (
+										<Flat />
+									) : (
+										<CheckBox />
+									)}
+								</FlatWrapper>
+							</div>
+
+							<div style={{ display: 'flex', margin: '0 0 14px 35px' }}>
+								<div style={{
+										marginRight: '15px',
+										color: '#898F9F',
+										width: '35%',
+									}}>
+									Автор:
 								</div>
-								{location.pathname === '/training' && (
-									<DeleteIcon>
-										<Del className={css.delButton} />
-									</DeleteIcon>
-								)}
-							</ItemMob>
-						)
-					)} <ItemDesk>
-							<Flat style={{marginRight: '12px'}} /><p>...</p>
-						</ItemDesk>
-				</ListMob>
+								<div>...</div>
+							</div>
+							<div style={{ display: 'flex', margin: '0 0 14px 35px' }}>
+								<div
+									style={{
+										margin: '0 15px 0 0',
+										color: '#898F9F',
+										width: '35%',
+									}}
+								>
+									Рік:
+								</div>
+								<div>...</div>
+							</div>
+							<div style={{ display: 'flex', margin: '0 0 14px 35px' }}>
+								<div
+									style={{
+										marginRight: '15px',
+										color: '#898F9F',
+										width: '35%',
+									}}
+								>
+									Стор.:
+								</div>
+								<div>...</div>
+							</div>
+							{location.pathname === '/training' && (
+								<DeleteIcon>
+									<Del className={css.delButton} />
+								</DeleteIcon>
+							)}
+						</ItemMob>
+					</ListMob>}
+				
+					
+
+				
+				
 					{/* {books.length > 0 && location.pathname === '/training' && (
 						<Button>Почати тренування</Button>
 					)} */}

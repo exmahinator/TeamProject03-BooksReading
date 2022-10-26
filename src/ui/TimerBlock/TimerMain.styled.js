@@ -27,6 +27,7 @@ const TimerMain = styled.div`
 		/* display: flex;
     align-items: center;
     text-align: center; */
+	margin-bottom: 40px;
 	}
 `;
 

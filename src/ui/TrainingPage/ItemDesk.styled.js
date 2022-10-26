@@ -7,6 +7,12 @@ const ItemDesk = styled.li`
     font-size: 14px;
     align-items: center;
     border-bottom: 1px solid #E0E5EB;
+
+    display: none;
+    @media screen and (min-width: 768px) {
+        display: flex;
+    }
+
 `
 
 export default ItemDesk;

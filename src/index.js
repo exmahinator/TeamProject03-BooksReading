@@ -6,17 +6,22 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
 import { App } from 'components/App';
 import './index.css';
+import { ReviewContextProvider } from 'components/ReviewContext/ReviewContext';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter
       // basename="/BOOKS-READING"
     >
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <ReviewContextProvider>
+           <App />
+        </ReviewContextProvider>
+         
           </PersistGate>
       </Provider>
     </BrowserRouter>
- </React.StrictMode>
+//  </React.StrictMode>
 );

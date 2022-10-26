@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useContext } from 'react';
 import {
 	LibraryBooklistContainer,
 	LibraryBooklistTitle,
@@ -38,19 +38,14 @@ import Modal from 'components/Modal/Modal';
 import ConteinerModal from 'ui/LibraryModal/ConteinerModal.styled';
 
 import Rating from '@mui/material/Rating';
-
+import { ReviewContext } from 'components/ReviewContext/ReviewContext';
 
 function LibraryFilld() {
 	const goingToRead = useSelector(getGoingToRead);
 	const finishedReading = useSelector(getFinishedReading);
 	const currentlyReading = useSelector(getCurrentlyReading);
-	const [isModal, setIsModal] = useState(false);
+	const {isModal, toogleModal} = useContext(ReviewContext);
 
-	const toogleModal = () => {
-		setIsModal(!isModal);
-	};
-
-	const valueReview = 4;
 
 	return (
 		<>
@@ -107,7 +102,7 @@ function LibraryFilld() {
 									</LibraryBooklistTabletBodyCell>
 								</LibraryBooklistTabletRow> */}
 								{finishedReading.map(
-									({ title, author, publishYear, pagesTotal, _id }) => {
+									({ title, author, publishYear, pagesTotal, _id, rating }) => {
 										return (
 											<LibraryBooklistTabletRow key={_id}>
 												<LibraryBooklistTabletBodyCell
@@ -126,24 +121,24 @@ function LibraryFilld() {
 												<LibraryBooklistTabletBodyCell right>
 													{pagesTotal}
 												</LibraryBooklistTabletBodyCell>
-												<LibraryBooklistTabletBodyCell ratingPadding>
-													<Rating name="read-only" value={valueReview} readOnly />
+												<LibraryBooklistTabletBodyCell ratingPadding middle>
+													<Rating name="read-only" value={rating} readOnly />
 												</LibraryBooklistTabletBodyCell>
 												<LibraryBooklistTabletBodyCell buttonPadding>
 													<LibraryBooklistTabletButton
 														type="button"
-														onClick={toogleModal}
+														onClick={() => toogleModal(_id)}
 													>
 														Резюме
 													</LibraryBooklistTabletButton>
 
-												{isModal && (
-											<Modal toogleModal={toogleModal}>
-												<ConteinerModal>
+													{isModal === _id && (
+														<Modal toogleModal={toogleModal}>
+															<ConteinerModal>
 																<LibraryModal toogleModal={toogleModal} />
-												</ConteinerModal>
-											</Modal>
-										)}
+															</ConteinerModal>
+														</Modal>
+													)}
 												</LibraryBooklistTabletBodyCell>
 											</LibraryBooklistTabletRow>
 										);
@@ -280,7 +275,7 @@ function LibraryFilld() {
 					<LibraryBooklistContainer>
 						<LibraryBooklistTitle>Прочитано</LibraryBooklistTitle>
 						{finishedReading.map(
-							({ title, author, publishYear, pagesTotal, _id }) => {
+							({ title, author, publishYear, pagesTotal, _id, rating }) => {
 								return (
 									<LibraryBooklistSubContainer key={_id}>
 										<LibraryBooklistTable>
@@ -307,16 +302,23 @@ function LibraryFilld() {
 													</LibraryBooklistCell>
 												</LibraryBooklistRow>
 												<LibraryBooklistRow>
-													<LibraryBooklistCell>Рейтинг:</LibraryBooklistCell>
-													<LibraryBooklistCell>* * * * *</LibraryBooklistCell>
+													<LibraryBooklistCell middle>
+														Рейтинг:
+													</LibraryBooklistCell>
+													<LibraryBooklistCell middle>
+														<Rating name="read-only" value={rating} readOnly />
+													</LibraryBooklistCell>
 												</LibraryBooklistRow>
 											</tbody>
 										</LibraryBooklistTable>
-										<LibraryBooklistButton type="button" onClick={toogleModal}>
+										<LibraryBooklistButton
+											type="button"
+											onClick={() => toogleModal(_id)}
+										>
 											Резюме
 										</LibraryBooklistButton>
 
-										{isModal && (
+										{isModal === _id && (
 											<Modal toogleModal={toogleModal}>
 												<ConteinerModal>
 													<LibraryModal toogleModal={toogleModal} />

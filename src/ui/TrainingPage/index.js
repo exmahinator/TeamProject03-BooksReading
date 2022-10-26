@@ -1,6 +1,6 @@
 export { default as ProgressItem } from './ProgressItem.styled';
 export { default as ProgressNumber } from './ProgressNumber.styled';
-export {default as ProgressNumberLast} from './ProgressNumberLast.styled'
+export { default as ProgressNumberLast } from './ProgressNumberLast.styled';
 export { default as ProgressText } from './ProgressText.styled';
 export { default as ProgressList } from './ProgressList.styled';
 export { default as ProgressTitle } from './ProgressTitle.styled';
@@ -14,7 +14,7 @@ export { default as ListDesk } from './ListDesk.styled';
 export { default as Title } from './Title.styled';
 export { default as ItemMob } from './ItemMob.styled';
 export { default as Button } from './Button.styled';
-export { default as GoalTrainingBox } from './GoalTrainingBox.styled';
+export { BoxPageTraining, BoxPageStatistics, GoalTrainingBox } from './GoalTrainingBox.styled';
 export { default as DeleteIcon } from './DeleteIcon.styled';
 export { default as ItemDesk } from './ItemDesk.styled';
 export { default as BookName } from './BookName.styled';

@@ -49,12 +49,12 @@ const librarySlice = createSlice({
 			state.goingToRead.push(action.payload.newBook);
 		},
 		[addBookPlanning.fulfilled](state, action) {
-			state.currentlyReading.push(action.payload.books[0]);
+			state.currentlyReading = action.payload.books;
 			state.startDate = action.payload.startDate;
 			state.endDate = action.payload.endDate;
 			state.pagesPerDay = action.payload.pagesPerDay;
 		},
-		
+
 		[getBookPlanning.fulfilled](state, action) {
 			if (!action.payload) {
 				return;
@@ -71,6 +71,13 @@ const librarySlice = createSlice({
 
 		[addFinishedPages.fulfilled](state, action) {
 			state.stats = action.payload.planning.stats;
+			state.currentlyReading.splice(
+				state.currentlyReading.findIndex(
+					book => book._id === action.payload.book._id
+				),
+				1,
+				action.payload.book
+			);
 		},
 
 		[loginWithGoogle.fulfilled](state, action) {
@@ -79,7 +86,13 @@ const librarySlice = createSlice({
 			state.finishedReading = action.payload.data.finishedReading;
 		},
 		[addBookReview.fulfilled](state, action) {
-			// state.rating = action.payload.rating;
+			state.finishedReading.splice(
+				state.finishedReading.findIndex(
+					book => book._id === action.payload._id
+				),
+				1,
+				action.payload
+			);
 		},
 	},
 });
