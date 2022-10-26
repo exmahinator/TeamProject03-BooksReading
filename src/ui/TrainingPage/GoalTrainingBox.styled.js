@@ -22,6 +22,7 @@ export const GoalTrainingBox = styled.div`
     display: flex;
 flex-direction: row-reverse;
 align-items: flex-start;
+gap: 32px;
 
 	}
 `;
