@@ -163,18 +163,19 @@ export const TrainingPage = () => {
 						</>
 						}
 
-						<TrainingList
-							books={books}
-							startDate={startDate}
-							endDate={endDate}
-							booksDelete={handleDelete}
-						/>
+					
 					</Wrapper>
 
 					
 
 					{!toggle&&<><GoalTrainingBox>
 						<MyGoals />
+						<TrainingList
+							books={books}
+							startDate={startDate}
+							endDate={endDate}
+							booksDelete={handleDelete}
+						/>
 					</GoalTrainingBox>
 					<LineChart />
 					<LibraryMobileButton onClick={togglePage} type="button">
