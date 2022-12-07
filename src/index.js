@@ -8,20 +8,16 @@ import { App } from 'components/App';
 import './index.css';
 import { ReviewContextProvider } from 'components/ReviewContext/ReviewContext';
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-    <BrowserRouter
-      basename="/BOOKS-READING"
-    >
-      <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <ReviewContextProvider>
-           <App />
-        </ReviewContextProvider>
-         
-          </PersistGate>
-      </Provider>
-    </BrowserRouter>
-//  </React.StrictMode>
+	// <React.StrictMode>
+	<BrowserRouter basename="/TeamProject03-BooksReading">
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistor}>
+				<ReviewContextProvider>
+					<App />
+				</ReviewContextProvider>
+			</PersistGate>
+		</Provider>
+	</BrowserRouter>
+	//  </React.StrictMode>
 );
