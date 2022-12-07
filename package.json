@@ -2,7 +2,7 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://VitaKoval.github.io/BOOKS-READING/",
+  "homepage": "https://exmahinator.github.io/TeamProject03-BooksReading/",
   "dependencies": {
     "@date-io/dayjs": "^2.16.0",
     "@emotion/styled": "^11.10.4",
